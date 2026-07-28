@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/mintgram-logo.png" width="180" alt="MintGram logo">
+  <img src="docs/mintgram-logo.png" width="180" alt="Mintgram logo">
 </p>
 
-<h1 align="center">MintGram</h1>
+<h1 align="center">Mintgram</h1>
 
 <p align="center">
   <a href="LICENSE">Licensed under the GNU General Public License v2.0</a>
@@ -15,10 +15,10 @@
 
 <p align="center">
   <a href="https://t.me/mintgram_tg">
-    <img src="https://img.shields.io/badge/Channel-MintGram-3E927A?style=for-the-badge" alt="MintGram channel">
+    <img src="https://img.shields.io/badge/Channel-Mintgram-3E927A?style=for-the-badge" alt="Mintgram channel">
   </a>
   <a href="https://t.me/mintgram_chat">
-    <img src="https://img.shields.io/badge/Chat-MintGram-3E927A?style=for-the-badge" alt="MintGram chat">
+    <img src="https://img.shields.io/badge/Chat-Mintgram-3E927A?style=for-the-badge" alt="Mintgram chat">
   </a>
   <a href="../../releases">
     <img src="https://img.shields.io/badge/Download-Releases-3E927A?style=for-the-badge" alt="Download Releases">
@@ -27,13 +27,13 @@
 
 ## About
 
-MintGram is an unofficial fork of Telegram for Android with a custom visual style and privacy-focused client features.
+Mintgram is an unofficial fork of Telegram for Android with a custom visual style and privacy-focused client features.
 
 ## Features
 
-- MintGram branding
-- MintGram Basic theme
-- MintGram Extended theme
+- Mintgram branding
+- Mintgram Basic theme
+- Mintgram Extended theme
 - Hide Read Status
 - Keep Deleted Messages
 - Free Voice Transcription toggle
@@ -70,8 +70,8 @@ Keep `.env`, `local.properties`, APK files, AAB files, and keystores out of git.
 
 ## License
 
-MintGram is distributed under the GNU General Public License v2.0. See [LICENSE](LICENSE).
+Mintgram is distributed under the GNU General Public License v2.0. See [LICENSE](LICENSE).
 
 ## Fork Notice
 
-MintGram is an unofficial fork of Telegram for Android based on the official Telegram Android source code.
+Mintgram is an unofficial fork of Telegram for Android based on the official Telegram Android source code.
