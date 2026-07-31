@@ -4780,6 +4780,8 @@ public class Theme {
 
         ThemeInfo applyingTheme = null;
         SharedPreferences preferences = MessagesController.getGlobalMainSettings();
+        migrateLegacyMintGramThemeKeys(preferences, "theme", "nighttheme");
+        migrateLegacyMintGramThemeKeys(themeConfig, "lastDayTheme", "lastDarkTheme");
         try {
             final ThemeInfo themeDarkBlue = themesDict.get("Dark Blue");
 
@@ -4791,7 +4793,7 @@ public class Theme {
                 applyingTheme = themeDarkBlue;
                 applyingTheme.currentAccentId = 9;
             } else if (theme != null) {
-                applyingTheme = themesDict.get(theme);
+                applyingTheme = getTheme(theme);
                 if (applyingTheme != null && !themeConfig.contains("lastDayTheme")) {
                     SharedPreferences.Editor editor = themeConfig.edit();
                     editor.putString("lastDayTheme", applyingTheme.getKey());
@@ -4807,7 +4809,7 @@ public class Theme {
                 currentNightTheme = themeDarkBlue;
                 themeDarkBlue.currentAccentId = 9;
             } else if (theme != null) {
-                ThemeInfo t = themesDict.get(theme);
+                ThemeInfo t = getTheme(theme);
                 if (t != null) {
                     currentNightTheme = t;
                 }
@@ -6370,7 +6372,42 @@ public class Theme {
     }
 
     public static ThemeInfo getTheme(String key) {
-        return themesDict.get(key);
+        return themesDict.get(normalizeBuiltInThemeKey(key));
+    }
+
+    private static String normalizeBuiltInThemeKey(String key) {
+        if (key == null) {
+            return null;
+        }
+        switch (key) {
+            case "MintGram basic":
+                return "Mintgram basic";
+            case "MintGram basic light":
+                return "Mintgram basic light";
+            case "MintGram Extended":
+                return "Mintgram Extended";
+            case "MintGram Extended light":
+                return "Mintgram Extended light";
+            default:
+                return key;
+        }
+    }
+
+    private static void migrateLegacyMintGramThemeKeys(SharedPreferences preferences, String... keys) {
+        SharedPreferences.Editor editor = null;
+        for (String key : keys) {
+            String oldValue = preferences.getString(key, null);
+            String newValue = normalizeBuiltInThemeKey(oldValue);
+            if (!TextUtils.equals(oldValue, newValue)) {
+                if (editor == null) {
+                    editor = preferences.edit();
+                }
+                editor.putString(key, newValue);
+            }
+        }
+        if (editor != null) {
+            editor.commit();
+        }
     }
 
     public static void applyTheme(ThemeInfo themeInfo) {

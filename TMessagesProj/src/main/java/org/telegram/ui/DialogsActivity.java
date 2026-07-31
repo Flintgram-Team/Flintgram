@@ -13319,11 +13319,15 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     }
                 }
 
-                boolean toDark;
-                if (toDark = dayThemeName.equals(themeInfo.getKey())) {
+                boolean toDark = !themeInfo.isDark();
+                if (toDark) {
                     themeInfo = Theme.getTheme(nightThemeName);
                 } else {
                     themeInfo = Theme.getTheme(dayThemeName);
+                }
+                if (themeInfo == null || themeInfo.isDark() != toDark) {
+                    switchingTheme = false;
+                    return;
                 }
                 switchTheme(themeInfo, toDark);
                 Theme.turnOffAutoNight(BulletinFactory.of(this), () -> {
@@ -13818,7 +13822,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         optionsItem.getLocationInWindow(pos);
         pos[0] += optionsItem.getIconView().getMeasuredWidth() / 2;
         pos[1] += optionsItem.getIconView().getMeasuredHeight() / 2;
-        NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needSetDayNightTheme, themeInfo, false, pos, -1, toDark, null, null, null, true);
+        NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needSetDayNightTheme, themeInfo, false, pos, -1, toDark, null, null, true);
     }
 
     public float getTopPanelAnimatedHeight() {

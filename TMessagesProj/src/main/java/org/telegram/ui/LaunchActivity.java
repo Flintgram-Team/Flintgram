@@ -7390,7 +7390,6 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
                     int[] pos = (int[]) args[2];
                     boolean toDark = (Boolean) args[4];
                     final RLottieImageView darkThemeView = (RLottieImageView) args[5];
-                    final boolean colorNotDark = args.length > 8 ? (boolean) args[8] : false;
                     int w = drawerLayoutContainer.getMeasuredWidth();
                     int h = drawerLayoutContainer.getMeasuredHeight();
                     if (!toDark && darkThemeView != null) {

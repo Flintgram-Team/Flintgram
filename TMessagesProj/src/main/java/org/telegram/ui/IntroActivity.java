@@ -194,9 +194,10 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
         darkThemeDrawable.beginApplyLayerColors();
         darkThemeDrawable.commitApplyLayerColors();
 
-        darkThemeDrawable.setCustomEndFrame(Theme.getCurrentTheme().isDark() ? darkThemeDrawable.getFramesCount() - 1 : 0);
-        darkThemeDrawable.setCurrentFrame(Theme.getCurrentTheme().isDark() ? darkThemeDrawable.getFramesCount() - 1 : 0, false);
-        themeIconView.setContentDescription(LocaleController.getString(Theme.getCurrentTheme().isDark() ? R.string.AccDescrSwitchToDayTheme : R.string.AccDescrSwitchToNightTheme));
+        boolean isDarkTheme = Theme.isCurrentThemeDark();
+        darkThemeDrawable.setCustomEndFrame(isDarkTheme ? darkThemeDrawable.getFramesCount() - 1 : 0);
+        darkThemeDrawable.setCurrentFrame(isDarkTheme ? darkThemeDrawable.getFramesCount() - 1 : 0, false);
+        themeIconView.setContentDescription(LocaleController.getString(isDarkTheme ? R.string.AccDescrSwitchToDayTheme : R.string.AccDescrSwitchToNightTheme));
 
         themeIconView.setAnimation(darkThemeDrawable);
         themeFrameLayout.setOnClickListener(v -> {
@@ -205,18 +206,18 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
 
             String dayThemeName = "Mintgram basic light";
             String nightThemeName = "Mintgram basic";
+            boolean toDark = !Theme.isCurrentThemeDark();
+            Theme.ThemeInfo themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
+            if (themeInfo == null || themeInfo.isDark() != toDark) {
+                DialogsActivity.switchingTheme = false;
+                return;
+            }
+
             SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("themeconfig", Activity.MODE_PRIVATE);
             preferences.edit()
                     .putString("lastDayTheme", dayThemeName)
                     .putString("lastDarkTheme", nightThemeName)
                     .apply();
-
-            Theme.ThemeInfo themeInfo;
-            boolean toDark = !Theme.isCurrentThemeDark();
-            themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
-            if (themeInfo == null) {
-                themeInfo = Theme.getActiveTheme();
-            }
 
             Theme.selectedAutoNightType = Theme.AUTO_NIGHT_TYPE_NONE;
             Theme.saveAutoNightThemeConfig();
