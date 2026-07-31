@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">MintGram</string>
-    <string name="AppNameBeta">MintGram</string>
+    <string name="AppName">Mintgram</string>
+    <string name="AppNameBeta">Mintgram</string>
     <string name="LanguageName">Русский</string>
     <string name="English">Английский</string>
     <string name="LanguageNameInEnglish">Russian</string>
@@ -27,21 +27,21 @@
     <string name="WrongNumberFormat">Некорректный формат</string>
     <string name="ShortNumberInfo">Указанный номер слишком короткий для региона **%1$s**:\n\n**%2$s**\n\nУбедитесь, что правильно указываете номер. Он должен начинаться с кода страны.</string>
     <string name="EditNumber">Изменить номер</string>
-    <string name="DidNotGetTheCodeInfo">Если Вы не получили звонок или SMS с кодом, проверьте настройки сотовой связи и указанный Вами номер:\n\n**%1$s**\n\nЕсли это не помогло, Вы можете указать другой номер телефона или связаться с командой поддержки MintGram. Чтобы сообщить нам о проблеме и отправить техническую информацию для диагностики, нажмите **Помощь**.</string>
+    <string name="DidNotGetTheCodeInfo">Если Вы не получили звонок или SMS с кодом, проверьте настройки сотовой связи и указанный Вами номер:\n\n**%1$s**\n\nЕсли это не помогло, Вы можете указать другой номер телефона или связаться с командой поддержки Mintgram. Чтобы сообщить нам о проблеме и отправить техническую информацию для диагностики, нажмите **Помощь**.</string>
     <string name="DidNotGetTheCodeHelpButton">Помощь</string>
     <string name="DidNotGetTheCodeEditNumberButton">Другой номер</string>
 
     <string name="YourCode">Проверка телефона</string>
     <string name="SentSmsCode">Мы отправили SMS с кодом проверки на Ваш телефон **%1$s**.</string>
-    <string name="SentAppCode">Мы отправили код в приложение **MintGram** на другом Вашем устройстве.</string>
-    <string name="SentAppCodeWithPhone">Мы отправили код через **MintGram** на другое устройство, где авторизован %1$s.</string>
-    <string name="SentAppCodeTitle">Проверьте сообщения в MintGram</string>
+    <string name="SentAppCode">Мы отправили код в приложение **Mintgram** на другом Вашем устройстве.</string>
+    <string name="SentAppCodeWithPhone">Мы отправили код через **Mintgram** на другое устройство, где авторизован %1$s.</string>
+    <string name="SentAppCodeTitle">Проверьте сообщения в Mintgram</string>
     <string name="SentFragmentCode">Получите код для %1$s в разделе Anonymous Numbers платформы Fragment.</string>
     <string name="SentSmsCodeTitle">Введите код</string>
     <string name="OpenFragment">Перейти к Fragment</string>
-    <string name="SentCallCode">Наш робот звонит на номер **%1$s**.\n\nОтвечать на звонок не требуется, MintGram автоматически получит код для входа.</string>
+    <string name="SentCallCode">Наш робот звонит на номер **%1$s**.\n\nОтвечать на звонок не требуется, Mintgram автоматически получит код для входа.</string>
     <string name="SentCallOnly">Мы звоним Вам по номеру **%1$s**, чтобы продиктовать код.</string>
-    <string name="CallText">MintGram позвонит Вам через %1$d:%2$02d</string>
+    <string name="CallText">Mintgram позвонит Вам через %1$d:%2$02d</string>
     <string name="SmsText">Мы отправим Вам SMS через %1$d:%2$02d</string>
     <string name="Calling">Звоним вам...</string>
     <string name="SendingSms">Отправка SMS...</string>
@@ -52,7 +52,7 @@
     <string name="DidNotGetTheCodeSms">Отправить код через SMS</string>
     <string name="DidNotGetTheCodeFragment">Получить код на платформе Fragment</string>
     <string name="CancelAccountReset">Отмена сброса аккаунта</string>
-    <string name="CancelAccountResetInfo2">Кто-то с доступом к **%1$s** запросил удаление Вашего аккаунта MintGram и сброс пароля двухэтапной аутентификации.\n\nЕсли это были не Вы, введите код из SMS, отправленного на Ваш номер. Вы также можете отменить удаление, *изменив номер телефона*.</string>
+    <string name="CancelAccountResetInfo2">Кто-то с доступом к **%1$s** запросил удаление Вашего аккаунта Mintgram и сброс пароля двухэтапной аутентификации.\n\nЕсли это были не Вы, введите код из SMS, отправленного на Ваш номер. Вы также можете отменить удаление, *изменив номер телефона*.</string>
     <string name="ResetAccount">Сброс аккаунта</string>
     <string name="ResetAccountInfo">Поскольку аккаунт **%1$s** используется и защищён паролем, в целях безопасности мы удалим его только через неделю.\n\nВы можете передумать и остановить отсчёт в любой момент.</string>
     <string name="ResetAccountStatus">Вы сможете сбросить свой аккаунт через:</string>
@@ -61,7 +61,7 @@
     <string name="CancelLinkExpired">Ссылка неверна или устарела.</string>
     <string name="CancelLinkSuccessTitle">Готово</string>
     <string name="CancelLinkSuccess">Удаление аккаунта %1$s отменено. Это окно можно закрыть.</string>
-    <string name="OtherLoginCode">Ваш код для входа: **%1$s**. Укажите его в приложении MintGram, в котором хотите зайти в свой аккаунт.\n\nНикому не передавайте этот код.</string>
+    <string name="OtherLoginCode">Ваш код для входа: **%1$s**. Укажите его в приложении Mintgram, в котором хотите зайти в свой аккаунт.\n\nНикому не передавайте этот код.</string>
     <string name="SmsAvailableIn">Вы сможете запросить SMS через %1$d:%2$02d</string>
     <string name="ResendSmsAvailableIn">Вы сможете повторно запросить SMS через %1$d:%2$02d</string>
     <string name="RequestSmsButton">Получить SMS с кодом</string>
@@ -117,7 +117,7 @@
     <string name="PleaseEnterNewSecondPasswordHint">Повторите новый пароль</string>
     <string name="RecoveryEmail">Электронная почта</string>
     <string name="RecoveryEmailTitle">Электронная почта</string>
-    <string name="RecoveryEmailSubtitle">Вы можете задать адрес электронной почты для сброса пароля и восстановления доступа к своему аккаунту в MintGram.</string>
+    <string name="RecoveryEmailSubtitle">Вы можете задать адрес электронной почты для сброса пароля и восстановления доступа к своему аккаунту в Mintgram.</string>
     <string name="YourEmail">Адрес электронной почты</string>
     <string name="YourNewEmail">Ваш новый адрес</string>
     <string name="YourLoginEmailChangedSuccess">Электронная почта изменена.</string>
@@ -147,7 +147,7 @@
     <string name="CancelPasswordResetNo">НЕТ</string>
     <string name="CancelReset">Отменить сброс</string>
     <string name="CancelEmailQuestionTitle">Прервать установку</string>
-    <string name="TurnPasswordOffPassport">Все данные, сохранённые в Вашем MintGram Passport, будут потеряны.</string>
+    <string name="TurnPasswordOffPassport">Все данные, сохранённые в Вашем Mintgram Passport, будут потеряны.</string>
     <string name="PasswordHint">Подсказка</string>
     <string name="PasswordHintDescription">Если хотите, укажите подсказку для пароля.</string>
     <string name="PasswordHintPlaceholder">Подсказка</string>
@@ -198,9 +198,9 @@
     <string name="VerificationCode">Код подтверждения</string>
     <string name="EnterCode">Ввести код</string>
     <string name="ResendCodeInfo">На Ваш email отправлен код подтверждения.</string>
-    <string name="EnabledPasswordText">Установлен облачный пароль.\nВам нужно будет вводить его для входа в свой аккаунт в MintGram.</string>
+    <string name="EnabledPasswordText">Установлен облачный пароль.\nВам нужно будет вводить его для входа в свой аккаунт в Mintgram.</string>
     <string name="AddEmailTitle">Укажите почту для входа</string>
-    <string name="AddEmailSubtitle">Вы будете получать коды для входа в MintGram на адрес электронной почты, а не через SMS. Пожалуйста, введите адрес, к которому у Вас есть доступ.</string>
+    <string name="AddEmailSubtitle">Вы будете получать коды для входа в Mintgram на адрес электронной почты, а не через SMS. Пожалуйста, введите адрес, к которому у Вас есть доступ.</string>
     <string name="EnterNewEmail">Укажите новый адрес</string>
     <string name="VerificationCodeSubtitle">Проверьте почту %1$s (не забудьте о папке со спамом) и введите код, который получили в письме.</string>
     <string name="CheckYourEmail">Проверьте почту</string>
@@ -209,18 +209,18 @@
     <string name="CheckYourNewEmailSubtitle">Введите код, который пришёл на указанный Вами адрес %1$s.</string>
     <string name="LoginOrSingInWithGoogle">или</string>
 
-    <string name="Page1Title">MintGram</string>
+    <string name="Page1Title">Mintgram</string>
     <string name="Page2Title">Быстрый</string>
     <string name="Page3Title">Бесплатный</string>
     <string name="Page4Title">Безопасный</string>
     <string name="Page5Title">Мощный</string>
     <string name="Page6Title">Облачный</string>
     <string name="Page1Message">Самый **быстрый** мессенджер в мире.\n**Бесплатный** и **безопасный**.</string>
-    <string name="Page2Message">**MintGram** доставляет сообщения быстрее\nлюбого другого приложения.</string>
-    <string name="Page3Message">**MintGram** предоставляет бесплатное безлимитное облачное хранилище для чатов и медиа.\n</string>
-    <string name="Page4Message">**MintGram** защищает Вашу переписку от злоумышленников.</string>
-    <string name="Page5Message">**MintGram** не ограничивает размер\n Ваших медиафайлов и чатов.</string>
-    <string name="Page6Message">В **MintGram** можно переписываться с любого количества устройств.</string>
+    <string name="Page2Message">**Mintgram** доставляет сообщения быстрее\nлюбого другого приложения.</string>
+    <string name="Page3Message">**Mintgram** предоставляет бесплатное безлимитное облачное хранилище для чатов и медиа.\n</string>
+    <string name="Page4Message">**Mintgram** защищает Вашу переписку от злоумышленников.</string>
+    <string name="Page5Message">**Mintgram** не ограничивает размер\n Ваших медиафайлов и чатов.</string>
+    <string name="Page6Message">В **Mintgram** можно переписываться с любого количества устройств.</string>
     <string name="StartMessaging">Начать общение</string>
 
     <string name="formatterBoostExpired">dd MMM yyyy</string>
@@ -263,9 +263,9 @@
     <string name="RemindTodayAt">\'Отправить сегодня в\' HH:mm</string>
     <string name="RemindDayAt">\'Отправить\' d MMM \'в\' HH:mm</string>
     <string name="RemindDayYearAt">\'Напомнить\' d MMM yyyy \'в\' HH:mm</string>
-    <string name="MintGramSettings">MintGram</string>
+    <string name="MintGramSettings">Mintgram</string>
     <string name="MintGramSettingsInfo">Функции приватности</string>
-    <string name="MintGramFeatures">MintGram Features</string>
+    <string name="MintGramFeatures">Mintgram Features</string>
     <string name="MintGramFunctions">Функции</string>
     <string name="MintGramMainSection">Основные</string>
     <string name="MintGramCustomizationSection">Кастомизация</string>
@@ -297,12 +297,12 @@
     <string name="MintGramSupportTemporarilyUnavailable">Временно недоступно.</string>
     <string name="MintGramCard">Кард</string>
     <string name="MintGramExportUnavailable">Не удалось открыть меню экспорта.</string>
-    <string name="MintGramResetSettingsText">Сбросить все настройки MintGram по умолчанию?</string>
-    <string name="MintGramSettingsResetDone">Настройки MintGram сброшены.</string>
+    <string name="MintGramResetSettingsText">Сбросить все настройки Mintgram по умолчанию?</string>
+    <string name="MintGramSettingsResetDone">Настройки Mintgram сброшены.</string>
     <string name="MintGramDeleteAccountText">Откроется официальная страница удаления аккаунта Telegram.</string>
     <string name="MintGramDeleteAccountOpen">Открыть</string>
-    <string name="MintGramSupportSheetTitle">Поддержать MintGram</string>
-    <string name="MintGramSupportSheetSubtitle">Поддерживая проект, вы помогаете MintGram развиваться и получаете уникальный значок.</string>
+    <string name="MintGramSupportSheetTitle">Поддержать Mintgram</string>
+    <string name="MintGramSupportSheetSubtitle">Поддерживая проект, вы помогаете Mintgram развиваться и получаете уникальный значок.</string>
     <string name="MintGramSupportSheetDonateTitle">Сделать пожертвование</string>
     <string name="MintGramSupportSheetDonateText">Переведите любую удобную сумму по одной из примерных ссылок поддержки в разделе Другое.</string>
     <string name="MintGramSupportSheetConfirmTitle">Отправить подтверждение платежа</string>
@@ -324,7 +324,7 @@
     <string name="MintGramGhostHideUploadPhoto">Скрыть загрузку фото</string>
     <string name="MintGramGhostHideUploadFile">Скрыть загрузку файла</string>
     <string name="MintGramHideReadReceipts">Скрыть прочитано</string>
-    <string name="MintGramHideReadReceiptsInfo">Когда включено, MintGram не сообщает серверу, что ты прочитал сообщения при открытии чатов на этом устройстве. Если прочитать эти же сообщения в другом клиенте, они всё равно могут стать прочитанными.</string>
+    <string name="MintGramHideReadReceiptsInfo">Когда включено, Mintgram не сообщает серверу, что ты прочитал сообщения при открытии чатов на этом устройстве. Если прочитать эти же сообщения в другом клиенте, они всё равно могут стать прочитанными.</string>
     <string name="MintGramKeepDeletedMessages">Сохранять удалённые</string>
     <string name="MintGramFreeVoiceTranscription">Расшифровка голосовых сейчас недоступна</string>
     <string name="MintGramTranscriptionTemporarilyUnavailable">Расшифровка голосовых сейчас временно недоступна.</string>

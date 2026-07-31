@@ -266,9 +266,9 @@ public class EmojiThemes {
         themeItem.key = ThemeKey.ofEmoticon(themeItem.emoji);
         themeItem.chatTheme = TLRPC.ChatTheme.ofEmoticon(themeItem.emoji);
 
-        boolean extended = "MintGram Extended".equals(themeName);
-        Theme.ThemeInfo lightThemeInfo = Theme.getTheme(extended ? "MintGram Extended light" : "MintGram basic light");
-        Theme.ThemeInfo darkThemeInfo = Theme.getTheme(extended ? "MintGram Extended" : "MintGram basic");
+        boolean extended = "Mintgram Extended".equals(themeName);
+        Theme.ThemeInfo lightThemeInfo = Theme.getTheme(extended ? "Mintgram Extended light" : "Mintgram basic light");
+        Theme.ThemeInfo darkThemeInfo = Theme.getTheme(extended ? "Mintgram Extended" : "Mintgram basic");
         for (int i = 0; i < 4; i++) {
             Theme.ThemeInfo themeInfo = i < 2 ? lightThemeInfo : darkThemeInfo;
             ThemeItem item = new ThemeItem();

@@ -357,7 +357,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             addView(logoView, LayoutHelper.createFrame(108, 108, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 42, 0, 0));
 
             titleView = new TextView(context);
-            titleView.setText("MintGram");
+            titleView.setText("Mintgram");
             titleView.setTextSize(30);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setGravity(Gravity.CENTER);
@@ -820,7 +820,7 @@ public class MintGramSettingsActivity extends BaseFragment {
     }
 
     private static String buildExportText() {
-        return "MintGram 12.0.3\n"
+        return "Mintgram 12.0.3\n"
                 + "hideReadStatus=" + SharedConfig.hideReadReceipts + "\n"
                 + "keepDeletedMessages=" + SharedConfig.keepDeletedMessages + "\n"
                 + "ghostHideOnline=" + SharedConfig.ghostHideOnline + "\n"
