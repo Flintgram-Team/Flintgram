@@ -33,8 +33,8 @@
 
     <string name="YourCode">Telefoonverificatie</string>
     <string name="SentSmsCode">We hebben een sms met een activeringscode verzonden naar je telefoon **%1$s**.</string>
-    <string name="SentAppCode">We hebben de code naar de **Mintgram**-app op je andere apparaat verzonden.</string>
-    <string name="SentAppCodeWithPhone">We hebben de code naar de **Mintgram-app** voor %1$s op je andere apparaat gestuurd.</string>
+    <string name="SentAppCode">We hebben de code naar de **Telegram**-app op je andere apparaat verzonden.</string>
+    <string name="SentAppCodeWithPhone">We hebben de code naar de **Telegram-app** voor %1$s op je andere apparaat gestuurd.</string>
     <string name="SentAppCodeTitle">Controleer je Telegramberichten</string>
     <string name="SentFragmentCode">Ga naar Anonymous Numbers op Fragment om de code voor %1$s te verkrijgen.</string>
     <string name="SentSmsCodeTitle">Code invoeren</string>

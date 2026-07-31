@@ -1463,7 +1463,12 @@ public class LocaleController {
     }
 
     private static boolean shouldKeepTelegramBrand(String key) {
-        return key != null && (key.contains("Premium") || key.contains("Stars") || key.contains("Business"));
+        return key != null && (key.contains("Premium")
+                || key.contains("Stars")
+                || key.contains("Business")
+                || key.equals("SentAppCode")
+                || key.equals("SentAppCodeWithPhone")
+                || key.equals("SentAppCodeTitle"));
     }
 
     public static String getServerString(String key) {

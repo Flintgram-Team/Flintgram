@@ -33,9 +33,9 @@
 
     <string name="YourCode">Verifica numero</string>
     <string name="SentSmsCode">Abbiamo inviato un SMS con un codice di accesso al tuo numero **%1$s**.</string>
-    <string name="SentAppCode">Abbiamo inviato il codice su **Mintgram** in un tuo altro dispositivo.</string>
-    <string name="SentAppCodeWithPhone">Abbiamo inviato il codice sull\'app **Mintgram** per %1$s in un altro tuo dispositivo.</string>
-    <string name="SentAppCodeTitle">Controlla i tuoi messaggi Mintgram</string>
+    <string name="SentAppCode">Abbiamo inviato il codice su **Telegram** in un tuo altro dispositivo.</string>
+    <string name="SentAppCodeWithPhone">Abbiamo inviato il codice sull\'app **Telegram** per %1$s in un altro tuo dispositivo.</string>
+    <string name="SentAppCodeTitle">Controlla i tuoi messaggi Telegram</string>
     <string name="SentFragmentCode">Ottieni il codice per %1$s nella sezione Anonymous Numbers su Fragment.</string>
     <string name="SentSmsCodeTitle">Inserisci il codice</string>
     <string name="OpenFragment">Apri Fragment</string>

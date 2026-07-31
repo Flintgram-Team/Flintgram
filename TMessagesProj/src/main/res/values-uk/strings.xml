@@ -33,9 +33,9 @@
 
     <string name="YourCode">Підтвердження номера</string>
     <string name="SentSmsCode">Ми надіслали SMS із кодом активації на ваш телефон **%1$s**.</string>
-    <string name="SentAppCode">Ми надіслали код до **Mintgram** на іншому вашому пристрої.</string>
-    <string name="SentAppCodeWithPhone">Ми надіслали код до **Mintgram** для %1$s на іншому вашому пристрої.</string>
-    <string name="SentAppCodeTitle">Перевірте повідомлення в Mintgram</string>
+    <string name="SentAppCode">Ми надіслали код до **Telegram** на іншому вашому пристрої.</string>
+    <string name="SentAppCodeWithPhone">Ми надіслали код до **Telegram** для %1$s на іншому вашому пристрої.</string>
+    <string name="SentAppCodeTitle">Перевірте повідомлення в Telegram</string>
     <string name="SentFragmentCode">Отримайте код для %1$s у розділі «Anonymous Numbers» на Fragment.</string>
     <string name="SentSmsCodeTitle">Введіть код</string>
     <string name="OpenFragment">Відкрити Fragment</string>

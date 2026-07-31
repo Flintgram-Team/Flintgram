@@ -34,9 +34,9 @@
 
     <string name="YourCode">Phone verification</string>
     <string name="SentSmsCode">We’ve sent an SMS with an activation code to your phone **%1$s**.</string>
-    <string name="SentAppCode">We\'ve sent the code to the **Mintgram** app on your other device.</string>
-    <string name="SentAppCodeWithPhone">We\'ve sent the code to the **Mintgram** app for %1$s on your other device.</string>
-    <string name="SentAppCodeTitle">Check your Mintgram messages</string>
+    <string name="SentAppCode">We\'ve sent the code to the **Telegram** app on your other device.</string>
+    <string name="SentAppCodeWithPhone">We\'ve sent the code to the **Telegram** app for %1$s on your other device.</string>
+    <string name="SentAppCodeTitle">Check your Telegram messages</string>
     <string name="SentFragmentCode">Get the code for %1$s in the Anonymous Numbers section on Fragment.</string>
     <string name="SentSmsCodeTitle">Enter code</string>
     <string name="OpenFragment">Open Fragment</string>
