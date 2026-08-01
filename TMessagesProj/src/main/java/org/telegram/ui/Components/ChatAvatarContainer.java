@@ -965,6 +965,22 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
             titleTextView.setRightDrawable(null);
             rightDrawableContentDescription = null;
         }
+        TLRPC.User currentUser = parentFragment.getCurrentUser();
+        if (UserObject.isMintgramOfficial(currentUser)) {
+            verifiedBackground = getResources().getDrawable(R.drawable.verified_area).mutate();
+            verifiedBackground.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_profile_verifiedBackground), PorterDuff.Mode.MULTIPLY));
+            verifiedCheck = getResources().getDrawable(R.drawable.verified_check).mutate();
+            verifiedCheck.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_profile_verifiedCheck), PorterDuff.Mode.MULTIPLY));
+            titleTextView.setRightDrawable2(new CombinedDrawable(verifiedBackground, verifiedCheck));
+            rightDrawableIsScamOrVerified = true;
+            rightDrawable2ContentDescription = getString(R.string.MintGramOfficialAccountInfo);
+            titleTextView.setRightDrawable2OnClick(v -> BulletinFactory.of(parentFragment)
+                    .createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.MintGramOfficialAccountInfo))
+                    .setDuration(3000)
+                    .show());
+        } else {
+            titleTextView.setRightDrawable2OnClick(null);
+        }
         checkActionBar(animated);
     }
 

@@ -10989,4 +10989,5 @@
     <string name="MintGramDisableKeepDeleted">Disable</string>
     <string name="MintGramDeletedMessage">Deleted</string>
     <string name="MintGramFeaturesInfo">Deleted messages stay in this device only. They are shown slightly transparent with a trash icon and the selected label color.</string>
+    <string name="MintGramOfficialAccountInfo">This account is an official resource of the Mintgram creator.</string>
 </resources>

@@ -98,6 +98,8 @@ public class SimpleTextView extends View implements Drawable.Callback {
     private int textHeight;
     public int rightDrawableX;
     public int rightDrawableY;
+    public int rightDrawable2X;
+    public int rightDrawable2Y;
     private boolean wasLayout;
 
     private boolean leftDrawableOutside, rightDrawableOutside;
@@ -128,6 +130,9 @@ public class SimpleTextView extends View implements Drawable.Callback {
     private boolean canHideRightDrawable;
     private boolean rightDrawableHidden;
     private OnClickListener rightDrawableOnClickListener;
+    private OnClickListener rightDrawable2OnClickListener;
+    private OnClickListener pressedRightDrawableClickListener;
+    private Drawable pressedRightDrawable;
     private boolean maybeClick;
     private float touchDownX, touchDownY;
 
@@ -929,6 +934,8 @@ public class SimpleTextView extends View implements Drawable.Callback {
                 y = getPaddingTop() + (textHeight - dh) / 2 + rightDrawableTopPadding;
             }
             rightDrawable2.setBounds(x, y, x + dw, y + dh);
+            rightDrawable2X = x + (dw >> 1);
+            rightDrawable2Y = y + (dh >> 1);
             rightDrawable2.draw(canvas);
             totalWidth += drawablePadding + dw;
         }
@@ -975,6 +982,8 @@ public class SimpleTextView extends View implements Drawable.Callback {
                     y = getPaddingTop() + (textHeight - dh) / 2 + rightDrawableTopPadding;
                 }
                 rightDrawable2.setBounds(x, y, x + dw, y + dh);
+                rightDrawable2X = x + (dw >> 1);
+                rightDrawable2Y = y + (dh >> 1);
                 rightDrawable2.draw(canvas);
             }
         }
@@ -1070,6 +1079,8 @@ public class SimpleTextView extends View implements Drawable.Callback {
                     y = getPaddingTop() + (textHeight - dh) / 2 + rightDrawableTopPadding;
                 }
                 rightDrawable2.setBounds(x, y, x + dw, y + dh);
+                rightDrawable2X = x + (dw >> 1);
+                rightDrawable2Y = y + (dh >> 1);
                 rightDrawable2.draw(canvas);
                 totalWidth += drawablePadding + dw;
             }
@@ -1148,6 +1159,8 @@ public class SimpleTextView extends View implements Drawable.Callback {
                 y = getPaddingTop() + (textHeight - dh) / 2 + rightDrawableTopPadding;
             }
             rightDrawable2.setBounds(x, y, x + dw, y + dh);
+            rightDrawable2X = x + (dw >> 1);
+            rightDrawable2Y = y + (dh >> 1);
             rightDrawable2.draw(canvas);
         }
     }
@@ -1327,34 +1340,55 @@ public class SimpleTextView extends View implements Drawable.Callback {
         rightDrawableOnClickListener = onClickListener;
     }
 
+    public void setRightDrawable2OnClick(OnClickListener onClickListener) {
+        rightDrawable2OnClickListener = onClickListener;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (rightDrawableOnClickListener != null && rightDrawable != null) {
-            AndroidUtilities.rectTmp.set(rightDrawableX - dp(16), rightDrawableY - dp(16), rightDrawableX + dp(16), rightDrawableY + dp(16));
-            if (event.getAction() == MotionEvent.ACTION_DOWN && AndroidUtilities.rectTmp.contains((int) event.getX(), (int) event.getY())) {
+        if (rightDrawableOnClickListener != null && rightDrawable != null || rightDrawable2OnClickListener != null && rightDrawable2 != null) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (rightDrawable2OnClickListener != null && rightDrawable2 != null) {
+                    AndroidUtilities.rectTmp.set(rightDrawable2X - dp(16), rightDrawable2Y - dp(16), rightDrawable2X + dp(16), rightDrawable2Y + dp(16));
+                    if (AndroidUtilities.rectTmp.contains((int) event.getX(), (int) event.getY())) {
+                        pressedRightDrawableClickListener = rightDrawable2OnClickListener;
+                        pressedRightDrawable = rightDrawable2;
+                    }
+                }
+                if (pressedRightDrawableClickListener == null && rightDrawableOnClickListener != null && rightDrawable != null) {
+                    AndroidUtilities.rectTmp.set(rightDrawableX - dp(16), rightDrawableY - dp(16), rightDrawableX + dp(16), rightDrawableY + dp(16));
+                    if (AndroidUtilities.rectTmp.contains((int) event.getX(), (int) event.getY())) {
+                        pressedRightDrawableClickListener = rightDrawableOnClickListener;
+                        pressedRightDrawable = rightDrawable;
+                    }
+                }
+            }
+            if (event.getAction() == MotionEvent.ACTION_DOWN && pressedRightDrawableClickListener != null) {
                 maybeClick = true;
                 touchDownX = event.getX();
                 touchDownY = event.getY();
                 getParent().requestDisallowInterceptTouchEvent(true);
-                if (rightDrawable instanceof PressableDrawable) {
-                    ((PressableDrawable) rightDrawable).setPressed(true);
+                if (pressedRightDrawable instanceof PressableDrawable) {
+                    ((PressableDrawable) pressedRightDrawable).setPressed(true);
                 }
             } else if (event.getAction() == MotionEvent.ACTION_MOVE && maybeClick) {
                 if (Math.abs(event.getX() - touchDownX) >= AndroidUtilities.touchSlop || Math.abs(event.getY() - touchDownY) >= AndroidUtilities.touchSlop) {
                     maybeClick = false;
                     getParent().requestDisallowInterceptTouchEvent(false);
-                    if (rightDrawable instanceof PressableDrawable) {
-                        ((PressableDrawable) rightDrawable).setPressed(false);
+                    if (pressedRightDrawable instanceof PressableDrawable) {
+                        ((PressableDrawable) pressedRightDrawable).setPressed(false);
                     }
                 }
             } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
                 if (maybeClick && event.getAction() == MotionEvent.ACTION_UP) {
-                    rightDrawableOnClickListener.onClick(this);
-                    if (rightDrawable instanceof PressableDrawable) {
-                        ((PressableDrawable) rightDrawable).setPressed(false);
+                    pressedRightDrawableClickListener.onClick(this);
+                    if (pressedRightDrawable instanceof PressableDrawable) {
+                        ((PressableDrawable) pressedRightDrawable).setPressed(false);
                     }
                 }
                 maybeClick = false;
+                pressedRightDrawableClickListener = null;
+                pressedRightDrawable = null;
                 getParent().requestDisallowInterceptTouchEvent(false);
             }
         }

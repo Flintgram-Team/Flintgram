@@ -13301,35 +13301,21 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     return;
                 }
                 switchingTheme = true;
-                SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("themeconfig", Activity.MODE_PRIVATE);
-                String dayThemeName = preferences.getString("lastDayTheme", "Blue");
-                if (Theme.getTheme(dayThemeName) == null || Theme.getTheme(dayThemeName).isDark()) {
-                    dayThemeName = "Blue";
-                }
-                String nightThemeName = preferences.getString("lastDarkTheme", "Dark Blue");
-                if (Theme.getTheme(nightThemeName) == null || !Theme.getTheme(nightThemeName).isDark()) {
-                    nightThemeName = "Dark Blue";
-                }
                 Theme.ThemeInfo themeInfo = Theme.getActiveTheme();
-                if (dayThemeName.equals(nightThemeName)) {
-                    if (themeInfo.isDark() || dayThemeName.equals("Dark Blue") || dayThemeName.equals("Night")) {
-                        dayThemeName = "Blue";
-                    } else {
-                        nightThemeName = "Dark Blue";
-                    }
-                }
-
                 boolean toDark = !themeInfo.isDark();
-                if (toDark) {
-                    themeInfo = Theme.getTheme(nightThemeName);
-                } else {
-                    themeInfo = Theme.getTheme(dayThemeName);
-                }
+                String dayThemeName = "Mintgram basic light";
+                String nightThemeName = "Mintgram basic";
+                themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
                 if (themeInfo == null || themeInfo.isDark() != toDark) {
                     switchingTheme = false;
                     return;
                 }
-                switchTheme(themeInfo, toDark);
+                ApplicationLoader.applicationContext.getSharedPreferences("themeconfig", Activity.MODE_PRIVATE)
+                        .edit()
+                        .putString("lastDayTheme", dayThemeName)
+                        .putString("lastDarkTheme", nightThemeName)
+                        .apply();
+                switchTheme(themeInfo);
                 Theme.turnOffAutoNight(BulletinFactory.of(this), () -> {
                     presentFragment(new ThemeActivity(ThemeActivity.THEME_TYPE_NIGHT));
                 });
@@ -13816,13 +13802,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         scrollToTop(true, true);
     }
 
-    private void switchTheme(Theme.ThemeInfo themeInfo, boolean toDark) {
-        if (optionsItem == null) return;
-        int[] pos = new int[2];
-        optionsItem.getLocationInWindow(pos);
-        pos[0] += optionsItem.getIconView().getMeasuredWidth() / 2;
-        pos[1] += optionsItem.getIconView().getMeasuredHeight() / 2;
-        NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needSetDayNightTheme, themeInfo, false, pos, -1, toDark, null, null, true);
+    private void switchTheme(Theme.ThemeInfo themeInfo) {
+        NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.needSetDayNightTheme, themeInfo, false, null, -1);
     }
 
     public float getTopPanelAnimatedHeight() {

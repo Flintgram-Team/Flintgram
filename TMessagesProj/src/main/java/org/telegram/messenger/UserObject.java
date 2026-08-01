@@ -101,6 +101,11 @@ public class UserObject {
         return false;
     }
 
+    public static boolean isMintgramOfficial(TLRPC.User user) {
+        return hasPublicUsername(user, "smallsociety")
+                || hasPublicUsername(user, "vivizka01");
+    }
+
     public static String getFirstName(TLRPC.User user) {
         return getFirstName(user, true);
     }
