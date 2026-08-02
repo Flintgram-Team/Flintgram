@@ -198,7 +198,11 @@ class BotButton {
             titleX += iconWithMarginPx;
         }
         title.ellipsize(Math.max(1, rect.width() - dp(15) - iconWithMarginPx));
-        title.draw(canvas, titleX, rect.centerY(), isLocked ? 0.5f: 1f);
+        if (Theme.isMintGramBlueThemeActive()) {
+            title.draw(canvas, titleX, rect.centerY(), 0xFFFFFFFF, isLocked ? 0.5f : 1f);
+        } else {
+            title.draw(canvas, titleX, rect.centerY(), isLocked ? 0.5f: 1f);
+        }
         canvas.restore();
 
         if (buttonCustom != null) {

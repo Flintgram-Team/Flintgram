@@ -235,7 +235,7 @@ public class BotKeyboardView extends LinearLayout implements InAppKeyboardInsetV
                 if (button.style.bg_primary) {
                     color = Theme.multAlpha(getThemedColor(Theme.key_botKeyboard_button_primary), 0.8f);
                     pressed = ColorUtils.compositeColors(getThemedColor(Theme.key_listSelector), color);
-                    textColor = Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE;
+                    textColor = Color.WHITE;
                 } else if (button.style.bg_danger) {
                     color = Theme.multAlpha(getThemedColor(Theme.key_botKeyboard_button_danger), 0.8f);
                     pressed = ColorUtils.compositeColors(getThemedColor(Theme.key_listSelector), color);
@@ -247,8 +247,8 @@ public class BotKeyboardView extends LinearLayout implements InAppKeyboardInsetV
                 }
             }
 
-            icon.setColorFilter(textColor);
-            textView.setTextColor(textColor);
+            icon.setColorFilter(Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : textColor);
+            textView.setTextColor(Theme.isMintGramBlueThemeActive() ? Color.WHITE : textColor);
             setBackground(Theme.createSimpleSelectorRoundRectDrawable(
                 isLeft && isTop ? br : dr,
                 isRight && isTop ? br : dr,

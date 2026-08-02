@@ -47,6 +47,9 @@ public class ArchiveHelp extends FrameLayout implements NotificationCenter.Notif
         ImageView archiveIcon = new ImageView(context);
         archiveIcon.setBackground(Theme.createCircleDrawable(dp(80), Theme.getColor(Theme.key_avatar_backgroundSaved, resourcesProvider)));
         archiveIcon.setImageResource(R.drawable.large_archive);
+        if (Theme.isMintGramBlueThemeActive()) {
+            archiveIcon.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
+        }
         archiveIcon.setScaleType(ImageView.ScaleType.CENTER);
         layout.addView(archiveIcon, LayoutHelper.createLinear(80, 80, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, (buttonCallback != null ? 14 : 0), 0, 14));
 
