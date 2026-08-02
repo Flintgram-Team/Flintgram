@@ -7356,7 +7356,16 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
             BaseFragment fragment = actionBarLayout.getFragmentStack().get(actionBarLayout.getFragmentStack().size() - 1);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
-            builder.setTopAnimation(R.raw.permission_request_contacts, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground));
+            HashMap<String, Integer> layerColors = null;
+            if (Theme.isMintGramBlueThemeActive()) {
+                layerColors = new HashMap<>();
+                layerColors.put("Final.**", 0xFF132D5E);
+                layerColors.put("Rectangle Copy.**", 0xFF132D5E);
+                layerColors.put("Rectangle.**", 0xFF132D5E);
+                layerColors.put("Rectangle 4.**", 0xFF132D5E);
+                layerColors.put("Rectangle 2.**", 0xFF132D5E);
+            }
+            builder.setTopAnimation(R.raw.permission_request_contacts, AlertsCreator.PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground), layerColors);
             builder.setTitle(LocaleController.getString(R.string.UpdateContactsTitle));
             builder.setMessage(LocaleController.getString(R.string.UpdateContactsMessage));
             builder.setPositiveButton(LocaleController.getString(R.string.OK), (dialogInterface, i) -> ContactsController.getInstance(account).syncPhoneBookByAlert(contactHashMap, first, schedule, false));

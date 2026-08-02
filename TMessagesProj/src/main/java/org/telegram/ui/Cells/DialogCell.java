@@ -5088,6 +5088,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             Paint paint;
             int fillPaintAlpha = 255;
             boolean restoreCountTextPaint = false;
+            final int originalCountTextColor = Theme.dialogs_countTextPaint2.getColor();
             if (outline) {
                 if (counterPaintOutline == null) {
                     counterPaintOutline = new Paint();
@@ -5115,6 +5116,10 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 restoreCountTextPaint = true;
             } else {
                 paint = drawCounterMuted || currentDialogFolderId != 0 ? Theme.dialogs_countGrayPaint : Theme.dialogs_countPaint;
+            }
+            if (Theme.isMintGramBlueThemeActive() && drawCounterMuted) {
+                Theme.dialogs_countTextPaint2.setColor(0xFFAEC2F4);
+                restoreCountTextPaint = true;
             }
 
             if (countOldLayout == null || unreadCount == 0) {
@@ -5239,7 +5244,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 canvas.restore();
             }
             if (restoreCountTextPaint) {
-                Theme.dialogs_countTextPaint2.setColor(Theme.getColor(Theme.key_chats_unreadCounterText));
+                Theme.dialogs_countTextPaint2.setColor(originalCountTextColor);
             }
         }
     }

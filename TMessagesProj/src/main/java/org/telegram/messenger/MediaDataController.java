@@ -9231,7 +9231,7 @@ public class MediaDataController extends BaseController {
         ArrayList<ChatThemeBottomSheet.ChatThemeItem> previewItems = new ArrayList<>();
         previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram basic", "\uD83C\uDF31")));
         previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram Extended", "\uD83C\uDF3F")));
-        previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram Blue", "\uD83D\uDC99")));
+        previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Material Ocean", "\uD83C\uDF0A")));
         for (int i = 0; i < count; ++i) {
             String value = preferences.getString("theme_" + i, "");
             SerializedData serializedData = new SerializedData(Utilities.hexToBytes(value));
@@ -9278,7 +9278,7 @@ public class MediaDataController extends BaseController {
             final ArrayList<ChatThemeBottomSheet.ChatThemeItem> previewItems = new ArrayList<>();
             previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram basic", "\uD83C\uDF31")));
             previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram Extended", "\uD83C\uDF3F")));
-            previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram Blue", "\uD83D\uDC99")));
+            previewItems.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Material Ocean", "\uD83C\uDF0A")));
             for (int i = 0; i < emojiPreviewThemes.size(); i++) {
                 TLRPC.TL_theme theme = emojiPreviewThemes.get(i);
                 EmojiThemes chatTheme = EmojiThemes.createPreviewFullTheme(currentAccount, theme);
@@ -9304,7 +9304,7 @@ public class MediaDataController extends BaseController {
             defaultEmojiThemes.clear();
             defaultEmojiThemes.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram basic", "\uD83C\uDF31")));
             defaultEmojiThemes.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram Extended", "\uD83C\uDF3F")));
-            defaultEmojiThemes.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Mintgram Blue", "\uD83D\uDC99")));
+            defaultEmojiThemes.add(new ChatThemeBottomSheet.ChatThemeItem(EmojiThemes.createMintGramPreviewTheme(currentAccount, "Material Ocean", "\uD83C\uDF0A")));
             NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.emojiPreviewThemesChanged);
         }
     }

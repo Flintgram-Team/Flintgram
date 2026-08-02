@@ -363,6 +363,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable[] botVerificationDrawable = new AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable[2];
     private final Drawable[] verifiedCheckDrawable = new Drawable[2];
     private final CrossfadeDrawable[] verifiedCrossfadeDrawable = new CrossfadeDrawable[2];
+    private final Drawable[] mintgramVerifiedDrawable = new Drawable[2];
     private final CrossfadeDrawable[] premiumCrossfadeDrawable = new CrossfadeDrawable[2];
     private ScamDrawable scamDrawable;
     private UndoView undoView;
@@ -10988,6 +10989,17 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         return verifiedCrossfadeDrawable[a];
     }
 
+    private Drawable getMintgramVerifiedDrawable(int a) {
+        if (mintgramVerifiedDrawable[a] == null) {
+            Drawable background = Theme.profile_verifiedDrawable.getConstantState().newDrawable().mutate();
+            Drawable check = Theme.profile_verifiedCheckDrawable.getConstantState().newDrawable().mutate();
+            background.setColorFilter(0xFFAEC2F4, PorterDuff.Mode.MULTIPLY);
+            check.setColorFilter(0xFF132D5E, PorterDuff.Mode.MULTIPLY);
+            mintgramVerifiedDrawable[a] = new CombinedDrawable(background, check);
+        }
+        return mintgramVerifiedDrawable[a];
+    }
+
     private Drawable getPremiumCrossfadeDrawable(int a) {
         if (premiumCrossfadeDrawable[a] == null) {
             premiumStarDrawable[a] = ContextCompat.getDrawable(getParentActivity(), R.drawable.msg_premium_liststar).mutate();
@@ -11350,7 +11362,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 nameTextView[a].setRightDrawableOutside(a == 0);
                 if (a == 0 && !copyFromChatActivity) {
                     if (UserObject.isMintgramOfficial(user)) {
-                        nameTextView[a].setRightDrawable2(getVerifiedCrossfadeDrawable(a));
+                        nameTextView[a].setRightDrawable2(getMintgramVerifiedDrawable(a));
                         nameTextViewRightDrawable2ContentDescription = LocaleController.getString(R.string.MintGramOfficialAccountInfo);
                     } else if (user.scam || user.fake) {
                         nameTextView[a].setRightDrawable2(getScamDrawable(user.scam ? 0 : 1));
@@ -11381,7 +11393,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     }
                 } else if (a == 1) {
                     if (UserObject.isMintgramOfficial(user)) {
-                        nameTextView[a].setRightDrawable2(getVerifiedCrossfadeDrawable(a));
+                        nameTextView[a].setRightDrawable2(getMintgramVerifiedDrawable(a));
                     } else if (user.scam || user.fake) {
                         nameTextView[a].setRightDrawable2(getScamDrawable(user.scam ? 0 : 1));
                     } else if (user.verified) {
@@ -11411,20 +11423,31 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (a == 1 && (rightIconIsStatus || rightIconIsPremium)) {
                     nameTextView[a].setRightDrawableOutside(true);
                 }
-                nameTextView[a].setRightDrawable2OnClick(UserObject.isMintgramOfficial(user) ? v -> {
+                if (UserObject.isMintgramOfficial(user)) {
+                    Drawable premiumOrStatusDrawable = nameTextView[a].getRightDrawable();
+                    nameTextView[a].setRightDrawable(getMintgramVerifiedDrawable(a));
+                    nameTextView[a].setRightDrawable2(premiumOrStatusDrawable);
+                }
+                nameTextView[a].setRightDrawableOnClick(UserObject.isMintgramOfficial(user) ? v -> {
                     BulletinFactory.of(this)
                             .createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.MintGramOfficialAccountInfo))
                             .setDuration(3000)
                             .show();
                 } : null);
+                nameTextView[a].setRightDrawable2OnClick(null);
                 if (user.self && getMessagesController().isPremiumUser(user)) {
-                    nameTextView[a].setRightDrawableOnClick(v -> {
+                    View.OnClickListener premiumClick = v -> {
                         showStatusSelect();
-                    });
+                    };
+                    if (UserObject.isMintgramOfficial(user)) {
+                        nameTextView[a].setRightDrawable2OnClick(premiumClick);
+                    } else {
+                        nameTextView[a].setRightDrawableOnClick(premiumClick);
+                    }
                 }
                 if (!user.self && getMessagesController().isPremiumUser(user)) {
                     final SimpleTextView textView = nameTextView[a];
-                    nameTextView[a].setRightDrawableOnClick(v -> {
+                    View.OnClickListener premiumClick = v -> {
                         if (user.emoji_status instanceof TLRPC.TL_emojiStatusCollectible) {
                             TLRPC.TL_emojiStatusCollectible status = (TLRPC.TL_emojiStatusCollectible) user.emoji_status;
                             if (status != null) {
@@ -11435,13 +11458,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         PremiumPreviewBottomSheet premiumPreviewBottomSheet = new PremiumPreviewBottomSheet(ProfileActivity.this, currentAccount, user, resourcesProvider);
                         int[] coords = new int[2];
                         textView.getLocationOnScreen(coords);
-                        premiumPreviewBottomSheet.startEnterFromX = textView.rightDrawableX;
-                        premiumPreviewBottomSheet.startEnterFromY = textView.rightDrawableY;
+                        premiumPreviewBottomSheet.startEnterFromX = UserObject.isMintgramOfficial(user) ? textView.rightDrawable2X : textView.rightDrawableX;
+                        premiumPreviewBottomSheet.startEnterFromY = UserObject.isMintgramOfficial(user) ? textView.rightDrawable2Y : textView.rightDrawableY;
                         premiumPreviewBottomSheet.startEnterFromScale = textView.getScaleX();
                         premiumPreviewBottomSheet.startEnterFromX1 = textView.getLeft();
                         premiumPreviewBottomSheet.startEnterFromY1 = textView.getTop();
                         premiumPreviewBottomSheet.startEnterFromView = textView;
-                        if (textView.getRightDrawable() == emojiStatusDrawable[1] && emojiStatusDrawable[1] != null && emojiStatusDrawable[1].getDrawable() instanceof AnimatedEmojiDrawable) {
+                        if ((UserObject.isMintgramOfficial(user) ? textView.getRightDrawable2() : textView.getRightDrawable()) == emojiStatusDrawable[1] && emojiStatusDrawable[1] != null && emojiStatusDrawable[1].getDrawable() instanceof AnimatedEmojiDrawable) {
                             premiumPreviewBottomSheet.startEnterFromScale *= 0.98f;
                             TLRPC.Document document = ((AnimatedEmojiDrawable) emojiStatusDrawable[1].getDrawable()).getDocument();
                             if (document != null) {
@@ -11478,7 +11501,12 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                             }
                         }
                         showDialog(premiumPreviewBottomSheet);
-                    });
+                    };
+                    if (UserObject.isMintgramOfficial(user)) {
+                        nameTextView[a].setRightDrawable2OnClick(premiumClick);
+                    } else {
+                        nameTextView[a].setRightDrawableOnClick(premiumClick);
+                    }
                 }
             }
 

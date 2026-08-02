@@ -7318,7 +7318,16 @@ public class AlertsCreator {
 
     public static AlertDialog.Builder createContactsPermissionDialog(Activity parentActivity, MessagesStorage.IntCallback callback) {
         AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
-        builder.setTopAnimation(R.raw.permission_request_contacts, PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground));
+        HashMap<String, Integer> layerColors = null;
+        if (Theme.isMintGramBlueThemeActive()) {
+            layerColors = new HashMap<>();
+            layerColors.put("Final.**", 0xFF132D5E);
+            layerColors.put("Rectangle Copy.**", 0xFF132D5E);
+            layerColors.put("Rectangle.**", 0xFF132D5E);
+            layerColors.put("Rectangle 4.**", 0xFF132D5E);
+            layerColors.put("Rectangle 2.**", 0xFF132D5E);
+        }
+        builder.setTopAnimation(R.raw.permission_request_contacts, PERMISSIONS_REQUEST_TOP_ICON_SIZE, false, Theme.getColor(Theme.key_dialogTopBackground), layerColors);
         builder.setMessage(replaceTags(LocaleController.getString(R.string.ContactsPermissionAlert)));
         builder.setPositiveButton(LocaleController.getString(R.string.ContactsPermissionAlertContinue), (dialog, which) -> callback.run(1));
         builder.setNegativeButton(LocaleController.getString(R.string.ContactsPermissionAlertNotNow), (dialog, which) -> callback.run(0));

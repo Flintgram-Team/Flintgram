@@ -235,7 +235,7 @@ public class BotKeyboardView extends LinearLayout implements InAppKeyboardInsetV
                 if (button.style.bg_primary) {
                     color = Theme.multAlpha(getThemedColor(Theme.key_botKeyboard_button_primary), 0.8f);
                     pressed = ColorUtils.compositeColors(getThemedColor(Theme.key_listSelector), color);
-                    textColor = Color.WHITE;
+                    textColor = Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE;
                 } else if (button.style.bg_danger) {
                     color = Theme.multAlpha(getThemedColor(Theme.key_botKeyboard_button_danger), 0.8f);
                     pressed = ColorUtils.compositeColors(getThemedColor(Theme.key_listSelector), color);

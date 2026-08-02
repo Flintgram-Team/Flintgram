@@ -99,7 +99,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         counter.setTypeface(AndroidUtilities.bold());
         counter.setCallback(this);
         counter.setGravity(Gravity.CENTER);
-        counter.setTextColor(Color.WHITE);
+        counter.setTextColor(Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE);
         counter.setTextSize(dp(10));
     }
 
@@ -268,6 +268,7 @@ public class GlassTabView extends FrameLayout implements MainTabsLayout.Tab, Fac
         colorDefault = Theme.getColor(Theme.key_glass_tabUnselected, resourcesProvider);
         colorSelected = Theme.getColor(Theme.key_glass_tabSelected, resourcesProvider);
         colorSelectedText = Theme.getColor(Theme.key_glass_tabSelectedText, resourcesProvider);
+        counter.setTextColor(Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE);
         updateColors();
         invalidate();
     }

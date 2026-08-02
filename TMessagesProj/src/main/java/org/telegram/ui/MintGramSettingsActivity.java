@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
 import android.text.SpannableString;
@@ -351,6 +353,9 @@ public class MintGramSettingsActivity extends BaseFragment {
 
             logoView = new ImageView(context);
             logoView.setImageResource(R.drawable.mintgram_logo_icon);
+            if (Theme.isMintGramBlueThemeActive()) {
+                logoView.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
+            }
             logoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             logoView.setPadding(AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16), AndroidUtilities.dp(16));
             logoView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(28), getAccentColor()));
@@ -379,6 +384,8 @@ public class MintGramSettingsActivity extends BaseFragment {
         }
 
         public void bind() {
+            logoView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(28), getAccentColor()));
+            logoView.setColorFilter(Theme.isMintGramBlueThemeActive() ? new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN) : null);
             versionView.setText(getVersionText());
         }
     }

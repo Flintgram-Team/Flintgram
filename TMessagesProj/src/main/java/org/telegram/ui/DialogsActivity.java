@@ -13307,10 +13307,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 switchingTheme = true;
                 Theme.ThemeInfo themeInfo = Theme.getActiveTheme();
                 boolean toDark = !themeInfo.isDark();
-                boolean mintgramBlue = "Mintgram Blue".equals(themeInfo.name) || "Mintgram Blue light".equals(themeInfo.name);
+                boolean mintgramBlue = "Material Ocean".equals(themeInfo.name) || "Material Ocean light".equals(themeInfo.name);
                 boolean mintgramExtended = "Mintgram Extended".equals(themeInfo.name) || "Mintgram Extended light".equals(themeInfo.name);
-                String dayThemeName = mintgramBlue ? "Mintgram Blue light" : mintgramExtended ? "Mintgram Extended light" : "Mintgram basic light";
-                String nightThemeName = mintgramBlue ? "Mintgram Blue" : mintgramExtended ? "Mintgram Extended" : "Mintgram basic";
+                String dayThemeName = mintgramBlue ? "Material Ocean light" : mintgramExtended ? "Mintgram Extended light" : "Mintgram basic light";
+                String nightThemeName = mintgramBlue ? "Material Ocean" : mintgramExtended ? "Mintgram Extended" : "Mintgram basic";
                 themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
                 if (themeInfo == null || themeInfo.isDark() != toDark) {
                     switchingTheme = false;

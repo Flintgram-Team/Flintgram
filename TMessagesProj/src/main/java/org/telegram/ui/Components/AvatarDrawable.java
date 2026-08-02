@@ -682,6 +682,10 @@ public class AvatarDrawable extends Drawable {
                 drawable = Theme.avatarDrawables[9];
             }
             if (drawable != null) {
+                final boolean materialOceanSavedIcon = avatarType == AVATAR_TYPE_SAVED && Theme.isMintGramBlueThemeActive();
+                if (materialOceanSavedIcon) {
+                    Theme.setDrawableColor(drawable, 0xFF132D5E);
+                }
                 final int w = (int) (drawable.getIntrinsicWidth() * scaleSize);
                 final int h = (int) (drawable.getIntrinsicHeight() * scaleSize);
                 final int x = (size - w) / 2 + iconTx;
@@ -693,6 +697,9 @@ public class AvatarDrawable extends Drawable {
                     drawable.setAlpha(255);
                 } else {
                     drawable.draw(canvas);
+                }
+                if (materialOceanSavedIcon) {
+                    Theme.setDrawableColor(drawable, getThemedColor(Theme.key_avatar_text));
                 }
             }
         } else if (drawDeleted && Theme.avatarDrawables[1] != null) {

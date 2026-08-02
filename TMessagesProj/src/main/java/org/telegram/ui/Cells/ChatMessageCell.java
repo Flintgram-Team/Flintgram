@@ -10707,13 +10707,14 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                             final long emojiId = inlineButton.getIconEmoji();
                             final int iconRes = inlineButton.getIconRes();
+                            final int botButtonIconColor = Theme.isMintGramBlueThemeActive() && inlineButton.getColor() == BotInlineKeyboard.BackgroundColor.PRIMARY ? 0xFF132D5E : 0xFFFFFFFF;
                             if (emojiId != 0) {
                                 botButton.animatedEmojiDrawable = new AnimatedEmojiDrawable(AnimatedEmojiDrawable.CACHE_TYPE_MESSAGES, currentAccount, emojiId);
                                 botButton.animatedEmojiDrawable.addView(this::invalidateOutbounds);
-                                botButton.animatedEmojiDrawable.setColorFilter(new PorterDuffColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN));
+                                botButton.animatedEmojiDrawable.setColorFilter(new PorterDuffColorFilter(botButtonIconColor, PorterDuff.Mode.SRC_IN));
                             } else if (iconRes != 0) {
                                 botButton.iconDrawable = getResources().getDrawable(iconRes);
-                                botButton.iconDrawable.setColorFilter(new PorterDuffColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN));
+                                botButton.iconDrawable.setColorFilter(new PorterDuffColorFilter(botButtonIconColor, PorterDuff.Mode.SRC_IN));
                             }
 
                             String key = botButton.button != null ? Utilities.bytesToHex(botButton.button.data) : "";
