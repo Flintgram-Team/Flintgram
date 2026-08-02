@@ -10917,6 +10917,8 @@
     <string name="MintGramCustomizationTemporarilyUnavailable">Customization is temporarily unavailable.</string>
     <string name="MintGramChatFolders">Chat Folders</string>
     <string name="MintGramFoldersBottom">Folders on bottom</string>
+    <string name="MintGramHideArchive">Hide archive</string>
+    <string name="MintGramHideArchiveInfo">When enabled, swipe down in the chat list to open the archive.</string>
     <string name="MintGramFolderTitleMode">Folder titles</string>
     <string name="MintGramFolderTitleName">Name only</string>
     <string name="MintGramFolderTitleIcon">Icon only</string>

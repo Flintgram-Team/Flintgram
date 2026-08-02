@@ -544,7 +544,7 @@ public class MintGramSettingsActivity extends BaseFragment {
     }
 
     private static int getAccentColor() {
-        return 0xFF3E927A;
+        return Theme.isMintGramBlueThemeActive() ? 0xFFAEC2F4 : 0xFF3E927A;
     }
 
     private static int getSupportColor() {
@@ -833,6 +833,7 @@ public class MintGramSettingsActivity extends BaseFragment {
                 + "deletedMessageStyle=" + SharedConfig.deletedMessageStyle + "\n"
                 + "mapProvider=" + SharedConfig.mintGramMapProvider + "\n"
                 + "foldersBottom=" + SharedConfig.mintGramFoldersBottom + "\n"
+                + "archiveHidden=" + SharedConfig.archiveHidden + "\n"
                 + "folderTitleMode=" + SharedConfig.mintGramFolderTitleMode + "\n"
                 + "messageSize=" + SharedConfig.fontSize;
     }
@@ -860,6 +861,9 @@ public class MintGramSettingsActivity extends BaseFragment {
         SharedConfig.setDeletedMessageStyle(0);
         SharedConfig.setMintGramMapProvider(0);
         SharedConfig.setMintGramFoldersBottom(false);
+        if (SharedConfig.archiveHidden) {
+            SharedConfig.toggleArchiveHidden();
+        }
         SharedConfig.setMintGramFolderTitleMode(0);
         SharedConfig.fontSize = AndroidUtilities.isTablet() && !AndroidUtilities.isFold() ? 18 : 16;
         SharedConfig.fontSizeIsDefault = true;
@@ -868,6 +872,7 @@ public class MintGramSettingsActivity extends BaseFragment {
         Theme.createCommonMessageResources();
         for (int account = 0; account < UserConfig.MAX_ACCOUNT_COUNT; account++) {
             NotificationCenter.getInstance(account).postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_AVATAR | MessagesController.UPDATE_MASK_NAME);
+            NotificationCenter.getInstance(account).postNotificationName(NotificationCenter.dialogsNeedReload, true);
         }
         Toast.makeText(context, LocaleController.getString(R.string.MintGramSettingsResetDone), Toast.LENGTH_SHORT).show();
     }
@@ -1284,6 +1289,7 @@ public class MintGramSettingsActivity extends BaseFragment {
         private final TextView titleView;
         private final TextView titleModeView;
         private final TextCheckCell foldersBottomCell;
+        private final TextCheckCell hideArchiveCell;
         private final TextSettingsCell titleNameCell;
         private final TextSettingsCell titleIconCell;
         private final TextSettingsCell titleBothCell;
@@ -1309,6 +1315,9 @@ public class MintGramSettingsActivity extends BaseFragment {
             foldersBottomCell = new TextCheckCell(context, 21);
             block.addView(foldersBottomCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
+            hideArchiveCell = new TextCheckCell(context, 21);
+            block.addView(hideArchiveCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
             titleModeView = new TextView(context);
             titleModeView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText4));
             titleModeView.setTextSize(14);
@@ -1327,6 +1336,11 @@ public class MintGramSettingsActivity extends BaseFragment {
                 bind();
                 notifyFoldersChanged();
             });
+            hideArchiveCell.setOnClickListener(v -> {
+                SharedConfig.toggleArchiveHidden();
+                bind();
+                notifyArchiveChanged();
+            });
             titleNameCell.setOnClickListener(v -> setTitleMode(0));
             titleIconCell.setOnClickListener(v -> setTitleMode(1));
             titleBothCell.setOnClickListener(v -> setTitleMode(2));
@@ -1337,6 +1351,13 @@ public class MintGramSettingsActivity extends BaseFragment {
             titleModeView.setText(LocaleController.getString(R.string.MintGramFolderTitleMode));
             previewView.invalidate();
             foldersBottomCell.setTextAndCheck(LocaleController.getString(R.string.MintGramFoldersBottom), SharedConfig.mintGramFoldersBottom, true);
+            hideArchiveCell.setTextAndValueAndCheck(
+                    LocaleController.getString(R.string.MintGramHideArchive),
+                    LocaleController.getString(R.string.MintGramHideArchiveInfo),
+                    SharedConfig.archiveHidden,
+                    true,
+                    true
+            );
             bindTitleRow(titleNameCell, LocaleController.getString(R.string.MintGramFolderTitleName), SharedConfig.mintGramFolderTitleMode == 0, true);
             bindTitleRow(titleIconCell, LocaleController.getString(R.string.MintGramFolderTitleIcon), SharedConfig.mintGramFolderTitleMode == 1, true);
             bindTitleRow(titleBothCell, LocaleController.getString(R.string.MintGramFolderTitleBoth), SharedConfig.mintGramFolderTitleMode == 2, false);
@@ -1356,6 +1377,12 @@ public class MintGramSettingsActivity extends BaseFragment {
         private void notifyFoldersChanged() {
             for (int account = 0; account < UserConfig.MAX_ACCOUNT_COUNT; account++) {
                 NotificationCenter.getInstance(account).postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_ALL);
+            }
+        }
+
+        private void notifyArchiveChanged() {
+            for (int account = 0; account < UserConfig.MAX_ACCOUNT_COUNT; account++) {
+                NotificationCenter.getInstance(account).postNotificationName(NotificationCenter.dialogsNeedReload, true);
             }
         }
     }

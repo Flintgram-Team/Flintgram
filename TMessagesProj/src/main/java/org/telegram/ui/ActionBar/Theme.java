@@ -2461,9 +2461,9 @@ public class Theme {
             if (isDark != UNKNOWN) {
                 return isDark == DARK;
             }
-            if ("Dark Blue".equals(name) || "Night".equals(name) || "Mintgram basic".equals(name) || "Mintgram Extended".equals(name)) {
+            if ("Dark Blue".equals(name) || "Night".equals(name) || "Mintgram basic".equals(name) || "Mintgram Extended".equals(name) || "Mintgram Blue".equals(name)) {
                 isDark = DARK;
-            } else if ("Blue".equals(name) || "Arctic Blue".equals(name) || "Day".equals(name) || "Mintgram basic light".equals(name) || "Mintgram Extended light".equals(name)) {
+            } else if ("Blue".equals(name) || "Arctic Blue".equals(name) || "Day".equals(name) || "Mintgram basic light".equals(name) || "Mintgram Extended light".equals(name) || "Mintgram Blue light".equals(name)) {
                 isDark = LIGHT;
             }
             if (isDark == UNKNOWN) {
@@ -2587,9 +2587,9 @@ public class Theme {
                     themeAccent.patternSlug = patternSlugs[a];
                 }
 
-                                if (isHome(themeAccent) && (name.equals("Dark Blue") || name.equals("Night") || name.equals("Mintgram basic") || name.equals("Mintgram Extended"))) {
-                    if (name.equals("Mintgram basic") || name.equals("Mintgram Extended")) {
-                        themeAccent.myMessagesAccentColor = 0xff3e927a;
+                                if (isHome(themeAccent) && (name.equals("Dark Blue") || name.equals("Night") || name.equals("Mintgram basic") || name.equals("Mintgram Extended") || name.equals("Mintgram Blue"))) {
+                    if (name.equals("Mintgram basic") || name.equals("Mintgram Extended") || name.equals("Mintgram Blue")) {
+                        themeAccent.myMessagesAccentColor = name.equals("Mintgram Blue") ? 0xffaec2f4 : 0xff3e927a;
                         themeAccent.myMessagesGradientAccentColor1 = 0;
                         themeAccent.myMessagesGradientAccentColor2 = 0;
                         themeAccent.myMessagesGradientAccentColor3 = 0;
@@ -2599,7 +2599,7 @@ public class Theme {
                         themeAccent.myMessagesGradientAccentColor2 = 0xff8146D7;
                         themeAccent.myMessagesGradientAccentColor3 = 0xff9F3EAA;
                     }
-                    if (name.equals("Night") || name.equals("Mintgram basic") || name.equals("Mintgram Extended")) {
+                    if (name.equals("Night") || name.equals("Mintgram basic") || name.equals("Mintgram Extended") || name.equals("Mintgram Blue")) {
                         themeAccent.patternIntensity = -0.57f;
                         themeAccent.backgroundOverrideColor = 0xff6c7fa6;
                         themeAccent.backgroundGradientOverrideColor1 = 0xff2e344b;
@@ -4693,6 +4693,14 @@ public class Theme {
         themes.add(mintGramExtendedLightTheme);
         themesDict.put("Mintgram Extended light", mintGramExtendedLightTheme);
 
+        ThemeInfo mintGramBlueLightTheme = new ThemeInfo(mintGramExtendedLightTheme);
+        mintGramBlueLightTheme.name = "Mintgram Blue light";
+        mintGramBlueLightTheme.assetName = "mintgram_blue_light.attheme";
+        mintGramBlueLightTheme.previewOutColor = 0xffaec2f4;
+        mintGramBlueLightTheme.setAccentColorOptions(new int[] { 0xFFAEC2F4 });
+        themes.add(mintGramBlueLightTheme);
+        themesDict.put("Mintgram Blue light", mintGramBlueLightTheme);
+
         themeInfo = new ThemeInfo();
         themeInfo.name = "Night";
         themeInfo.assetName = "night.attheme";
@@ -4732,6 +4740,14 @@ public class Theme {
         mintGramExtendedTheme.sortIndex = 1;
         themes.add(mintGramExtendedTheme);
         themesDict.put("Mintgram Extended", mintGramExtendedTheme);
+
+        ThemeInfo mintGramBlueTheme = new ThemeInfo(mintGramExtendedTheme);
+        mintGramBlueTheme.name = "Mintgram Blue";
+        mintGramBlueTheme.assetName = "mintgram_blue.attheme";
+        mintGramBlueTheme.previewOutColor = 0xffaec2f4;
+        mintGramBlueTheme.setAccentColorOptions(new int[] { 0xFFAEC2F4 });
+        themes.add(mintGramBlueTheme);
+        themesDict.put("Mintgram Blue", mintGramBlueTheme);
 
         String themesString = themeConfig.getString("themes2", null);
 
@@ -6182,22 +6198,10 @@ public class Theme {
 
     private static void sortThemes() {
         Collections.sort(themes, (o1, o2) -> {
-            if ("Mintgram basic".equals(o1.name)) {
-                return -1;
-            } else if ("Mintgram basic".equals(o2.name)) {
-                return 1;
-            } else if ("Mintgram Extended".equals(o1.name)) {
-                return -1;
-            } else if ("Mintgram Extended".equals(o2.name)) {
-                return 1;
-            } else if ("Mintgram basic light".equals(o1.name)) {
-                return -1;
-            } else if ("Mintgram basic light".equals(o2.name)) {
-                return 1;
-            } else if ("Mintgram Extended light".equals(o1.name)) {
-                return -1;
-            } else if ("Mintgram Extended light".equals(o2.name)) {
-                return 1;
+            int mintgramOrder1 = getBuiltInMintgramThemeOrder(o1.name);
+            int mintgramOrder2 = getBuiltInMintgramThemeOrder(o2.name);
+            if (mintgramOrder1 != mintgramOrder2) {
+                return Integer.compare(mintgramOrder1, mintgramOrder2);
             }
             if (o1.pathToFile == null && o1.assetName == null) {
                 return -1;
@@ -6206,6 +6210,16 @@ public class Theme {
             }
             return o1.name.compareTo(o2.name);
         });
+    }
+
+    private static int getBuiltInMintgramThemeOrder(String name) {
+        if ("Mintgram basic".equals(name)) return 0;
+        if ("Mintgram Extended".equals(name)) return 1;
+        if ("Mintgram Blue".equals(name)) return 2;
+        if ("Mintgram basic light".equals(name)) return 3;
+        if ("Mintgram Extended light".equals(name)) return 4;
+        if ("Mintgram Blue light".equals(name)) return 5;
+        return 6;
     }
 
     public static void applyThemeTemporary(ThemeInfo themeInfo, boolean accent) {
@@ -9639,6 +9653,7 @@ public class Theme {
                 || key == key_dialogCheckboxSquareBackground
                 || key == key_dialogRadioBackgroundChecked
                 || key == key_dialogFloatingButton
+                || key == key_switch2TrackChecked
                 || key == key_windowBackgroundChecked
                 || key == key_windowBackgroundWhiteBlueText
                 || key == key_windowBackgroundWhiteBlueText2
@@ -9668,6 +9683,7 @@ public class Theme {
                 || key == key_chats_onlineCircle
                 || key == key_chats_unreadCounter
                 || key == key_chats_sentReadCheck
+                || key == key_chats_archivePullDownBackgroundActive
                 || key == key_actionBarTabActiveText
                 || key == key_actionBarTabLine
                 || key == key_chat_outBubble
@@ -9693,6 +9709,7 @@ public class Theme {
                 || key == key_chat_outTextSelectionCursor
                 || key == key_chat_inQuote
                 || key == key_chat_attachActiveTab
+                || key == key_chat_attachCheckBoxBackground
                 || key == key_chat_emojiPanelStickerPackSelectorLine
                 || key == key_groupcreate_cursor
                 || key == key_profile_actionBackground
@@ -9703,10 +9720,16 @@ public class Theme {
                 || key == key_featuredStickers_addButtonPressed
                 || key == key_featuredStickers_addedIcon
                 || key == key_featuredStickers_removeButtonText
+                || key == key_chat_inAudioSeekbarFill
                 || key == key_picker_enabledButton
                 || key == key_chat_goDownButtonCounterBackground
                 || key == key_chat_editMediaButton
                 || key == key_botKeyboard_button_primary
+                || key == key_voipgroup_windowBackgroundWhiteInputFieldActivated
+                || key == key_chat_inReactionButtonBackground
+                || key == key_chat_inReactionButtonText
+                || key == key_iv_ab_progress
+                || key == key_telegram_color
                 || key == key_location_sendLocationBackground
                 || key == key_location_liveLocationProgress
                 || key == key_location_sendLocationText
@@ -9744,7 +9767,33 @@ public class Theme {
         return currentTheme != null && ("Mintgram Extended".equals(currentTheme.name) || "Mintgram Extended light".equals(currentTheme.name));
     }
 
+    public static boolean isMintGramBlueThemeActive() {
+        return currentTheme != null && ("Mintgram Blue".equals(currentTheme.name) || "Mintgram Blue light".equals(currentTheme.name));
+    }
+
     public static int getColor(int key, boolean[] isDefault, boolean ignoreAnimation) {
+        if (isMintGramBlueThemeActive()) {
+            if (key == key_chats_verifiedCheck
+                    || key == key_profile_verifiedCheck
+                    || key == key_chat_outBubbleSelected
+                    || key == key_featuredStickers_addButtonPressed
+                    || key == key_chat_inFileProgress
+                    || key == key_chat_inFileProgressSelected
+                    || key == key_chat_outFileProgress
+                    || key == key_chat_outFileProgressSelected
+                    || key == key_chats_unreadCounterText
+                    || key == key_chats_archiveIcon
+                    || key == key_chats_archiveText
+                    || key == key_calls_callReceivedGreenIcon) {
+                return 0xFF132D5E;
+            }
+            if (isPlumDarkOnGoldKey(key) || isPlumWhiteOnGoldKey(key)) {
+                return 0xFF132D5E;
+            }
+            if (isPlumTestAccentKey(key)) {
+                return 0xFFAEC2F4;
+            }
+        }
         if (isPlumBasicThemeActive() && isPlumDarkOnGoldKey(key)) {
             return PLUM_DARK_ON_GOLD_COLOR;
         }

@@ -276,6 +276,8 @@
     <string name="MintGramCustomizationTemporarilyUnavailable">Кастомизация временно недоступна.</string>
     <string name="MintGramChatFolders">Папки чатов</string>
     <string name="MintGramFoldersBottom">Папки снизу</string>
+    <string name="MintGramHideArchive">Скрыть архив</string>
+    <string name="MintGramHideArchiveInfo">Если вы включите эту функцию, то для того, чтобы открыть архив, нужно смахнуть вниз в меню чатов!</string>
     <string name="MintGramFolderTitleMode">Заголовки папок</string>
     <string name="MintGramFolderTitleName">Только имя</string>
     <string name="MintGramFolderTitleIcon">Только иконка</string>

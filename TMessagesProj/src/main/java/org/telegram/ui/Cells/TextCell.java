@@ -621,7 +621,11 @@ public class TextCell extends FrameLayout {
         imageView.setPadding(dp(2), dp(2), dp(2), dp(2));
         imageView.setTranslationX(dp(LocaleController.isRTL ? 0 : -3));
         imageView.setImageResource(resId);
-        imageView.setColorFilter(new PorterDuffColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN));
+        imageView.setColorFilter(new PorterDuffColorFilter(Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE, PorterDuff.Mode.SRC_IN));
+
+        if (Theme.isMintGramBlueThemeActive()) {
+            colorTop = colorBottom = 0xFFAEC2F4;
+        }
 
         final boolean border = resourcesProvider != null ? resourcesProvider.isDark() : Theme.isCurrentThemeDark();
         SettingsActivity.SettingCell.Background drawable = new SettingsActivity.SettingCell.Background();

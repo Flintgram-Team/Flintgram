@@ -10236,6 +10236,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             }
             for (int a = 0; a < viewPages.length; a++) {
                 final ViewPage viewPage = viewPages[a];
+                viewPage.archivePullViewState = SharedConfig.archiveHidden ? ARCHIVE_ITEM_STATE_HIDDEN : ARCHIVE_ITEM_STATE_PINNED;
+                if (viewPage.pullForegroundDrawable != null) {
+                    viewPage.pullForegroundDrawable.setWillDraw(viewPage.archivePullViewState != ARCHIVE_ITEM_STATE_PINNED);
+                }
                 MessagesController.DialogFilter filter = null;
                 if (viewPages[0].dialogsType == 7 || viewPages[0].dialogsType == 8) {
                     filter = getMessagesController().selectedDialogFilter[viewPages[0].dialogsType == 8 ? 1 : 0];
@@ -13303,8 +13307,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 switchingTheme = true;
                 Theme.ThemeInfo themeInfo = Theme.getActiveTheme();
                 boolean toDark = !themeInfo.isDark();
-                String dayThemeName = "Mintgram basic light";
-                String nightThemeName = "Mintgram basic";
+                boolean mintgramBlue = "Mintgram Blue".equals(themeInfo.name) || "Mintgram Blue light".equals(themeInfo.name);
+                boolean mintgramExtended = "Mintgram Extended".equals(themeInfo.name) || "Mintgram Extended light".equals(themeInfo.name);
+                String dayThemeName = mintgramBlue ? "Mintgram Blue light" : mintgramExtended ? "Mintgram Extended light" : "Mintgram basic light";
+                String nightThemeName = mintgramBlue ? "Mintgram Blue" : mintgramExtended ? "Mintgram Extended" : "Mintgram basic";
                 themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
                 if (themeInfo == null || themeInfo.isDark() != toDark) {
                     switchingTheme = false;

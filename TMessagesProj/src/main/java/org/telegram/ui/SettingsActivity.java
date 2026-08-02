@@ -189,6 +189,9 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
     private int versionViewPressCount = 0;
 
     private int mintGramExtendedIconColor(int color) {
+        if (Theme.isMintGramBlueThemeActive()) {
+            return 0xFFAEC2F4;
+        }
         return Theme.isMintGramExtendedThemeActive() ? 0xFF3E927A : color;
     }
 
@@ -677,7 +680,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
-        items.add(SettingCell.Factory.of(24, 0xFF3E927A, 0xFF3E927A, R.drawable.mintgram_logo_icon, getString(R.string.MintGramFeatures), getString(R.string.MintGramSettingsInfo)));
+        items.add(SettingCell.Factory.of(24, mintGramExtendedIconColor(0xFF3E927A), mintGramExtendedIconColor(0xFF3E927A), R.drawable.mintgram_logo_icon, getString(R.string.MintGramFeatures), getString(R.string.MintGramSettingsInfo)));
         items.add(UItem.asShadow(null));
 
         if (accountNumbers.size() > 0) {
@@ -1183,6 +1186,15 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             subtitleView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText, resourcesProvider));
             valueView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteBlueText, resourcesProvider));
             iconBackground.setDrawBorder(resourcesProvider != null ? resourcesProvider.isDark() : Theme.isCurrentThemeDark());
+            updateIconColor();
+        }
+
+        private void updateIconColor() {
+            if (Theme.isMintGramBlueThemeActive()) {
+                iconView.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
+            } else {
+                iconView.clearColorFilter();
+            }
         }
 
         private boolean twoLines;
@@ -1199,6 +1211,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
             iconBackground.setColor(iconColorTop, iconColorBottom);
             iconView.setImageResource(icon);
+            updateIconColor();
             titleView.setText(title);
             subtitleView.setVisibility((twoLines = !TextUtils.isEmpty(subtitle)) ? View.VISIBLE : View.GONE);
             subtitleView.setText(subtitle);
