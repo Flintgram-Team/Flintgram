@@ -10989,7 +10989,7 @@
     <string name="FlintGramHideReadReceipts">Hide Read Status</string>
     <string name="FlintGramHideReadReceiptsInfo">When enabled, Flintgram will not tell the server that you have read messages when you open chats on this device. If you read the same messages from another client, they may still be marked as read.</string>
     <string name="FlintGramKeepDeletedMessages">Keep Deleted Messages</string>
-    <string name="FlintGramFlipToBlur">Pixelate chat by turning phone over</string>
+    <string name="FlintGramFlipToBlur">Pixelate the entire chat by turning phone over</string>
     <string name="FlintGramFreeVoiceTranscription">Free Voice Transcription (Unavailable Now)</string>
     <string name="FlintGramTranscriptionTemporarilyUnavailable">Voice transcription is temporarily unavailable.</string>
     <string name="FlintGramTranscriptionDownloadFirst">Download the voice message first, then try again.</string>

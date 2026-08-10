@@ -800,11 +800,8 @@ public class ChatActivity extends BaseFragment implements
             long now = SystemClock.elapsedRealtime();
             float z = event.values[2];
             if (z < -7.0f) {
-                if (flintGramFaceDownSince == 0) {
-                    flintGramFaceDownSince = now;
-                } else if (now - flintGramFaceDownSince >= 100) {
-                    flintGramFaceDownArmed = true;
-                }
+                flintGramFaceDownSince = now;
+                flintGramFaceDownArmed = true;
             } else if (z > 5.0f) {
                 if (flintGramFaceDownArmed && now - flintGramLastPrivacyToggle >= 1000) {
                     flintGramLastPrivacyToggle = now;
@@ -29313,7 +29310,7 @@ public class ChatActivity extends BaseFragment implements
             flintGramFlipSensorRegistered = flintGramSensorManager.registerListener(
                     flintGramFlipSensorListener,
                     flintGramAccelerometer,
-                    SensorManager.SENSOR_DELAY_NORMAL
+                    SensorManager.SENSOR_DELAY_GAME
             );
         }
     }
@@ -29346,15 +29343,7 @@ public class ChatActivity extends BaseFragment implements
         ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
         FlintGramPrivacyOverlay overlay = new FlintGramPrivacyOverlay(activity);
         flintGramPrivacyOverlay = overlay;
-        if (chatListView != null) {
-            for (int i = 0; i < chatListView.getChildCount(); i++) {
-                overlay.addPixelatedRegion(chatListView.getChildAt(i), decorView);
-            }
-        }
-        overlay.addPixelatedRegion(avatarContainer, decorView);
-        if (pinnedMessageView != null && pinnedMessageView.getVisibility() == View.VISIBLE) {
-            overlay.addPixelatedRegion(pinnedMessageView, decorView);
-        }
+        overlay.addPixelatedRegion(decorView, decorView);
         overlay.setClickable(true);
         overlay.setFocusable(true);
         overlay.setOnTouchListener((view, event) -> true);
