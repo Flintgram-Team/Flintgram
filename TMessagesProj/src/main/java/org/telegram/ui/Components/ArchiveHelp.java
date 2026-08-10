@@ -45,11 +45,18 @@ public class ArchiveHelp extends FrameLayout implements NotificationCenter.Notif
         addView(layout, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, Gravity.CENTER));
 
         ImageView archiveIcon = new ImageView(context);
-        archiveIcon.setBackground(Theme.createCircleDrawable(dp(80), Theme.getColor(Theme.key_avatar_backgroundSaved, resourcesProvider)));
-        archiveIcon.setImageResource(R.drawable.large_archive);
-        if (Theme.isMintGramBlueThemeActive()) {
+        int archiveBackgroundColor = Theme.getColor(Theme.key_avatar_backgroundSaved, resourcesProvider);
+        archiveIcon.setBackground(Theme.createCircleDrawable(dp(80), archiveBackgroundColor));
+        Drawable archiveDrawable = context.getResources().getDrawable(R.drawable.large_archive).mutate();
+        int red = (archiveBackgroundColor >> 16) & 0xFF;
+        int green = (archiveBackgroundColor >> 8) & 0xFF;
+        int blue = archiveBackgroundColor & 0xFF;
+        boolean materialOceanBackground = red >= 150 && green >= 170 && blue >= 220 && blue - red >= 35;
+        if (Theme.isFlintGramBlueThemeActive() || materialOceanBackground) {
+            archiveDrawable.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
             archiveIcon.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
         }
+        archiveIcon.setImageDrawable(archiveDrawable);
         archiveIcon.setScaleType(ImageView.ScaleType.CENTER);
         layout.addView(archiveIcon, LayoutHelper.createLinear(80, 80, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, (buttonCallback != null ? 14 : 0), 0, 14));
 

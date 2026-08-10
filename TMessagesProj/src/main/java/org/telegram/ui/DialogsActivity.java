@@ -1001,7 +1001,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                         drawBlurRect(canvas, 0, blurBounds, actionBarSearchPaint, true);
                     }
                     if (fragmentSearchField != null) {
-                        fragmentSearchField.setTranslationY(top + actionBarHeight - (actionBar.getHeight() + (filterTabsView != null && !SharedConfig.mintGramFoldersBottom ? filterTabsView.getMeasuredHeight() : 0)) + getSearchFieldAdditionOffset());
+                        fragmentSearchField.setTranslationY(top + actionBarHeight - (actionBar.getHeight() + (filterTabsView != null && !SharedConfig.flintGramFoldersBottom ? filterTabsView.getMeasuredHeight() : 0)) + getSearchFieldAdditionOffset());
                     }
                 }
             } else if (!inPreviewMode) {
@@ -1029,7 +1029,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 if (dialogStoriesCellVisible) {
                     storiesAlpha = 1f - Utilities.clamp(rightSlidingProgress / 0.5f, 1f, 0f);
                 }
-                if (filterTabsView != null && filterTabsView.getVisibility() == View.VISIBLE && !SharedConfig.mintGramFoldersBottom) {
+                if (filterTabsView != null && filterTabsView.getVisibility() == View.VISIBLE && !SharedConfig.flintGramFoldersBottom) {
                     tabsYOffset -= (1f - animatorFilterTabsVisible.getFloatValue()) * filterTabsView.getMeasuredHeight();
                 }
                 if (fragmentSearchField != null) {
@@ -1257,7 +1257,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     childTop = actionBar.getMeasuredHeight();
                 } else if (child instanceof ViewPage) {
                     childTop = 0;
-                } else if (child == filterTabsView && SharedConfig.mintGramFoldersBottom) {
+                } else if (child == filterTabsView && SharedConfig.flintGramFoldersBottom) {
                     childTop = b - t - height - navigationBarHeight - additionNavigationBarHeight - dp(4);
                 } else if (child == topPanelLayout || child == topBubblesFadeView || child == filterTabsView) {
                     childTop += actionBar.getMeasuredHeight();
@@ -2006,19 +2006,19 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             final float filterTabsVisibility = getFilterTabsVisibilityFactor(false);
             final float topPanelsVisibility = topPanelLayout != null ? topPanelLayout.getMetadata().getTotalVisibility() : 0f;
 
-            if (!SharedConfig.mintGramFoldersBottom) {
+            if (!SharedConfig.flintGramFoldersBottom) {
                 t += (int) (dp(36 + 14) * filterTabsVisibility);
                 additionalPadding += (int) (dp(36 + 14) * filterTabsVisibility);
             }
 
             if (topPanelLayout != null) {
-                final int h = (int) topPanelLayout.getAnimatedHeightWithPadding(lerp((float) dp(14), dp(7), SharedConfig.mintGramFoldersBottom ? 0 : filterTabsVisibility));
+                final int h = (int) topPanelLayout.getAnimatedHeightWithPadding(lerp((float) dp(14), dp(7), SharedConfig.flintGramFoldersBottom ? 0 : filterTabsVisibility));
                 t += h;
                 additionalPadding += h;
             }
 
-            t -= dp(5 * Math.max(SharedConfig.mintGramFoldersBottom ? 0 : filterTabsVisibility, topPanelsVisibility));
-            additionalPadding -= dp(5 * Math.max(SharedConfig.mintGramFoldersBottom ? 0 : filterTabsVisibility, topPanelsVisibility));
+            t -= dp(5 * Math.max(SharedConfig.flintGramFoldersBottom ? 0 : filterTabsVisibility, topPanelsVisibility));
+            additionalPadding -= dp(5 * Math.max(SharedConfig.flintGramFoldersBottom ? 0 : filterTabsVisibility, topPanelsVisibility));
 
             final int b = calculateListViewPaddingBottom();
             if (t != topPadding || b != getPaddingBottom()) {
@@ -5013,7 +5013,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             filterTabsViewBackground.setPadding(dp(6.666f));
             filterTabsView.setPadding(0, dp(7), 0, dp(7));
             filterTabsView.setBlurredBackground(filterTabsViewBackground);
-            contentView.addView(filterTabsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36 + 7 + 7, SharedConfig.mintGramFoldersBottom ? Gravity.BOTTOM : Gravity.TOP, 4, 0, 4, SharedConfig.mintGramFoldersBottom ? -6 : 0));
+            contentView.addView(filterTabsView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 36 + 7 + 7, SharedConfig.flintGramFoldersBottom ? Gravity.BOTTOM : Gravity.TOP, 4, 0, 4, SharedConfig.flintGramFoldersBottom ? -6 : 0));
         }
 
         if (fragmentSearchField != null) {
@@ -6402,9 +6402,9 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         float fadeViewT = totalOffset;
 
         if (filterTabsView != null) {
-            filterTabsView.setTranslationY(SharedConfig.mintGramFoldersBottom ? dp(6) : totalOffset - searchOffset);
+            filterTabsView.setTranslationY(SharedConfig.flintGramFoldersBottom ? dp(6) : totalOffset - searchOffset);
             filtersTabVisibility = filterTabsView.getAlpha();
-            if (!SharedConfig.mintGramFoldersBottom) {
+            if (!SharedConfig.flintGramFoldersBottom) {
                 filtersTabHeight = dp(36 + 7) * filtersTabVisibility;
                 totalOffset += filtersTabHeight;
             }
@@ -6677,14 +6677,14 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 filterTabsView.removeTabs();
                 for (int a = 0, N = filters.size(); a < N; a++) {
                     if (filters.get(a).isDefault()) {
-                        String title = getMintGramFolderTitle(LocaleController.getString(R.string.FilterAllChats), true);
+                        String title = getFlintGramFolderTitle(LocaleController.getString(R.string.FilterAllChats), true);
                         filterTabsView.addTab(a, 0, title, null, false, true, filters.get(a).locked);
                     } else {
                         final MessagesController.DialogFilter filter = filters.get(a);
-                        if (SharedConfig.mintGramFolderTitleMode == 0) {
+                        if (SharedConfig.flintGramFolderTitleMode == 0) {
                             filterTabsView.addTab(a, filter.localId, filter.name, filter.entities, filter.title_noanimate, false, filters.get(a).locked);
                         } else {
-                            filterTabsView.addTab(a, filter.localId, getMintGramFolderTitle(filter.name, false), null, false, false, filters.get(a).locked);
+                            filterTabsView.addTab(a, filter.localId, getFlintGramFolderTitle(filter.name, false), null, false, false, filters.get(a).locked);
                         }
                     }
                 }
@@ -6778,19 +6778,19 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         }
     }
 
-    private String getMintGramFolderTitle(String name, boolean isDefault) {
-        int mode = SharedConfig.mintGramFolderTitleMode;
+    private String getFlintGramFolderTitle(String name, boolean isDefault) {
+        int mode = SharedConfig.flintGramFolderTitleMode;
         if (mode == 0) {
             return name;
         }
-        String icon = getMintGramFolderIcon(name, isDefault);
+        String icon = getFlintGramFolderIcon(name, isDefault);
         if (mode == 1) {
             return icon;
         }
-        return icon + " " + stripMintGramFolderIcon(name);
+        return icon + " " + stripFlintGramFolderIcon(name);
     }
 
-    private String getMintGramFolderIcon(String name, boolean isDefault) {
+    private String getFlintGramFolderIcon(String name, boolean isDefault) {
         if (isDefault) {
             return "●";
         }
@@ -6803,7 +6803,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         return "◆";
     }
 
-    private String stripMintGramFolderIcon(String name) {
+    private String stripFlintGramFolderIcon(String name) {
         if (TextUtils.isEmpty(name)) {
             return "";
         }
@@ -13307,10 +13307,10 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                 switchingTheme = true;
                 Theme.ThemeInfo themeInfo = Theme.getActiveTheme();
                 boolean toDark = !themeInfo.isDark();
-                boolean mintgramBlue = "Material Ocean".equals(themeInfo.name) || "Material Ocean light".equals(themeInfo.name);
-                boolean mintgramExtended = "Mintgram Extended".equals(themeInfo.name) || "Mintgram Extended light".equals(themeInfo.name);
-                String dayThemeName = mintgramBlue ? "Material Ocean light" : mintgramExtended ? "Mintgram Extended light" : "Mintgram basic light";
-                String nightThemeName = mintgramBlue ? "Material Ocean" : mintgramExtended ? "Mintgram Extended" : "Mintgram basic";
+                boolean flintgramBlue = "Material Ocean".equals(themeInfo.name) || "Material Ocean light".equals(themeInfo.name);
+                boolean flintgramExtended = "Flintgram Extended".equals(themeInfo.name) || "Flintgram Extended light".equals(themeInfo.name);
+                String dayThemeName = flintgramBlue ? "Material Ocean light" : flintgramExtended ? "Flintgram Extended light" : "Flintgram basic light";
+                String nightThemeName = flintgramBlue ? "Material Ocean" : flintgramExtended ? "Flintgram Extended" : "Flintgram basic";
                 themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
                 if (themeInfo == null || themeInfo.isDark() != toDark) {
                     switchingTheme = false;
@@ -13751,7 +13751,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
         final int actionBarHeight = actionBar.getMeasuredHeight()
             + dp(DialogsActivity.SEARCH_FIELD_HEIGHT)
             + dp(hasStories ? DialogStoriesCell.HEIGHT_IN_DP : 0)
-            + (filterTabsView != null && filterTabsView.getVisibility() == View.VISIBLE && !SharedConfig.mintGramFoldersBottom ? filterTabsView.getMeasuredHeight() : 0)
+            + (filterTabsView != null && filterTabsView.getVisibility() == View.VISIBLE && !SharedConfig.flintGramFoldersBottom ? filterTabsView.getMeasuredHeight() : 0)
             + (topPanelLayout != null && topPanelLayout.getVisibility() == View.VISIBLE ? topPanelLayout.getSumHeightOfAllVisibleChild() : 0)
             + ((int) scrollYOffset);
 
@@ -13790,7 +13790,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
     }
 
     private int calculateListViewPaddingBottom() {
-        int tabsBottomPadding = filterTabsView != null && filterTabsView.getVisibility() == View.VISIBLE && SharedConfig.mintGramFoldersBottom ? filterTabsView.getMeasuredHeight() + dp(8) : 0;
+        int tabsBottomPadding = filterTabsView != null && filterTabsView.getVisibility() == View.VISIBLE && SharedConfig.flintGramFoldersBottom ? filterTabsView.getMeasuredHeight() + dp(8) : 0;
         if (commentView != null) {
             return (int) (windowInsetsStateHolder.getAnimatedMaxBottomInset() + dp(9) + chatInputViewsContainer.getInputBubbleHeight() + dp(7) + dp(2)) + tabsBottomPadding;
         } else {

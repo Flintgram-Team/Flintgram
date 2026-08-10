@@ -220,13 +220,13 @@ public class ConnectionsManager extends BaseController {
             langCode = LocaleController.getLocaleStringIso639().toLowerCase();
             deviceModel = Build.MANUFACTURER + Build.MODEL;
             PackageInfo pInfo = ApplicationLoader.applicationContext.getPackageManager().getPackageInfo(ApplicationLoader.applicationContext.getPackageName(), 0);
-            appVersion = "Mintgram " + pInfo.versionName;
+            appVersion = "Flintgram " + pInfo.versionName;
             systemVersion = "SDK " + Build.VERSION.SDK_INT;
         } catch (Exception e) {
             systemLangCode = "en";
             langCode = "";
             deviceModel = "Android unknown";
-            appVersion = "Mintgram " + BuildVars.BUILD_VERSION_STRING;
+            appVersion = "Flintgram " + BuildVars.BUILD_VERSION_STRING;
             systemVersion = "SDK " + Build.VERSION.SDK_INT;
         }
         if (systemLangCode.trim().length() == 0) {

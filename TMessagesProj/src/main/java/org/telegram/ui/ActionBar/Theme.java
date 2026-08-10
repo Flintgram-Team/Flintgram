@@ -2461,9 +2461,9 @@ public class Theme {
             if (isDark != UNKNOWN) {
                 return isDark == DARK;
             }
-            if ("Dark Blue".equals(name) || "Night".equals(name) || "Mintgram basic".equals(name) || "Mintgram Extended".equals(name) || "Material Ocean".equals(name)) {
+            if ("Dark Blue".equals(name) || "Night".equals(name) || "Flintgram basic".equals(name) || "Flintgram Extended".equals(name) || "Material Ocean".equals(name)) {
                 isDark = DARK;
-            } else if ("Blue".equals(name) || "Arctic Blue".equals(name) || "Day".equals(name) || "Mintgram basic light".equals(name) || "Mintgram Extended light".equals(name) || "Material Ocean light".equals(name)) {
+            } else if ("Blue".equals(name) || "Arctic Blue".equals(name) || "Day".equals(name) || "Flintgram basic light".equals(name) || "Flintgram Extended light".equals(name) || "Material Ocean light".equals(name)) {
                 isDark = LIGHT;
             }
             if (isDark == UNKNOWN) {
@@ -2587,8 +2587,8 @@ public class Theme {
                     themeAccent.patternSlug = patternSlugs[a];
                 }
 
-                                if (isHome(themeAccent) && (name.equals("Dark Blue") || name.equals("Night") || name.equals("Mintgram basic") || name.equals("Mintgram Extended") || name.equals("Material Ocean"))) {
-                    if (name.equals("Mintgram basic") || name.equals("Mintgram Extended") || name.equals("Material Ocean")) {
+                                if (isHome(themeAccent) && (name.equals("Dark Blue") || name.equals("Night") || name.equals("Flintgram basic") || name.equals("Flintgram Extended") || name.equals("Material Ocean"))) {
+                    if (name.equals("Flintgram basic") || name.equals("Flintgram Extended") || name.equals("Material Ocean")) {
                         themeAccent.myMessagesAccentColor = name.equals("Material Ocean") ? 0xffaec2f4 : 0xff3e927a;
                         themeAccent.myMessagesGradientAccentColor1 = 0;
                         themeAccent.myMessagesGradientAccentColor2 = 0;
@@ -2599,7 +2599,7 @@ public class Theme {
                         themeAccent.myMessagesGradientAccentColor2 = 0xff8146D7;
                         themeAccent.myMessagesGradientAccentColor3 = 0xff9F3EAA;
                     }
-                    if (name.equals("Night") || name.equals("Mintgram basic") || name.equals("Mintgram Extended") || name.equals("Material Ocean")) {
+                    if (name.equals("Night") || name.equals("Flintgram basic") || name.equals("Flintgram Extended") || name.equals("Material Ocean")) {
                         themeAccent.patternIntensity = -0.57f;
                         themeAccent.backgroundOverrideColor = 0xff6c7fa6;
                         themeAccent.backgroundGradientOverrideColor1 = 0xff2e344b;
@@ -4677,30 +4677,30 @@ public class Theme {
         themes.add(themeInfo);
         themesDict.put("Day", themeInfo);
 
-        ThemeInfo mintGramBasicLightTheme = new ThemeInfo(themeInfo);
-        mintGramBasicLightTheme.name = "Mintgram basic light";
-        mintGramBasicLightTheme.assetName = "mintgram_basic_light.attheme";
-        mintGramBasicLightTheme.previewOutColor = 0xff3e927a;
-        mintGramBasicLightTheme.sortIndex = 0;
-        mintGramBasicLightTheme.setAccentColorOptions(new int[] { 0xFF3E927A });
-        themes.add(mintGramBasicLightTheme);
-        themesDict.put("Mintgram basic light", mintGramBasicLightTheme);
+        ThemeInfo flintGramBasicLightTheme = new ThemeInfo(themeInfo);
+        flintGramBasicLightTheme.name = "Flintgram basic light";
+        flintGramBasicLightTheme.assetName = "flintgram_basic_light.attheme";
+        flintGramBasicLightTheme.previewOutColor = 0xff3e927a;
+        flintGramBasicLightTheme.sortIndex = 0;
+        flintGramBasicLightTheme.setAccentColorOptions(new int[] { 0xFF3E927A });
+        themes.add(flintGramBasicLightTheme);
+        themesDict.put("Flintgram basic light", flintGramBasicLightTheme);
 
-        ThemeInfo mintGramExtendedLightTheme = new ThemeInfo(mintGramBasicLightTheme);
-        mintGramExtendedLightTheme.name = "Mintgram Extended light";
-        mintGramExtendedLightTheme.assetName = "mintgram_extended_light.attheme";
-        mintGramExtendedLightTheme.sortIndex = 1;
-        themes.add(mintGramExtendedLightTheme);
-        themesDict.put("Mintgram Extended light", mintGramExtendedLightTheme);
+        ThemeInfo flintGramExtendedLightTheme = new ThemeInfo(flintGramBasicLightTheme);
+        flintGramExtendedLightTheme.name = "Flintgram Extended light";
+        flintGramExtendedLightTheme.assetName = "flintgram_extended_light.attheme";
+        flintGramExtendedLightTheme.sortIndex = 1;
+        themes.add(flintGramExtendedLightTheme);
+        themesDict.put("Flintgram Extended light", flintGramExtendedLightTheme);
 
-        ThemeInfo mintGramBlueLightTheme = new ThemeInfo(mintGramExtendedLightTheme);
-        mintGramBlueLightTheme.name = "Material Ocean light";
-        mintGramBlueLightTheme.assetName = "mintgram_blue_light.attheme";
-        mintGramBlueLightTheme.previewOutColor = 0xffaec2f4;
-        mintGramBlueLightTheme.setAccentColorOptions(new int[] { 0xFFAEC2F4 });
-        themes.add(mintGramBlueLightTheme);
-        themesDict.put("Material Ocean light", mintGramBlueLightTheme);
-        themesDict.put("Mintgram Blue light", mintGramBlueLightTheme);
+        ThemeInfo flintGramBlueLightTheme = new ThemeInfo(flintGramExtendedLightTheme);
+        flintGramBlueLightTheme.name = "Material Ocean light";
+        flintGramBlueLightTheme.assetName = "flintgram_blue_light.attheme";
+        flintGramBlueLightTheme.previewOutColor = 0xffaec2f4;
+        flintGramBlueLightTheme.setAccentColorOptions(new int[] { 0xFFAEC2F4 });
+        themes.add(flintGramBlueLightTheme);
+        themesDict.put("Material Ocean light", flintGramBlueLightTheme);
+        themesDict.put("Flintgram Blue light", flintGramBlueLightTheme);
 
         themeInfo = new ThemeInfo();
         themeInfo.name = "Night";
@@ -4726,30 +4726,30 @@ public class Theme {
         themes.add(themeInfo);
         themesDict.put("Night", themeInfo);
 
-        ThemeInfo mintGramBasicTheme = new ThemeInfo(themeInfo);
-        mintGramBasicTheme.name = "Mintgram basic";
-        mintGramBasicTheme.assetName = "mintgram_basic.attheme";
-        mintGramBasicTheme.previewOutColor = 0xff3e927a;
-        mintGramBasicTheme.sortIndex = 0;
-        mintGramBasicTheme.setAccentColorOptions(new int[] { 0xFF3E927A });
-        themes.add(mintGramBasicTheme);
-        themesDict.put("Mintgram basic", currentNightTheme = mintGramBasicTheme);
+        ThemeInfo flintGramBasicTheme = new ThemeInfo(themeInfo);
+        flintGramBasicTheme.name = "Flintgram basic";
+        flintGramBasicTheme.assetName = "flintgram_basic.attheme";
+        flintGramBasicTheme.previewOutColor = 0xff3e927a;
+        flintGramBasicTheme.sortIndex = 0;
+        flintGramBasicTheme.setAccentColorOptions(new int[] { 0xFF3E927A });
+        themes.add(flintGramBasicTheme);
+        themesDict.put("Flintgram basic", currentNightTheme = flintGramBasicTheme);
 
-        ThemeInfo mintGramExtendedTheme = new ThemeInfo(mintGramBasicTheme);
-        mintGramExtendedTheme.name = "Mintgram Extended";
-        mintGramExtendedTheme.assetName = "mintgram_extended.attheme";
-        mintGramExtendedTheme.sortIndex = 1;
-        themes.add(mintGramExtendedTheme);
-        themesDict.put("Mintgram Extended", mintGramExtendedTheme);
+        ThemeInfo flintGramExtendedTheme = new ThemeInfo(flintGramBasicTheme);
+        flintGramExtendedTheme.name = "Flintgram Extended";
+        flintGramExtendedTheme.assetName = "flintgram_extended.attheme";
+        flintGramExtendedTheme.sortIndex = 1;
+        themes.add(flintGramExtendedTheme);
+        themesDict.put("Flintgram Extended", flintGramExtendedTheme);
 
-        ThemeInfo mintGramBlueTheme = new ThemeInfo(mintGramExtendedTheme);
-        mintGramBlueTheme.name = "Material Ocean";
-        mintGramBlueTheme.assetName = "mintgram_blue.attheme";
-        mintGramBlueTheme.previewOutColor = 0xffaec2f4;
-        mintGramBlueTheme.setAccentColorOptions(new int[] { 0xFFAEC2F4 });
-        themes.add(mintGramBlueTheme);
-        themesDict.put("Material Ocean", mintGramBlueTheme);
-        themesDict.put("Mintgram Blue", mintGramBlueTheme);
+        ThemeInfo flintGramBlueTheme = new ThemeInfo(flintGramExtendedTheme);
+        flintGramBlueTheme.name = "Material Ocean";
+        flintGramBlueTheme.assetName = "flintgram_blue.attheme";
+        flintGramBlueTheme.previewOutColor = 0xffaec2f4;
+        flintGramBlueTheme.setAccentColorOptions(new int[] { 0xFFAEC2F4 });
+        themes.add(flintGramBlueTheme);
+        themesDict.put("Material Ocean", flintGramBlueTheme);
+        themesDict.put("Flintgram Blue", flintGramBlueTheme);
 
         String themesString = themeConfig.getString("themes2", null);
 
@@ -4798,8 +4798,8 @@ public class Theme {
 
         ThemeInfo applyingTheme = null;
         SharedPreferences preferences = MessagesController.getGlobalMainSettings();
-        migrateLegacyMintGramThemeKeys(preferences, "theme", "nighttheme");
-        migrateLegacyMintGramThemeKeys(themeConfig, "lastDayTheme", "lastDarkTheme");
+        migrateLegacyFlintGramThemeKeys(preferences, "theme", "nighttheme");
+        migrateLegacyFlintGramThemeKeys(themeConfig, "lastDayTheme", "lastDarkTheme");
         try {
             final ThemeInfo themeDarkBlue = themesDict.get("Dark Blue");
 
@@ -4840,8 +4840,8 @@ public class Theme {
             }
 
             if (!preferences.contains("theme") && !themeConfig.contains("lastDayTheme")) {
-                ThemeInfo plumDayTheme = themesDict.get("Mintgram basic light");
-                ThemeInfo plumNightTheme = themesDict.get("Mintgram basic");
+                ThemeInfo plumDayTheme = themesDict.get("Flintgram basic light");
+                ThemeInfo plumNightTheme = themesDict.get("Flintgram basic");
                 if (plumDayTheme == null) {
                     plumDayTheme = defaultTheme;
                 }
@@ -4856,8 +4856,8 @@ public class Theme {
             }
 
             if (!themeConfig.getBoolean("plumBasicThemeMigrated", false)) {
-                ThemeInfo plumDayTheme = themesDict.get("Mintgram basic light");
-                ThemeInfo plumNightTheme = themesDict.get("Mintgram basic");
+                ThemeInfo plumDayTheme = themesDict.get("Flintgram basic light");
+                ThemeInfo plumNightTheme = themesDict.get("Flintgram basic");
                 if (plumNightTheme != null) {
                     applyingTheme = plumNightTheme;
                     currentDayTheme = plumDayTheme != null ? plumDayTheme : defaultTheme;
@@ -4877,8 +4877,8 @@ public class Theme {
             }
 
             if (!themeConfig.getBoolean("plumDefaultDarkThemeMigrated", false)) {
-                ThemeInfo plumDayTheme = themesDict.get("Mintgram basic light");
-                ThemeInfo plumNightTheme = themesDict.get("Mintgram basic");
+                ThemeInfo plumDayTheme = themesDict.get("Flintgram basic light");
+                ThemeInfo plumNightTheme = themesDict.get("Flintgram basic");
                 if (plumNightTheme != null) {
                     applyingTheme = plumNightTheme;
                     currentDayTheme = plumDayTheme != null ? plumDayTheme : defaultTheme;
@@ -6200,10 +6200,10 @@ public class Theme {
 
     private static void sortThemes() {
         Collections.sort(themes, (o1, o2) -> {
-            int mintgramOrder1 = getBuiltInMintgramThemeOrder(o1.name);
-            int mintgramOrder2 = getBuiltInMintgramThemeOrder(o2.name);
-            if (mintgramOrder1 != mintgramOrder2) {
-                return Integer.compare(mintgramOrder1, mintgramOrder2);
+            int flintgramOrder1 = getBuiltInFlintgramThemeOrder(o1.name);
+            int flintgramOrder2 = getBuiltInFlintgramThemeOrder(o2.name);
+            if (flintgramOrder1 != flintgramOrder2) {
+                return Integer.compare(flintgramOrder1, flintgramOrder2);
             }
             if (o1.pathToFile == null && o1.assetName == null) {
                 return -1;
@@ -6214,12 +6214,12 @@ public class Theme {
         });
     }
 
-    private static int getBuiltInMintgramThemeOrder(String name) {
-        if ("Mintgram basic".equals(name)) return 0;
-        if ("Mintgram Extended".equals(name)) return 1;
+    private static int getBuiltInFlintgramThemeOrder(String name) {
+        if ("Flintgram basic".equals(name)) return 0;
+        if ("Flintgram Extended".equals(name)) return 1;
         if ("Material Ocean".equals(name)) return 2;
-        if ("Mintgram basic light".equals(name)) return 3;
-        if ("Mintgram Extended light".equals(name)) return 4;
+        if ("Flintgram basic light".equals(name)) return 3;
+        if ("Flintgram Extended light".equals(name)) return 4;
         if ("Material Ocean light".equals(name)) return 5;
         return 6;
     }
@@ -6396,20 +6396,20 @@ public class Theme {
             return null;
         }
         switch (key) {
-            case "MintGram basic":
-                return "Mintgram basic";
-            case "MintGram basic light":
-                return "Mintgram basic light";
-            case "MintGram Extended":
-                return "Mintgram Extended";
-            case "MintGram Extended light":
-                return "Mintgram Extended light";
+            case "FlintGram basic":
+                return "Flintgram basic";
+            case "FlintGram basic light":
+                return "Flintgram basic light";
+            case "FlintGram Extended":
+                return "Flintgram Extended";
+            case "FlintGram Extended light":
+                return "Flintgram Extended light";
             default:
                 return key;
         }
     }
 
-    private static void migrateLegacyMintGramThemeKeys(SharedPreferences preferences, String... keys) {
+    private static void migrateLegacyFlintGramThemeKeys(SharedPreferences preferences, String... keys) {
         SharedPreferences.Editor editor = null;
         for (String key : keys) {
             String oldValue = preferences.getString(key, null);
@@ -7895,7 +7895,7 @@ public class Theme {
             size = 0;
             FileLog.e(e);
         }
-        if (assetName.startsWith("mintgram_") || !file.exists() || size != 0 && file.length() != size) {
+        if (assetName.startsWith("flintgram_") || !file.exists() || size != 0 && file.length() != size) {
             try (InputStream in = ApplicationLoader.applicationContext.getAssets().open(assetName)) {
                 AndroidUtilities.copyFile(in, file);
             } catch (Exception e) {
@@ -9363,7 +9363,7 @@ public class Theme {
             setDrawableColor(chat_shareIconDrawable, 0xffffffff);
             setDrawableColor(chat_replyIconDrawable, 0xffffffff);
             setDrawableColor(chat_goIconDrawable, 0xffffffff);
-            final int botButtonIconColor = isMintGramBlueThemeActive() ? 0xff132d5e : 0xffffffff;
+            final int botButtonIconColor = isFlintGramBlueThemeActive() ? 0xff132d5e : 0xffffffff;
             setDrawableColor(chat_botInlineDrawable, botButtonIconColor);
             setDrawableColor(chat_botWebViewDrawable, botButtonIconColor);
             setDrawableColor(chat_botLockDrawable, botButtonIconColor);
@@ -9763,19 +9763,22 @@ public class Theme {
     }
 
     public static boolean isPlumBasicThemeActive() {
-        return currentTheme != null && ("Mintgram basic".equals(currentTheme.name) || "Mintgram Extended".equals(currentTheme.name) || "Mintgram basic light".equals(currentTheme.name) || "Mintgram Extended light".equals(currentTheme.name));
+        return currentTheme != null && ("Flintgram basic".equals(currentTheme.name) || "Flintgram Extended".equals(currentTheme.name) || "Flintgram basic light".equals(currentTheme.name) || "Flintgram Extended light".equals(currentTheme.name));
     }
 
-    public static boolean isMintGramExtendedThemeActive() {
-        return currentTheme != null && ("Mintgram Extended".equals(currentTheme.name) || "Mintgram Extended light".equals(currentTheme.name));
+    public static boolean isFlintGramExtendedThemeActive() {
+        return currentTheme != null && ("Flintgram Extended".equals(currentTheme.name) || "Flintgram Extended light".equals(currentTheme.name));
     }
 
-    public static boolean isMintGramBlueThemeActive() {
-        return currentTheme != null && ("Material Ocean".equals(currentTheme.name) || "Material Ocean light".equals(currentTheme.name));
+    public static boolean isFlintGramBlueThemeActive() {
+        return currentTheme != null && ("Material Ocean".equals(currentTheme.name)
+                || "Material Ocean light".equals(currentTheme.name)
+                || "Flintgram Blue".equals(currentTheme.name)
+                || "Flintgram Blue light".equals(currentTheme.name));
     }
 
     public static int getColor(int key, boolean[] isDefault, boolean ignoreAnimation) {
-        if (isMintGramBlueThemeActive()) {
+        if (isFlintGramBlueThemeActive()) {
             if (key == key_chats_verifiedCheck
                     || key == key_profile_verifiedCheck
                     || key == key_chat_outBubbleSelected

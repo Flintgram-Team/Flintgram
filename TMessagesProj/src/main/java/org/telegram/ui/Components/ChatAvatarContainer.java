@@ -966,7 +966,7 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
             rightDrawableContentDescription = null;
         }
         TLRPC.User currentUser = parentFragment.getCurrentUser();
-        if (UserObject.isMintgramOfficial(currentUser)) {
+        if (UserObject.isFlintgramOfficial(currentUser)) {
             verifiedBackground = getResources().getDrawable(R.drawable.verified_area).mutate();
             verifiedBackground.setColorFilter(new PorterDuffColorFilter(0xFFAEC2F4, PorterDuff.Mode.MULTIPLY));
             verifiedCheck = getResources().getDrawable(R.drawable.verified_check).mutate();
@@ -975,9 +975,9 @@ public class ChatAvatarContainer extends FrameLayout implements NotificationCent
             titleTextView.setRightDrawable(new CombinedDrawable(verifiedBackground, verifiedCheck));
             titleTextView.setRightDrawable2(premiumOrStatusDrawable);
             rightDrawableIsScamOrVerified = true;
-            rightDrawableContentDescription = getString(R.string.MintGramOfficialAccountInfo);
+            rightDrawableContentDescription = getString(R.string.FlintGramOfficialAccountInfo);
             titleTextView.setRightDrawableOnClick(v -> BulletinFactory.of(parentFragment)
-                    .createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.MintGramOfficialAccountInfo))
+                    .createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.FlintGramOfficialAccountInfo))
                     .setDuration(3000)
                     .show());
         } else {

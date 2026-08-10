@@ -7357,7 +7357,7 @@ public class LaunchActivity extends BasePermissionsActivity implements INavigati
 
             AlertDialog.Builder builder = new AlertDialog.Builder(LaunchActivity.this);
             HashMap<String, Integer> layerColors = null;
-            if (Theme.isMintGramBlueThemeActive()) {
+            if (Theme.isFlintGramBlueThemeActive()) {
                 layerColors = new HashMap<>();
                 layerColors.put("Final.**", 0xFF132D5E);
                 layerColors.put("Rectangle Copy.**", 0xFF132D5E);

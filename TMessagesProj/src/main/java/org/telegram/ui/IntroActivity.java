@@ -143,7 +143,7 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
 
     @Override
     public View createView(Context context) {
-        titles[0] = "Mintgram";
+        titles[0] = "Flintgram";
 
 
         actionBar.setAddToContainer(false);
@@ -204,8 +204,8 @@ public class IntroActivity extends BaseFragment implements NotificationCenter.No
             if (DialogsActivity.switchingTheme) return;
             DialogsActivity.switchingTheme = true;
 
-            String dayThemeName = "Mintgram basic light";
-            String nightThemeName = "Mintgram basic";
+            String dayThemeName = "Flintgram basic light";
+            String nightThemeName = "Flintgram basic";
             boolean toDark = !Theme.isCurrentThemeDark();
             Theme.ThemeInfo themeInfo = Theme.getTheme(toDark ? nightThemeName : dayThemeName);
             if (themeInfo == null || themeInfo.isDark() != toDark) {

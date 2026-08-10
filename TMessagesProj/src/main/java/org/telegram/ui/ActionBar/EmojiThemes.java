@@ -260,16 +260,16 @@ public class EmojiThemes {
         return themeItem;
     }
 
-    public static EmojiThemes createMintGramPreviewTheme(int currentAccount, String themeName, String emoji) {
+    public static EmojiThemes createFlintGramPreviewTheme(int currentAccount, String themeName, String emoji) {
         EmojiThemes themeItem = new EmojiThemes(currentAccount);
         themeItem.emoji = emoji;
         themeItem.key = ThemeKey.ofEmoticon(themeItem.emoji);
         themeItem.chatTheme = TLRPC.ChatTheme.ofEmoticon(themeItem.emoji);
 
         boolean blue = "Material Ocean".equals(themeName);
-        boolean extended = "Mintgram Extended".equals(themeName);
-        Theme.ThemeInfo lightThemeInfo = Theme.getTheme(blue ? "Material Ocean light" : extended ? "Mintgram Extended light" : "Mintgram basic light");
-        Theme.ThemeInfo darkThemeInfo = Theme.getTheme(blue ? "Material Ocean" : extended ? "Mintgram Extended" : "Mintgram basic");
+        boolean extended = "Flintgram Extended".equals(themeName);
+        Theme.ThemeInfo lightThemeInfo = Theme.getTheme(blue ? "Material Ocean light" : extended ? "Flintgram Extended light" : "Flintgram basic light");
+        Theme.ThemeInfo darkThemeInfo = Theme.getTheme(blue ? "Material Ocean" : extended ? "Flintgram Extended" : "Flintgram basic");
         for (int i = 0; i < 4; i++) {
             Theme.ThemeInfo themeInfo = i < 2 ? lightThemeInfo : darkThemeInfo;
             ThemeItem item = new ThemeItem();

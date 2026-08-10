@@ -54,7 +54,7 @@ import org.telegram.ui.Components.RecyclerListView;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MintGramSettingsActivity extends BaseFragment {
+public class FlintGramSettingsActivity extends BaseFragment {
 
     private RecyclerListView listView;
     private ListAdapter adapter;
@@ -78,10 +78,10 @@ public class MintGramSettingsActivity extends BaseFragment {
     private static final int VIEW_TYPE_SUPPORT_INFO = 14;
     private static final int VIEW_TYPE_CUSTOMIZATION_BLOCK = 15;
 
-    public MintGramSettingsActivity() {
+    public FlintGramSettingsActivity() {
     }
 
-    public MintGramSettingsActivity(int section) {
+    public FlintGramSettingsActivity(int section) {
         selectedSection = section;
     }
 
@@ -123,39 +123,39 @@ public class MintGramSettingsActivity extends BaseFragment {
         items.clear();
         if (selectedSection == -1) {
             items.add(new ItemInner(VIEW_TYPE_BRAND_HEADER, 0, null));
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 1, LocaleController.getString(R.string.MintGramFunctions)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 1, LocaleController.getString(R.string.FlintGramFunctions)));
             items.add(new ItemInner(VIEW_TYPE_SECTION_BLOCK, 2, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 6, null));
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 19, LocaleController.getString(R.string.MintGramLinks)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 19, LocaleController.getString(R.string.FlintGramLinks)));
             items.add(new ItemInner(VIEW_TYPE_LINKS_BLOCK, 20, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 24, null));
         } else if (selectedSection == 0) {
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 4, LocaleController.getString(R.string.MintGramMainSection)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 4, LocaleController.getString(R.string.FlintGramMainSection)));
             items.add(new ItemInner(VIEW_TYPE_PRIVACY_BLOCK, 5, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 6, null));
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 7, LocaleController.getString(R.string.MintGramGhostMode)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 7, LocaleController.getString(R.string.FlintGramGhostMode)));
             items.add(new ItemInner(VIEW_TYPE_GHOST_BLOCK, 8, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 9, null));
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 10, LocaleController.getString(R.string.MintGramFeatures)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 10, LocaleController.getString(R.string.FlintGramFeatures)));
             items.add(new ItemInner(VIEW_TYPE_FEATURES_BLOCK, 11, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 12, null));
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 13, LocaleController.getString(R.string.MintGramMaps)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 13, LocaleController.getString(R.string.FlintGramMaps)));
             items.add(new ItemInner(VIEW_TYPE_MAPS_BLOCK, 14, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 15, createYandexAgreementText()));
-            items.add(new ItemInner(VIEW_TYPE_SHADOW, 16, LocaleController.getString(R.string.MintGramFeaturesInfo)));
+            items.add(new ItemInner(VIEW_TYPE_SHADOW, 16, LocaleController.getString(R.string.FlintGramFeaturesInfo)));
         } else if (selectedSection == 1) {
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 22, LocaleController.getString(R.string.MintGramCustomizationSection)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 22, LocaleController.getString(R.string.FlintGramCustomizationSection)));
             items.add(new ItemInner(VIEW_TYPE_CUSTOMIZATION_BLOCK, 17, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 18, null));
         } else if (selectedSection == 2) {
-            items.add(new ItemInner(VIEW_TYPE_BIG_HEADER, 23, LocaleController.getString(R.string.MintGramOtherSection)));
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 27, LocaleController.getString(R.string.MintGramSupportHeader)));
+            items.add(new ItemInner(VIEW_TYPE_BIG_HEADER, 23, LocaleController.getString(R.string.FlintGramOtherSection)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 27, LocaleController.getString(R.string.FlintGramSupportHeader)));
             items.add(new ItemInner(VIEW_TYPE_OTHER_SUPPORT_BLOCK, 28, null));
             items.add(new ItemInner(VIEW_TYPE_SUPPORT_INFO, 29, createSupportInfoText()));
             items.add(new ItemInner(VIEW_TYPE_OTHER_ACTIONS_BLOCK, 30, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 31, null));
         } else if (selectedSection == 3) {
-            items.add(new ItemInner(VIEW_TYPE_HEADER, 24, LocaleController.getString(R.string.MintGramHelpSection)));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 24, LocaleController.getString(R.string.FlintGramHelpSection)));
             items.add(new ItemInner(VIEW_TYPE_LINKS_BLOCK, 25, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 26, null));
         }
@@ -165,8 +165,8 @@ public class MintGramSettingsActivity extends BaseFragment {
     }
 
     private CharSequence createYandexAgreementText() {
-        String text = LocaleController.getString(R.string.MintGramYandexMapsAgreement);
-        String link = LocaleController.getString(R.string.MintGramYandexMapsAgreementLink);
+        String text = LocaleController.getString(R.string.FlintGramYandexMapsAgreement);
+        String link = LocaleController.getString(R.string.FlintGramYandexMapsAgreementLink);
         SpannableString spannable = new SpannableString(text);
         int start = text.indexOf(link);
         if (start >= 0) {
@@ -176,8 +176,8 @@ public class MintGramSettingsActivity extends BaseFragment {
     }
 
     private CharSequence createSupportInfoText() {
-        String text = LocaleController.getString(R.string.MintGramSupportDevelopmentInfo);
-        String colored = LocaleController.getString(R.string.MintGramSupportDevelopmentAccent);
+        String text = LocaleController.getString(R.string.FlintGramSupportDevelopmentInfo);
+        String colored = LocaleController.getString(R.string.FlintGramSupportDevelopmentAccent);
         SpannableString spannable = new SpannableString(text);
         int start = text.indexOf(colored);
         if (start >= 0) {
@@ -352,8 +352,8 @@ public class MintGramSettingsActivity extends BaseFragment {
             setPadding(0, 0, 0, 0);
 
             logoView = new ImageView(context);
-            logoView.setImageResource(R.drawable.mintgram_logo_icon);
-            if (Theme.isMintGramBlueThemeActive()) {
+            logoView.setImageResource(R.drawable.flintgram_logo_icon);
+            if (Theme.isFlintGramBlueThemeActive()) {
                 logoView.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
             }
             logoView.setScaleType(ImageView.ScaleType.FIT_CENTER);
@@ -362,7 +362,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             addView(logoView, LayoutHelper.createFrame(108, 108, Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 42, 0, 0));
 
             titleView = new TextView(context);
-            titleView.setText("Mintgram");
+            titleView.setText("Flintgram");
             titleView.setTextSize(30);
             titleView.setTypeface(AndroidUtilities.bold());
             titleView.setGravity(Gravity.CENTER);
@@ -385,7 +385,7 @@ public class MintGramSettingsActivity extends BaseFragment {
 
         public void bind() {
             logoView.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(28), getAccentColor()));
-            logoView.setColorFilter(Theme.isMintGramBlueThemeActive() ? new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN) : null);
+            logoView.setColorFilter(Theme.isFlintGramBlueThemeActive() ? new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN) : null);
             versionView.setText(getVersionText());
         }
     }
@@ -413,18 +413,18 @@ public class MintGramSettingsActivity extends BaseFragment {
             block.addView(otherCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
             block.addView(helpCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
-            mainCell.setOnClickListener(v -> presentFragment(new MintGramSettingsActivity(0)));
-            customizationCell.setOnClickListener(v -> presentFragment(new MintGramSettingsActivity(1)));
-            otherCell.setOnClickListener(v -> presentFragment(new MintGramSettingsActivity(2)));
+            mainCell.setOnClickListener(v -> presentFragment(new FlintGramSettingsActivity(0)));
+            customizationCell.setOnClickListener(v -> presentFragment(new FlintGramSettingsActivity(1)));
+            otherCell.setOnClickListener(v -> presentFragment(new FlintGramSettingsActivity(2)));
             helpCell.setOnClickListener(v -> openTelegramLink(getContext(), "mintsupport"));
         }
 
         public void bind() {
-            bindBlockRow(mainCell, LocaleController.getString(R.string.MintGramMainSection), R.drawable.settings_features, true);
-            bindBlockRow(customizationCell, LocaleController.getString(R.string.MintGramCustomizationSection), R.drawable.settings_chat, true);
+            bindBlockRow(mainCell, LocaleController.getString(R.string.FlintGramMainSection), R.drawable.settings_features, true);
+            bindBlockRow(customizationCell, LocaleController.getString(R.string.FlintGramCustomizationSection), R.drawable.settings_chat, true);
             customizationCell.setAlpha(1f);
-            bindBlockRow(otherCell, LocaleController.getString(R.string.MintGramOtherSection), R.drawable.settings_policy, true);
-            bindBlockRow(helpCell, LocaleController.getString(R.string.MintGramHelpSection), R.drawable.settings_ask, false);
+            bindBlockRow(otherCell, LocaleController.getString(R.string.FlintGramOtherSection), R.drawable.settings_policy, true);
+            bindBlockRow(helpCell, LocaleController.getString(R.string.FlintGramHelpSection), R.drawable.settings_ask, false);
         }
 
         @Override
@@ -484,17 +484,17 @@ public class MintGramSettingsActivity extends BaseFragment {
             block.addView(supportCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
             block.addView(faqCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
-            channelCell.setOnClickListener(v -> openTelegramLink(getContext(), "mintgram_tg"));
-            chatCell.setOnClickListener(v -> openTelegramLink(getContext(), "mintgram_chat"));
+            channelCell.setOnClickListener(v -> openTelegramLink(getContext(), "flintgram_tg"));
+            chatCell.setOnClickListener(v -> openTelegramLink(getContext(), "flintgram_chat"));
             supportCell.setOnClickListener(v -> openTelegramLink(getContext(), "mintsupport"));
-            faqCell.setOnClickListener(v -> openTelegramLink(getContext(), "mintgram_faq"));
+            faqCell.setOnClickListener(v -> openTelegramLink(getContext(), "flintgram_faq"));
         }
 
         public void bind() {
-            bindBlockRow(channelCell, LocaleController.getString(R.string.MintGramChannel), "@mintgram_tg", R.drawable.settings_channel, true);
-            bindBlockRow(chatCell, LocaleController.getString(R.string.MintGramChat), "@mintgram_chat", R.drawable.settings_group, true);
-            bindBlockRow(supportCell, LocaleController.getString(R.string.MintGramSupport), "@mintsupport", R.drawable.settings_ask, true);
-            bindBlockRow(faqCell, LocaleController.getString(R.string.MintGramFAQ), "@mintgram_faq", R.drawable.settings_faq, false);
+            bindBlockRow(channelCell, LocaleController.getString(R.string.FlintGramChannel), "@flintgram_tg", R.drawable.settings_channel, true);
+            bindBlockRow(chatCell, LocaleController.getString(R.string.FlintGramChat), "@flintgram_chat", R.drawable.settings_group, true);
+            bindBlockRow(supportCell, LocaleController.getString(R.string.FlintGramSupport), "@mintsupport", R.drawable.settings_ask, true);
+            bindBlockRow(faqCell, LocaleController.getString(R.string.FlintGramFAQ), "@flintgram_faq", R.drawable.settings_faq, false);
         }
 
         @Override
@@ -551,7 +551,7 @@ public class MintGramSettingsActivity extends BaseFragment {
     }
 
     private static int getAccentColor() {
-        return Theme.isMintGramBlueThemeActive() ? 0xFFAEC2F4 : 0xFF3E927A;
+        return Theme.isFlintGramBlueThemeActive() ? 0xFFAEC2F4 : 0xFF3E927A;
     }
 
     private static int getSupportColor() {
@@ -581,7 +581,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             block.addView(cryptoBotCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 54));
             block.addView(cardCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 54));
 
-            View.OnClickListener unavailableClick = v -> Toast.makeText(getContext(), LocaleController.getString(R.string.MintGramSupportTemporarilyUnavailable), Toast.LENGTH_SHORT).show();
+            View.OnClickListener unavailableClick = v -> Toast.makeText(getContext(), LocaleController.getString(R.string.FlintGramSupportTemporarilyUnavailable), Toast.LENGTH_SHORT).show();
             tonkeeperCell.setOnClickListener(unavailableClick);
             tonSpaceCell.setOnClickListener(unavailableClick);
             cryptoBotCell.setOnClickListener(unavailableClick);
@@ -593,9 +593,9 @@ public class MintGramSettingsActivity extends BaseFragment {
             tonkeeperCell.setAlpha(0.45f);
             tonSpaceCell.bind("TON Space", R.drawable.settings_wallet, 0xFF29A8EA, false, true);
             tonSpaceCell.setAlpha(0.45f);
-            cryptoBotCell.bind("CryptoBot", R.drawable.mintgram_cryptobot, 0xFF2CA8DF, true, true);
+            cryptoBotCell.bind("CryptoBot", R.drawable.flintgram_cryptobot, 0xFF2CA8DF, true, true);
             cryptoBotCell.setAlpha(0.45f);
-            cardCell.bind(LocaleController.getString(R.string.MintGramCard), R.drawable.mintgram_yoomoney, 0xFF7533EA, true, false);
+            cardCell.bind(LocaleController.getString(R.string.FlintGramCard), R.drawable.flintgram_yoomoney, 0xFF7533EA, true, false);
             cardCell.setAlpha(1.0f);
         }
 
@@ -678,10 +678,10 @@ public class MintGramSettingsActivity extends BaseFragment {
         }
 
         public void bind() {
-            bindBlockRow(badgeCell, LocaleController.getString(R.string.MintGramGetBadge), R.drawable.settings_gift, true);
-            bindBlockRow(exportCell, LocaleController.getString(R.string.MintGramExportSettings), R.drawable.settings_features, true);
-            bindBlockRow(resetCell, LocaleController.getString(R.string.MintGramResetSettings), R.drawable.settings_policy, true);
-            bindBlockRow(deleteCell, LocaleController.getString(R.string.MintGramDeleteAccount), R.drawable.msg_delete, false);
+            bindBlockRow(badgeCell, LocaleController.getString(R.string.FlintGramGetBadge), R.drawable.settings_gift, true);
+            bindBlockRow(exportCell, LocaleController.getString(R.string.FlintGramExportSettings), R.drawable.settings_features, true);
+            bindBlockRow(resetCell, LocaleController.getString(R.string.FlintGramResetSettings), R.drawable.settings_policy, true);
+            bindBlockRow(deleteCell, LocaleController.getString(R.string.FlintGramDeleteAccount), R.drawable.msg_delete, false);
             deleteCell.setTextColor(getSupportColor());
         }
 
@@ -704,7 +704,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             layout.addView(logoView, LayoutHelper.createLinear(68, 62, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 6));
 
             TextView titleView = new TextView(context);
-            titleView.setText(LocaleController.getString(R.string.MintGramSupportSheetTitle));
+            titleView.setText(LocaleController.getString(R.string.FlintGramSupportSheetTitle));
             titleView.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
             titleView.setTextSize(19);
             titleView.setGravity(Gravity.CENTER);
@@ -712,16 +712,16 @@ public class MintGramSettingsActivity extends BaseFragment {
             layout.addView(titleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 0, 0, 0, 4));
 
             TextView subtitleView = new TextView(context);
-            subtitleView.setText(LocaleController.getString(R.string.MintGramSupportSheetSubtitle));
+            subtitleView.setText(LocaleController.getString(R.string.FlintGramSupportSheetSubtitle));
             subtitleView.setTextColor(Theme.getColor(Theme.key_dialogTextGray2));
             subtitleView.setTextSize(13);
             subtitleView.setGravity(Gravity.CENTER);
             subtitleView.setLineSpacing(AndroidUtilities.dp(1), 1f);
             layout.addView(subtitleView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 8, 0, 8, 9));
 
-            addFeature(layout, R.drawable.settings_stars, LocaleController.getString(R.string.MintGramSupportSheetDonateTitle), LocaleController.getString(R.string.MintGramSupportSheetDonateText));
-            addFeature(layout, R.drawable.settings_features, LocaleController.getString(R.string.MintGramSupportSheetConfirmTitle), LocaleController.getString(R.string.MintGramSupportSheetConfirmText));
-            addFeature(layout, R.drawable.settings_gift, LocaleController.getString(R.string.MintGramSupportSheetBadgeTitle), LocaleController.getString(R.string.MintGramSupportSheetBadgeText));
+            addFeature(layout, R.drawable.settings_stars, LocaleController.getString(R.string.FlintGramSupportSheetDonateTitle), LocaleController.getString(R.string.FlintGramSupportSheetDonateText));
+            addFeature(layout, R.drawable.settings_features, LocaleController.getString(R.string.FlintGramSupportSheetConfirmTitle), LocaleController.getString(R.string.FlintGramSupportSheetConfirmText));
+            addFeature(layout, R.drawable.settings_gift, LocaleController.getString(R.string.FlintGramSupportSheetBadgeTitle), LocaleController.getString(R.string.FlintGramSupportSheetBadgeText));
 
             TextView closeView = new TextView(context);
             closeView.setText(LocaleController.getString(R.string.Close));
@@ -817,17 +817,17 @@ public class MintGramSettingsActivity extends BaseFragment {
     private static void exportSettings(Context context) {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, LocaleController.getString(R.string.MintGramExportSettings));
+        intent.putExtra(Intent.EXTRA_SUBJECT, LocaleController.getString(R.string.FlintGramExportSettings));
         intent.putExtra(Intent.EXTRA_TEXT, buildExportText());
         try {
-            context.startActivity(Intent.createChooser(intent, LocaleController.getString(R.string.MintGramExportSettings)));
+            context.startActivity(Intent.createChooser(intent, LocaleController.getString(R.string.FlintGramExportSettings)));
         } catch (Exception e) {
-            Toast.makeText(context, LocaleController.getString(R.string.MintGramExportUnavailable), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, LocaleController.getString(R.string.FlintGramExportUnavailable), Toast.LENGTH_SHORT).show();
         }
     }
 
     private static String buildExportText() {
-        return "Mintgram 12.0.3\n"
+        return "Flintgram 12.0.3\n"
                 + "hideReadStatus=" + SharedConfig.hideReadReceipts + "\n"
                 + "keepDeletedMessages=" + SharedConfig.keepDeletedMessages + "\n"
                 + "ghostHideOnline=" + SharedConfig.ghostHideOnline + "\n"
@@ -838,17 +838,17 @@ public class MintGramSettingsActivity extends BaseFragment {
                 + "ghostHideUploadPhoto=" + SharedConfig.ghostHideUploadPhoto + "\n"
                 + "ghostHideUploadFile=" + SharedConfig.ghostHideUploadFile + "\n"
                 + "deletedMessageStyle=" + SharedConfig.deletedMessageStyle + "\n"
-                + "mapProvider=" + SharedConfig.mintGramMapProvider + "\n"
-                + "foldersBottom=" + SharedConfig.mintGramFoldersBottom + "\n"
+                + "mapProvider=" + SharedConfig.flintGramMapProvider + "\n"
+                + "foldersBottom=" + SharedConfig.flintGramFoldersBottom + "\n"
                 + "archiveHidden=" + SharedConfig.archiveHidden + "\n"
-                + "folderTitleMode=" + SharedConfig.mintGramFolderTitleMode + "\n"
+                + "folderTitleMode=" + SharedConfig.flintGramFolderTitleMode + "\n"
                 + "messageSize=" + SharedConfig.fontSize;
     }
 
     private static void showResetSettingsDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(LocaleController.getString(R.string.MintGramResetSettings));
-        builder.setMessage(LocaleController.getString(R.string.MintGramResetSettingsText));
+        builder.setTitle(LocaleController.getString(R.string.FlintGramResetSettings));
+        builder.setMessage(LocaleController.getString(R.string.FlintGramResetSettingsText));
         builder.setPositiveButton(LocaleController.getString(R.string.Reset), (dialogInterface, i) -> resetSettings(context));
         builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
         builder.show();
@@ -866,12 +866,12 @@ public class MintGramSettingsActivity extends BaseFragment {
         SharedConfig.setGhostHideUploadPhoto(false);
         SharedConfig.setGhostHideUploadFile(false);
         SharedConfig.setDeletedMessageStyle(0);
-        SharedConfig.setMintGramMapProvider(0);
-        SharedConfig.setMintGramFoldersBottom(false);
+        SharedConfig.setFlintGramMapProvider(0);
+        SharedConfig.setFlintGramFoldersBottom(false);
         if (SharedConfig.archiveHidden) {
             SharedConfig.toggleArchiveHidden();
         }
-        SharedConfig.setMintGramFolderTitleMode(0);
+        SharedConfig.setFlintGramFolderTitleMode(0);
         SharedConfig.fontSize = AndroidUtilities.isTablet() && !AndroidUtilities.isFold() ? 18 : 16;
         SharedConfig.fontSizeIsDefault = true;
         SharedPreferences preferences = context.getSharedPreferences("mainconfig", Context.MODE_PRIVATE);
@@ -881,14 +881,14 @@ public class MintGramSettingsActivity extends BaseFragment {
             NotificationCenter.getInstance(account).postNotificationName(NotificationCenter.updateInterfaces, MessagesController.UPDATE_MASK_AVATAR | MessagesController.UPDATE_MASK_NAME);
             NotificationCenter.getInstance(account).postNotificationName(NotificationCenter.dialogsNeedReload, true);
         }
-        Toast.makeText(context, LocaleController.getString(R.string.MintGramSettingsResetDone), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, LocaleController.getString(R.string.FlintGramSettingsResetDone), Toast.LENGTH_SHORT).show();
     }
 
     private static void showDeleteAccountDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(LocaleController.getString(R.string.MintGramDeleteAccount));
-        builder.setMessage(LocaleController.getString(R.string.MintGramDeleteAccountText));
-        builder.setPositiveButton(LocaleController.getString(R.string.MintGramDeleteAccountOpen), (dialogInterface, i) -> Browser.openUrl(context, "https://my.telegram.org/delete"));
+        builder.setTitle(LocaleController.getString(R.string.FlintGramDeleteAccount));
+        builder.setMessage(LocaleController.getString(R.string.FlintGramDeleteAccountText));
+        builder.setPositiveButton(LocaleController.getString(R.string.FlintGramDeleteAccountOpen), (dialogInterface, i) -> Browser.openUrl(context, "https://my.telegram.org/delete"));
         builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
         builder.show();
     }
@@ -901,7 +901,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             super(context);
             setWillNotDraw(false);
             ImageView logo = new ImageView(context);
-            logo.setImageResource(R.drawable.mintgram_logo_icon);
+            logo.setImageResource(R.drawable.flintgram_logo_icon);
             logo.setScaleType(ImageView.ScaleType.FIT_CENTER);
             addView(logo, LayoutHelper.createFrame(40, 40, Gravity.CENTER, 0, -AndroidUtilities.dp(1), 0, 0));
         }
@@ -966,13 +966,13 @@ public class MintGramSettingsActivity extends BaseFragment {
             controls.addView(valueView, LayoutHelper.createFrame(48, 34, Gravity.LEFT | Gravity.TOP, 190, 0, 0, 0));
 
             TextView smallView = new TextView(context);
-            smallView.setText(LocaleController.getString(R.string.MintGramMessageSizeSmall));
+            smallView.setText(LocaleController.getString(R.string.FlintGramMessageSizeSmall));
             smallView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             smallView.setTextSize(17);
             controls.addView(smallView, LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, 30, Gravity.LEFT | Gravity.TOP, 0, 54, 0, 0));
 
             TextView largeView = new TextView(context);
-            largeView.setText(LocaleController.getString(R.string.MintGramMessageSizeLarge));
+            largeView.setText(LocaleController.getString(R.string.FlintGramMessageSizeLarge));
             largeView.setTextColor(Theme.getColor(Theme.key_windowBackgroundWhiteGrayText));
             largeView.setTextSize(17);
             largeView.setGravity(Gravity.RIGHT);
@@ -1016,7 +1016,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             previewContainer.addView(photoBubble, LayoutHelper.createFrame(210, 178, Gravity.RIGHT | Gravity.TOP, 0, 18, 28, 0));
 
             ImageView photoLogo = new ImageView(context);
-            photoLogo.setImageResource(R.drawable.mintgram_logo_icon);
+            photoLogo.setImageResource(R.drawable.flintgram_logo_icon);
             photoLogo.setAlpha(0.28f);
             photoLogo.setScaleType(ImageView.ScaleType.FIT_CENTER);
             photoBubble.addView(photoLogo, LayoutHelper.createFrame(96, 96, Gravity.CENTER));
@@ -1092,9 +1092,9 @@ public class MintGramSettingsActivity extends BaseFragment {
         }
 
         public void bind() {
-            titleView.setText(LocaleController.getString(R.string.MintGramMessageSize));
-            previewNameView.setText(LocaleController.getString(R.string.MintGramPreviewSender));
-            previewMessageView.setText(LocaleController.getString(R.string.MintGramPreviewMessage));
+            titleView.setText(LocaleController.getString(R.string.FlintGramMessageSize));
+            previewNameView.setText(LocaleController.getString(R.string.FlintGramPreviewSender));
+            previewMessageView.setText(LocaleController.getString(R.string.FlintGramPreviewMessage));
             int size = Math.max(MIN_SIZE, Math.min(MAX_SIZE, SharedConfig.fontSize));
             sliderView.setSize(size);
             updatePreview(size);
@@ -1234,21 +1234,21 @@ public class MintGramSettingsActivity extends BaseFragment {
             layout.setPadding(0, AndroidUtilities.dp(6), 0, AndroidUtilities.dp(6));
 
             AlertDialog dialog = new AlertDialog.Builder(context)
-                    .setTitle(LocaleController.getString(R.string.MintGramDeletedColorTitle))
+                    .setTitle(LocaleController.getString(R.string.FlintGramDeletedColorTitle))
                     .setView(layout)
-                    .setNegativeButton(LocaleController.getString(R.string.MintGramEnableKeepDeleted), (dialogInterface, which) -> {
+                    .setNegativeButton(LocaleController.getString(R.string.FlintGramEnableKeepDeleted), (dialogInterface, which) -> {
                         SharedConfig.setKeepDeletedMessages(true);
                         bind();
                     })
-                    .setPositiveButton(LocaleController.getString(R.string.MintGramDisableKeepDeleted), (dialogInterface, which) -> {
+                    .setPositiveButton(LocaleController.getString(R.string.FlintGramDisableKeepDeleted), (dialogInterface, which) -> {
                         SharedConfig.setKeepDeletedMessages(false);
                         bind();
                     })
                     .create();
 
-            addColorRow(layout, LocaleController.getString(R.string.MintGramDeletedStyleRed), 0xFFE53935, 0, dialog);
-            addColorRow(layout, LocaleController.getString(R.string.MintGramDeletedStyleBlue), 0xFF1E88E5, 1, dialog);
-            addColorRow(layout, LocaleController.getString(R.string.MintGramDeletedStyleWhite), 0xFFFFFFFF, 2, dialog);
+            addColorRow(layout, LocaleController.getString(R.string.FlintGramDeletedStyleRed), 0xFFE53935, 0, dialog);
+            addColorRow(layout, LocaleController.getString(R.string.FlintGramDeletedStyleBlue), 0xFF1E88E5, 1, dialog);
+            addColorRow(layout, LocaleController.getString(R.string.FlintGramDeletedStyleWhite), 0xFFFFFFFF, 2, dialog);
             dialog.show();
         }
 
@@ -1286,8 +1286,8 @@ public class MintGramSettingsActivity extends BaseFragment {
         }
 
         public void bind() {
-            hideReadCell.setTextAndCheck(LocaleController.getString(R.string.MintGramHideReadReceipts), SharedConfig.hideReadReceipts, true);
-            keepDeletedCell.setTextAndCheck(LocaleController.getString(R.string.MintGramKeepDeletedMessages), SharedConfig.keepDeletedMessages, false);
+            hideReadCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramHideReadReceipts), SharedConfig.hideReadReceipts, true);
+            keepDeletedCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramKeepDeletedMessages), SharedConfig.keepDeletedMessages, false);
         }
     }
 
@@ -1339,7 +1339,7 @@ public class MintGramSettingsActivity extends BaseFragment {
             block.addView(titleBothCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
             foldersBottomCell.setOnClickListener(v -> {
-                SharedConfig.setMintGramFoldersBottom(!SharedConfig.mintGramFoldersBottom);
+                SharedConfig.setFlintGramFoldersBottom(!SharedConfig.flintGramFoldersBottom);
                 bind();
                 notifyFoldersChanged();
             });
@@ -1354,30 +1354,30 @@ public class MintGramSettingsActivity extends BaseFragment {
         }
 
         public void bind() {
-            titleView.setText(LocaleController.getString(R.string.MintGramChatFolders));
-            titleModeView.setText(LocaleController.getString(R.string.MintGramFolderTitleMode));
+            titleView.setText(LocaleController.getString(R.string.FlintGramChatFolders));
+            titleModeView.setText(LocaleController.getString(R.string.FlintGramFolderTitleMode));
             previewView.invalidate();
-            foldersBottomCell.setTextAndCheck(LocaleController.getString(R.string.MintGramFoldersBottom), SharedConfig.mintGramFoldersBottom, true);
+            foldersBottomCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramFoldersBottom), SharedConfig.flintGramFoldersBottom, true);
             hideArchiveCell.setTextAndValueAndCheck(
-                    LocaleController.getString(R.string.MintGramHideArchive),
-                    LocaleController.getString(R.string.MintGramHideArchiveInfo),
+                    LocaleController.getString(R.string.FlintGramHideArchive),
+                    LocaleController.getString(R.string.FlintGramHideArchiveInfo),
                     SharedConfig.archiveHidden,
                     true,
                     true
             );
-            bindTitleRow(titleNameCell, LocaleController.getString(R.string.MintGramFolderTitleName), SharedConfig.mintGramFolderTitleMode == 0, true);
-            bindTitleRow(titleIconCell, LocaleController.getString(R.string.MintGramFolderTitleIcon), SharedConfig.mintGramFolderTitleMode == 1, true);
-            bindTitleRow(titleBothCell, LocaleController.getString(R.string.MintGramFolderTitleBoth), SharedConfig.mintGramFolderTitleMode == 2, false);
+            bindTitleRow(titleNameCell, LocaleController.getString(R.string.FlintGramFolderTitleName), SharedConfig.flintGramFolderTitleMode == 0, true);
+            bindTitleRow(titleIconCell, LocaleController.getString(R.string.FlintGramFolderTitleIcon), SharedConfig.flintGramFolderTitleMode == 1, true);
+            bindTitleRow(titleBothCell, LocaleController.getString(R.string.FlintGramFolderTitleBoth), SharedConfig.flintGramFolderTitleMode == 2, false);
         }
 
         private void setTitleMode(int mode) {
-            SharedConfig.setMintGramFolderTitleMode(mode);
+            SharedConfig.setFlintGramFolderTitleMode(mode);
             bind();
             notifyFoldersChanged();
         }
 
         private void bindTitleRow(TextSettingsCell cell, CharSequence text, boolean selected, boolean divider) {
-            cell.setTextAndValue(text, selected ? LocaleController.getString(R.string.MintGramSelected) : null, true, divider);
+            cell.setTextAndValue(text, selected ? LocaleController.getString(R.string.FlintGramSelected) : null, true, divider);
             cell.setTextValueColor(getAccentColor());
         }
 
@@ -1419,7 +1419,7 @@ public class MintGramSettingsActivity extends BaseFragment {
                     LocaleController.getString(R.string.FolderLinkPreviewRight)
             };
             String[] icons = {"●", "◌", "◆"};
-            int mode = SharedConfig.mintGramFolderTitleMode;
+            int mode = SharedConfig.flintGramFolderTitleMode;
             int x = left + AndroidUtilities.dp(7);
             for (int i = 0; i < names.length; i++) {
                 String text;
@@ -1512,13 +1512,13 @@ public class MintGramSettingsActivity extends BaseFragment {
         }
 
         public void bind() {
-            hideOnlineCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideOnline), SharedConfig.ghostHideOnline, true);
-            hideTypingCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideTyping), SharedConfig.ghostHideTyping, true);
-            hideRecordVideoCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideRecordVideo), SharedConfig.ghostHideRecordVideo, true);
-            hideUploadVideoCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideUploadVideo), SharedConfig.ghostHideUploadVideo, true);
-            hideRecordVoiceCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideRecordVoice), SharedConfig.ghostHideRecordVoice, true);
-            hideUploadPhotoCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideUploadPhoto), SharedConfig.ghostHideUploadPhoto, true);
-            hideUploadFileCell.setTextAndCheck(LocaleController.getString(R.string.MintGramGhostHideUploadFile), SharedConfig.ghostHideUploadFile, false);
+            hideOnlineCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideOnline), SharedConfig.ghostHideOnline, true);
+            hideTypingCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideTyping), SharedConfig.ghostHideTyping, true);
+            hideRecordVideoCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideRecordVideo), SharedConfig.ghostHideRecordVideo, true);
+            hideUploadVideoCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideUploadVideo), SharedConfig.ghostHideUploadVideo, true);
+            hideRecordVoiceCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideRecordVoice), SharedConfig.ghostHideRecordVoice, true);
+            hideUploadPhotoCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideUploadPhoto), SharedConfig.ghostHideUploadPhoto, true);
+            hideUploadFileCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramGhostHideUploadFile), SharedConfig.ghostHideUploadFile, false);
         }
     }
 
@@ -1541,13 +1541,13 @@ public class MintGramSettingsActivity extends BaseFragment {
 
             freeTranscriptionCell.setOnClickListener(v -> {
                 SharedConfig.setPlumFreeVoiceTranscription(false);
-                Toast.makeText(context, LocaleController.getString(R.string.MintGramTranscriptionTemporarilyUnavailable), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, LocaleController.getString(R.string.FlintGramTranscriptionTemporarilyUnavailable), Toast.LENGTH_SHORT).show();
                 bind();
             });
         }
 
         public void bind() {
-            freeTranscriptionCell.setTextAndCheck(LocaleController.getString(R.string.MintGramFreeVoiceTranscription), false, true);
+            freeTranscriptionCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramFreeVoiceTranscription), false, true);
             freeTranscriptionCell.setEnabled(false, null);
             block.setAlpha(0.62f);
         }
@@ -1570,13 +1570,13 @@ public class MintGramSettingsActivity extends BaseFragment {
             block.addView(yandexMapsCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
             yandexMapsCell.setOnClickListener(v -> {
-                SharedConfig.setMintGramMapProvider(SharedConfig.mintGramMapProvider == 2 ? 0 : 2);
+                SharedConfig.setFlintGramMapProvider(SharedConfig.flintGramMapProvider == 2 ? 0 : 2);
                 bind();
             });
         }
 
         public void bind() {
-            yandexMapsCell.setTextAndCheck(LocaleController.getString(R.string.MintGramUseYandexMaps), SharedConfig.mintGramMapProvider == 2, false);
+            yandexMapsCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramUseYandexMaps), SharedConfig.flintGramMapProvider == 2, false);
         }
     }
 

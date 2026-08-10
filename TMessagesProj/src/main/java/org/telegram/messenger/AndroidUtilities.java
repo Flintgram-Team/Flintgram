@@ -2908,7 +2908,7 @@ public class AndroidUtilities {
         if (provider != -1) {
             return provider;
         }
-        switch (SharedConfig.mintGramMapProvider) {
+        switch (SharedConfig.flintGramMapProvider) {
             case 1:
                 return 4;
             case 2:
@@ -2920,22 +2920,22 @@ public class AndroidUtilities {
         }
     }
 
-    public static String getMintGramMapProviderName() {
-        switch (SharedConfig.mintGramMapProvider) {
+    public static String getFlintGramMapProviderName() {
+        switch (SharedConfig.flintGramMapProvider) {
             case 1:
                 return LocaleController.getString(R.string.MapPreviewProviderGoogle);
             case 2:
                 return LocaleController.getString(R.string.MapPreviewProviderYandex);
             case 3:
-                return LocaleController.getString(R.string.MintGramMapProviderOpenStreetMap);
+                return LocaleController.getString(R.string.FlintGramMapProviderOpenStreetMap);
             default:
-                return LocaleController.getString(R.string.MintGramMapProviderDefault);
+                return LocaleController.getString(R.string.FlintGramMapProviderDefault);
         }
     }
 
     public static Intent createMapsIntent(double lat, double lon) {
         String uri;
-        switch (SharedConfig.mintGramMapProvider) {
+        switch (SharedConfig.flintGramMapProvider) {
             case 2:
                 uri = String.format(Locale.US, "https://yandex.ru/maps/?pt=%.6f,%.6f&z=16&l=map", lon, lat);
                 break;

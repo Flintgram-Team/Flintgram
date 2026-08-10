@@ -188,11 +188,11 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
 
     private int versionViewPressCount = 0;
 
-    private int mintGramExtendedIconColor(int color) {
-        if (Theme.isMintGramBlueThemeActive()) {
+    private int flintGramExtendedIconColor(int color) {
+        if (Theme.isFlintGramBlueThemeActive()) {
             return 0xFFAEC2F4;
         }
-        return Theme.isMintGramExtendedThemeActive() ? 0xFF3E927A : color;
+        return Theme.isFlintGramExtendedThemeActive() ? 0xFF3E927A : color;
     }
 
     public SettingsActivity() {
@@ -680,7 +680,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
-        items.add(SettingCell.Factory.of(24, mintGramExtendedIconColor(0xFF3E927A), mintGramExtendedIconColor(0xFF3E927A), R.drawable.mintgram_logo_icon, getString(R.string.MintGramFeatures), getString(R.string.MintGramSettingsInfo)));
+        items.add(SettingCell.Factory.of(24, flintGramExtendedIconColor(0xFF3E927A), flintGramExtendedIconColor(0xFF3E927A), R.drawable.flintgram_logo_icon, getString(R.string.FlintGramFeatures), getString(R.string.FlintGramSettingsInfo)));
         items.add(UItem.asShadow(null));
 
         if (accountNumbers.size() > 0) {
@@ -691,31 +691,31 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             items.add(UItem.asShadow(null));
         }
 
-        items.add(SettingCell.Factory.of(1, mintGramExtendedIconColor(IconBackgroundColors.BLUE.top), mintGramExtendedIconColor(IconBackgroundColors.BLUE.bottom), R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));
-        items.add(SettingCell.Factory.of(2, mintGramExtendedIconColor(IconBackgroundColors.ORANGE.top), mintGramExtendedIconColor(IconBackgroundColors.ORANGE.bottom), R.drawable.settings_chat, getString(R.string.SettingsChat), getString(R.string.SettingsChatInfo)));
-        items.add(SettingCell.Factory.of(3, mintGramExtendedIconColor(IconBackgroundColors.GREEN.top), mintGramExtendedIconColor(IconBackgroundColors.GREEN.bottom), R.drawable.settings_privacy, getString(R.string.SettingsPrivacySecurity), getString(R.string.SettingsPrivacySecurityInfo)));
-        items.add(SettingCell.Factory.of(5, mintGramExtendedIconColor(IconBackgroundColors.RED.top), mintGramExtendedIconColor(IconBackgroundColors.RED.bottom), R.drawable.settings_sounds, getString(R.string.SettingsNotifications), getString(R.string.SettingsNotificationsInfo)));
-        items.add(SettingCell.Factory.of(6, mintGramExtendedIconColor(IconBackgroundColors.BLUE_DEEP.top), mintGramExtendedIconColor(IconBackgroundColors.BLUE_DEEP.bottom), R.drawable.settings_data, getString(R.string.SettingsData), getString(R.string.SettingsDataInfo)));
-        items.add(SettingCell.Factory.of(7, mintGramExtendedIconColor(IconBackgroundColors.BLUE_ALT.top), mintGramExtendedIconColor(IconBackgroundColors.BLUE_ALT.bottom), R.drawable.settings_folders, getString(R.string.SettingsFolders), getString(R.string.SettingsFoldersInfo)));
-        items.add(SettingCell.Factory.of(8, mintGramExtendedIconColor(IconBackgroundColors.CYAN.top), mintGramExtendedIconColor(IconBackgroundColors.CYAN.bottom), R.drawable.settings_devices, getString(R.string.SettingsDevices), getString(R.string.SettingsDevicesInfo)));
-        items.add(SettingCell.Factory.of(9, mintGramExtendedIconColor(IconBackgroundColors.ORANGE_DEEP.top), mintGramExtendedIconColor(IconBackgroundColors.ORANGE_DEEP.bottom), R.drawable.settings_power, getString(R.string.SettingsPowerSaving), getString(R.string.SettingsPowerSavingInfo)));
-        items.add(SettingCell.Factory.of(10, mintGramExtendedIconColor(IconBackgroundColors.PURPLE.top), mintGramExtendedIconColor(IconBackgroundColors.PURPLE.bottom), R.drawable.settings_language, getString(R.string.SettingsLanguage), LocaleController.getCurrentLanguageName()));
+        items.add(SettingCell.Factory.of(1, flintGramExtendedIconColor(IconBackgroundColors.BLUE.top), flintGramExtendedIconColor(IconBackgroundColors.BLUE.bottom), R.drawable.settings_account, getString(R.string.SettingsAccount), getString(R.string.SettingsAccountInfo)));
+        items.add(SettingCell.Factory.of(2, flintGramExtendedIconColor(IconBackgroundColors.ORANGE.top), flintGramExtendedIconColor(IconBackgroundColors.ORANGE.bottom), R.drawable.settings_chat, getString(R.string.SettingsChat), getString(R.string.SettingsChatInfo)));
+        items.add(SettingCell.Factory.of(3, flintGramExtendedIconColor(IconBackgroundColors.GREEN.top), flintGramExtendedIconColor(IconBackgroundColors.GREEN.bottom), R.drawable.settings_privacy, getString(R.string.SettingsPrivacySecurity), getString(R.string.SettingsPrivacySecurityInfo)));
+        items.add(SettingCell.Factory.of(5, flintGramExtendedIconColor(IconBackgroundColors.RED.top), flintGramExtendedIconColor(IconBackgroundColors.RED.bottom), R.drawable.settings_sounds, getString(R.string.SettingsNotifications), getString(R.string.SettingsNotificationsInfo)));
+        items.add(SettingCell.Factory.of(6, flintGramExtendedIconColor(IconBackgroundColors.BLUE_DEEP.top), flintGramExtendedIconColor(IconBackgroundColors.BLUE_DEEP.bottom), R.drawable.settings_data, getString(R.string.SettingsData), getString(R.string.SettingsDataInfo)));
+        items.add(SettingCell.Factory.of(7, flintGramExtendedIconColor(IconBackgroundColors.BLUE_ALT.top), flintGramExtendedIconColor(IconBackgroundColors.BLUE_ALT.bottom), R.drawable.settings_folders, getString(R.string.SettingsFolders), getString(R.string.SettingsFoldersInfo)));
+        items.add(SettingCell.Factory.of(8, flintGramExtendedIconColor(IconBackgroundColors.CYAN.top), flintGramExtendedIconColor(IconBackgroundColors.CYAN.bottom), R.drawable.settings_devices, getString(R.string.SettingsDevices), getString(R.string.SettingsDevicesInfo)));
+        items.add(SettingCell.Factory.of(9, flintGramExtendedIconColor(IconBackgroundColors.ORANGE_DEEP.top), flintGramExtendedIconColor(IconBackgroundColors.ORANGE_DEEP.bottom), R.drawable.settings_power, getString(R.string.SettingsPowerSaving), getString(R.string.SettingsPowerSavingInfo)));
+        items.add(SettingCell.Factory.of(10, flintGramExtendedIconColor(IconBackgroundColors.PURPLE.top), flintGramExtendedIconColor(IconBackgroundColors.PURPLE.bottom), R.drawable.settings_language, getString(R.string.SettingsLanguage), LocaleController.getCurrentLanguageName()));
 
         items.add(UItem.asShadow(null));
 
         if (!getMessagesController().premiumFeaturesBlocked()) {
-            items.add(SettingCell.Factory.of(11, mintGramExtendedIconColor(0xFFB659FF), mintGramExtendedIconColor(0xFF617CFF), R.drawable.settings_premium, getString(R.string.TelegramPremium)));
+            items.add(SettingCell.Factory.of(11, flintGramExtendedIconColor(0xFFB659FF), flintGramExtendedIconColor(0xFF617CFF), R.drawable.settings_premium, getString(R.string.TelegramPremium)));
         }
         if (getMessagesController().starsPurchaseAvailable()) {
             StarsController c = StarsController.getInstance(currentAccount);
             long balance = c.getBalance().amount;
-            items.add(SettingCell.Factory.of(12, mintGramExtendedIconColor(0xFFEFA612), mintGramExtendedIconColor(0xFFE77512), R.drawable.settings_stars, getString(R.string.TelegramStars), null, c.balanceAvailable() && balance > 0 ? StarsIntroActivity.formatStarsAmount(c.getBalance(), 0.85f, ' ') : ""));
+            items.add(SettingCell.Factory.of(12, flintGramExtendedIconColor(0xFFEFA612), flintGramExtendedIconColor(0xFFE77512), R.drawable.settings_stars, getString(R.string.TelegramStars), null, c.balanceAvailable() && balance > 0 ? StarsIntroActivity.formatStarsAmount(c.getBalance(), 0.85f, ' ') : ""));
         }
         StarsController.getInstance(currentAccount, true).getBalance();
         if (ApplicationLoader.isBetaBuild() || ApplicationLoader.isStandaloneBuild() || ApplicationLoader.isHuaweiStoreBuild() || (StarsController.getInstance(currentAccount, true).balanceAvailable() && (StarsController.getInstance(currentAccount, true).hasTransactions() || StarsController.getInstance(currentAccount, true).getBalance().positive()))) {
             StarsController c = StarsController.getTonInstance(currentAccount);
             long balance = c.getBalance().amount;
-            items.add(SettingCell.Factory.of(13, mintGramExtendedIconColor(0xFF1BA4ED), mintGramExtendedIconColor(0xFF1488E1), R.drawable.settings_ton, getString(R.string.MyTON), null, c.balanceAvailable() && balance > 0 ? StarsIntroActivity.formatStarsAmount(c.getBalance(), 0.85f, ' ') : ""));
+            items.add(SettingCell.Factory.of(13, flintGramExtendedIconColor(0xFF1BA4ED), flintGramExtendedIconColor(0xFF1488E1), R.drawable.settings_ton, getString(R.string.MyTON), null, c.balanceAvailable() && balance > 0 ? StarsIntroActivity.formatStarsAmount(c.getBalance(), 0.85f, ' ') : ""));
         }
 
         TLRPC.TL_attachMenuBots menuBots = MediaDataController.getInstance(UserConfig.selectedAccount).getAttachMenuBots();
@@ -723,7 +723,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
             for (TLRPC.TL_attachMenuBot attachMenuBot : menuBots.bots) {
                 final long WALLET_BOT_ID = 1985737506L;
                 if (attachMenuBot.show_in_side_menu && attachMenuBot.bot_id == WALLET_BOT_ID) {
-                    UItem item = SettingCell.Factory.ofBot(attachMenuBot, mintGramExtendedIconColor(0xFF1BA4ED), mintGramExtendedIconColor(0xFF1488E1), R.drawable.settings_wallet);
+                    UItem item = SettingCell.Factory.ofBot(attachMenuBot, flintGramExtendedIconColor(0xFF1BA4ED), flintGramExtendedIconColor(0xFF1488E1), R.drawable.settings_wallet);
                     item.object = attachMenuBot;
                     items.add(item);
                 }
@@ -731,19 +731,19 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
 
         if (!getMessagesController().premiumFeaturesBlocked()) {
-            items.add(SettingCell.Factory.of(15, mintGramExtendedIconColor(0xFFF45255), mintGramExtendedIconColor(0xFFDF3955), R.drawable.settings_business, getString(R.string.TelegramBusiness)));
+            items.add(SettingCell.Factory.of(15, flintGramExtendedIconColor(0xFFF45255), flintGramExtendedIconColor(0xFFDF3955), R.drawable.settings_business, getString(R.string.TelegramBusiness)));
         }
         if (!getMessagesController().premiumPurchaseBlocked()) {
-            items.add(SettingCell.Factory.of(16, mintGramExtendedIconColor(0xFFF38B31), mintGramExtendedIconColor(0xFFE26314), R.drawable.settings_gift, getString(R.string.SendAGift)));
+            items.add(SettingCell.Factory.of(16, flintGramExtendedIconColor(0xFFF38B31), flintGramExtendedIconColor(0xFFE26314), R.drawable.settings_gift, getString(R.string.SendAGift)));
         }
         if (items.get(items.size() - 1).viewType != UniversalAdapter.VIEW_TYPE_SHADOW)
             items.add(UItem.asShadow(null));
 
         items.add(UItem.asHeader(getString(R.string.SettingsHelp)));
-        items.add(SettingCell.Factory.of(17, mintGramExtendedIconColor(IconBackgroundColors.ORANGE.top), mintGramExtendedIconColor(IconBackgroundColors.ORANGE.bottom), R.drawable.settings_ask, getString(R.string.AskAQuestion)));
-        items.add(SettingCell.Factory.of(18, mintGramExtendedIconColor(IconBackgroundColors.BLUE_LIGHT.top), mintGramExtendedIconColor(IconBackgroundColors.BLUE_LIGHT.bottom), R.drawable.settings_faq, getString(R.string.TelegramFAQ)));
-        items.add(SettingCell.Factory.of(23, mintGramExtendedIconColor(IconBackgroundColors.PURPLE.top), mintGramExtendedIconColor(IconBackgroundColors.PURPLE.bottom), R.drawable.settings_features, getString(R.string.TelegramFeatures)));
-        items.add(SettingCell.Factory.of(19, mintGramExtendedIconColor(IconBackgroundColors.GREEN.top), mintGramExtendedIconColor(IconBackgroundColors.GREEN.bottom), R.drawable.settings_policy, getString(R.string.PrivacyPolicy)));
+        items.add(SettingCell.Factory.of(17, flintGramExtendedIconColor(IconBackgroundColors.ORANGE.top), flintGramExtendedIconColor(IconBackgroundColors.ORANGE.bottom), R.drawable.settings_ask, getString(R.string.AskAQuestion)));
+        items.add(SettingCell.Factory.of(18, flintGramExtendedIconColor(IconBackgroundColors.BLUE_LIGHT.top), flintGramExtendedIconColor(IconBackgroundColors.BLUE_LIGHT.bottom), R.drawable.settings_faq, getString(R.string.TelegramFAQ)));
+        items.add(SettingCell.Factory.of(23, flintGramExtendedIconColor(IconBackgroundColors.PURPLE.top), flintGramExtendedIconColor(IconBackgroundColors.PURPLE.bottom), R.drawable.settings_features, getString(R.string.TelegramFeatures)));
+        items.add(SettingCell.Factory.of(19, flintGramExtendedIconColor(IconBackgroundColors.GREEN.top), flintGramExtendedIconColor(IconBackgroundColors.GREEN.bottom), R.drawable.settings_policy, getString(R.string.PrivacyPolicy)));
 
         if (BuildVars.LOGS_ENABLED || BuildVars.DEBUG_PRIVATE_VERSION) {
             items.add(UItem.asShadow(null));
@@ -822,7 +822,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
                 presentSettingFragment(new PrivacySettingsActivity());
                 break;
             case 24:
-                presentSettingFragment(new MintGramSettingsActivity());
+                presentSettingFragment(new FlintGramSettingsActivity());
                 break;
             case 5:
                 presentSettingFragment(new NotificationsSettingsActivity());
@@ -1190,7 +1190,7 @@ public class SettingsActivity extends BaseFragment implements NotificationCenter
         }
 
         private void updateIconColor() {
-            if (Theme.isMintGramBlueThemeActive()) {
+            if (Theme.isFlintGramBlueThemeActive()) {
                 iconView.setColorFilter(new PorterDuffColorFilter(0xFF132D5E, PorterDuff.Mode.SRC_IN));
             } else {
                 iconView.clearColorFilter();

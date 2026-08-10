@@ -101,7 +101,7 @@ public class UserObject {
         return false;
     }
 
-    public static boolean isMintgramOfficial(TLRPC.User user) {
+    public static boolean isFlintgramOfficial(TLRPC.User user) {
         return hasPublicUsername(user, "smallsociety")
                 || hasPublicUsername(user, "vivizka01");
     }

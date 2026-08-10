@@ -682,7 +682,7 @@ public class AvatarDrawable extends Drawable {
                 drawable = Theme.avatarDrawables[9];
             }
             if (drawable != null) {
-                final boolean materialOceanSavedIcon = avatarType == AVATAR_TYPE_SAVED && Theme.isMintGramBlueThemeActive();
+                final boolean materialOceanSavedIcon = avatarType == AVATAR_TYPE_SAVED && Theme.isFlintGramBlueThemeActive();
                 if (materialOceanSavedIcon) {
                     Theme.setDrawableColor(drawable, 0xFF132D5E);
                 }

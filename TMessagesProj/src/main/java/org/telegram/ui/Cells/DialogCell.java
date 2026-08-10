@@ -591,7 +591,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     private StaticLayout mentionLayout;
 
     private boolean drawVerified;
-    private boolean drawMintgramVerified;
+    private boolean drawFlintgramVerified;
     private boolean drawBotVerified;
     private boolean drawPremium;
     private final View emojiStatusView;
@@ -603,7 +603,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
     private boolean isSelected;
 
     private RectF rect = new RectF();
-    private final RectF mintgramVerifiedRect = new RectF();
+    private final RectF flintgramVerifiedRect = new RectF();
     private DialogsAdapter.DialogsPreloader preloader;
     private Path counterPath;
     private RectF counterPathRect;
@@ -1187,7 +1187,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
 
         drawNameLock = false;
         drawVerified = false;
-        drawMintgramVerified = false;
+        drawFlintgramVerified = false;
         drawBotVerified = false;
         drawPremium = false;
         drawForwardIcon = false;
@@ -1402,7 +1402,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                             Theme.dialogs_fakeDrawable.checkText();
                         } else {
                             drawVerified = !forbidVerified && user.verified;
-                            drawMintgramVerified = !forbidVerified && UserObject.isMintgramOfficial(user);
+                            drawFlintgramVerified = !forbidVerified && UserObject.isFlintgramOfficial(user);
                             drawBotVerified = !forbidVerified && !UserObject.isUserSelf(user) && user.bot_verification_icon != 0;
                         }
                         drawPremium = MessagesController.getInstance(currentAccount).isPremiumUser(user) && UserConfig.getInstance(currentAccount).clientUserId != user.id && user.id != 0;
@@ -2219,10 +2219,10 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
         }
 
         nameAdditionalsForChannelSubscriber = 0;
-        final boolean reserveMuteSlot = (dialogMuted || drawUnmute || dialogMutedProgress > 0) && !drawVerified && !drawMintgramVerified && drawScam == 0;
+        final boolean reserveMuteSlot = (dialogMuted || drawUnmute || dialogMutedProgress > 0) && !drawVerified && !drawFlintgramVerified && drawScam == 0;
         if (drawPremium && emojiStatus.getDrawable() != null) {
             int w = dp(6 + 24 + 6);
-            if (drawMintgramVerified) {
+            if (drawFlintgramVerified) {
                 w += dp(6) + Theme.dialogs_verifiedDrawable.getIntrinsicWidth();
             }
             if (reserveMuteSlot) {
@@ -2250,7 +2250,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             if (LocaleController.isRTL) {
                 nameLeft += w;
             }
-        } else if (drawMintgramVerified) {
+        } else if (drawFlintgramVerified) {
             int w = dp(6) + Theme.dialogs_verifiedDrawable.getIntrinsicWidth();
             nameWidth -= w;
             nameAdditionalsForChannelSubscriber += w;
@@ -2695,7 +2695,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                     } else {
                         nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx) - dp(6) - Theme.dialogs_muteDrawable.getIntrinsicWidth());
                     }
-                } else if (drawVerified || drawMintgramVerified) {
+                } else if (drawVerified || drawFlintgramVerified) {
                     nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx) - dp(6) - Theme.dialogs_verifiedDrawable.getIntrinsicWidth());
                 } else if (drawPremium) {
                     nameMuteLeft = (int) (nameLeft + (nameWidth - widthpx - left) - dp(24));
@@ -2788,7 +2788,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 if (drawBotVerified) {
                     nameLeft += dp(21);
                 }
-                if ((dialogMuted || true) || drawUnmute || drawVerified || drawMintgramVerified || drawPremium || drawScam != 0) {
+                if ((dialogMuted || true) || drawUnmute || drawVerified || drawFlintgramVerified || drawPremium || drawScam != 0) {
                     nameMuteLeft = (int) (nameLeft + left + dp(6));
                     if (drawPremium) {
                         nameMutedIconLeft = nameMuteLeft + dp(24 + 6);
@@ -4313,7 +4313,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 }
 
             }
-            if (drawMintgramVerified) {
+            if (drawFlintgramVerified) {
                 int premiumY = dp(useForceThreeLines || SharedConfig.useThreeLinesLayout ? 12.5f : 15.5f);
                 float verifiedY = dp(useForceThreeLines || SharedConfig.useThreeLinesLayout ? 13.5f : 16.5f);
                 if ((!(useForceThreeLines || SharedConfig.useThreeLinesLayout) || isForumCell()) && hasTags()) {
@@ -4345,7 +4345,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 setDrawableBounds(Theme.dialogs_verifiedCheckDrawable, verifiedX, verifiedY);
                 Theme.dialogs_verifiedDrawable.draw(canvas);
                 Theme.dialogs_verifiedCheckDrawable.draw(canvas);
-                mintgramVerifiedRect.set(
+                flintgramVerifiedRect.set(
                         verifiedX - dp(6),
                         verifiedY - dp(6),
                         verifiedX + Theme.dialogs_verifiedDrawable.getIntrinsicWidth() + dp(6),
@@ -5117,7 +5117,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
             } else {
                 paint = drawCounterMuted || currentDialogFolderId != 0 ? Theme.dialogs_countGrayPaint : Theme.dialogs_countPaint;
             }
-            if (Theme.isMintGramBlueThemeActive() && drawCounterMuted) {
+            if (Theme.isFlintGramBlueThemeActive() && drawCounterMuted) {
                 Theme.dialogs_countTextPaint2.setColor(0xFFAEC2F4);
                 restoreCountTextPaint = true;
             }
@@ -5408,7 +5408,7 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
                 sb.append(". ");
             }
         }
-        if (drawVerified || drawMintgramVerified) {
+        if (drawVerified || drawFlintgramVerified) {
             sb.append(getString(R.string.AccDescrVerified));
             sb.append(". ");
         }
@@ -5941,10 +5941,10 @@ public class DialogCell extends BaseCell implements StoriesListPlaceProvider.Ava
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (drawMintgramVerified && mintgramVerifiedRect.contains(event.getX(), event.getY())) {
+        if (drawFlintgramVerified && flintgramVerifiedRect.contains(event.getX(), event.getY())) {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 BulletinFactory.of(Bulletin.BulletinWindow.make(getContext()), resourcesProvider)
-                        .createSimpleBulletin(R.raw.contact_check, getString(R.string.MintGramOfficialAccountInfo))
+                        .createSimpleBulletin(R.raw.contact_check, getString(R.string.FlintGramOfficialAccountInfo))
                         .setDuration(3000)
                         .show();
             }

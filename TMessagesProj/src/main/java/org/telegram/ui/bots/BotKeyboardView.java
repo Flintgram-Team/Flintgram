@@ -247,8 +247,11 @@ public class BotKeyboardView extends LinearLayout implements InAppKeyboardInsetV
                 }
             }
 
-            icon.setColorFilter(Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : textColor);
-            textView.setTextColor(Theme.isMintGramBlueThemeActive() ? Color.WHITE : textColor);
+            final boolean materialOceanButton = Theme.isFlintGramBlueThemeActive()
+                    || (color & 0x00FFFFFF) == 0x00AEC2F4
+                    || (getThemedColor(Theme.key_botKeyboard_button_primary) & 0x00FFFFFF) == 0x00AEC2F4;
+            icon.setColorFilter(materialOceanButton ? 0xFF132D5E : textColor);
+            textView.setTextColor(Theme.isFlintGramBlueThemeActive() ? Color.WHITE : textColor);
             setBackground(Theme.createSimpleSelectorRoundRectDrawable(
                 isLeft && isTop ? br : dr,
                 isRight && isTop ? br : dr,

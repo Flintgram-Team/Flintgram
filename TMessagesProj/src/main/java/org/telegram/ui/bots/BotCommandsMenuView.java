@@ -119,10 +119,11 @@ public class BotCommandsMenuView extends View {
     private void updateColors() {
         paint.setColor(Theme.getColor(Theme.key_chat_messagePanelVoiceBackground));
         int textColor = Theme.getColor(Theme.key_chat_messagePanelVoiceDuration);
+        int iconColor = Theme.isFlintGramBlueThemeActive() ? 0xFF132D5E : textColor;
         backDrawable.setBackColor(textColor);
         backDrawable.setIconColor(textColor);
         if (webViewAnimation != null) {
-            webViewAnimation.setColorFilter(new PorterDuffColorFilter(textColor, PorterDuff.Mode.SRC_IN));
+            webViewAnimation.setColorFilter(new PorterDuffColorFilter(iconColor, PorterDuff.Mode.SRC_IN));
         }
         textPaint.setColor(textColor);
     }

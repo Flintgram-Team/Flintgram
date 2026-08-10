@@ -7319,7 +7319,7 @@ public class AlertsCreator {
     public static AlertDialog.Builder createContactsPermissionDialog(Activity parentActivity, MessagesStorage.IntCallback callback) {
         AlertDialog.Builder builder = new AlertDialog.Builder(parentActivity);
         HashMap<String, Integer> layerColors = null;
-        if (Theme.isMintGramBlueThemeActive()) {
+        if (Theme.isFlintGramBlueThemeActive()) {
             layerColors = new HashMap<>();
             layerColors.put("Final.**", 0xFF132D5E);
             layerColors.put("Rectangle Copy.**", 0xFF132D5E);

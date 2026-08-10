@@ -6049,7 +6049,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             } else {
                 provider = -1;
             }
-            if (SharedConfig.mintGramMapProvider != 0) {
+            if (SharedConfig.flintGramMapProvider != 0) {
                 provider = -1;
             }
             if (object.messageOwner.media instanceof TLRPC.TL_messageMediaGeoLive) {
@@ -9347,7 +9347,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                     } else {
                         provider = -1;
                     }
-                    if (SharedConfig.mintGramMapProvider != 0) {
+                    if (SharedConfig.flintGramMapProvider != 0) {
                         provider = -1;
                     }
 
@@ -9454,7 +9454,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
                         currentWebFile = WebFile.createWithGeoPoint(point, (int) (photoWidth / AndroidUtilities.density), (int) (photoHeight / AndroidUtilities.density), 15, Math.min(2, (int) Math.ceil(AndroidUtilities.density)));
                     }
                     if ((int) messageObject.getDialogId() == 0) {
-                        if (SharedConfig.mintGramMapProvider != 0) {
+                        if (SharedConfig.flintGramMapProvider != 0) {
                             currentMapProvider = AndroidUtilities.getMapPreviewProvider(messageObject.currentAccount, -1);
                         } else if (SharedConfig.mapPreviewType == 0) {
                             currentMapProvider = 2;
@@ -10707,7 +10707,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
 
                             final long emojiId = inlineButton.getIconEmoji();
                             final int iconRes = inlineButton.getIconRes();
-                            final int botButtonIconColor = Theme.isMintGramBlueThemeActive() && inlineButton.getColor() == BotInlineKeyboard.BackgroundColor.PRIMARY ? 0xFF132D5E : 0xFFFFFFFF;
+                            final int botButtonIconColor = Theme.isFlintGramBlueThemeActive() && inlineButton.getColor() == BotInlineKeyboard.BackgroundColor.PRIMARY ? 0xFF132D5E : 0xFFFFFFFF;
                             if (emojiId != 0) {
                                 botButton.animatedEmojiDrawable = new AnimatedEmojiDrawable(AnimatedEmojiDrawable.CACHE_TYPE_MESSAGES, currentAccount, emojiId);
                                 botButton.animatedEmojiDrawable.addView(this::invalidateOutbounds);
@@ -18329,7 +18329,7 @@ public class ChatMessageCell extends BaseCell implements SeekBar.SeekBarDelegate
             icon.setOverrideColor(getPlumDeletedMessageColor());
             builder.setSpan(icon, 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             int start = builder.length();
-            builder.append(getString(R.string.MintGramDeletedMessage));
+            builder.append(getString(R.string.FlintGramDeletedMessage));
             builder.setSpan(new ForegroundColorSpan(getPlumDeletedMessageColor()), start, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             builder.append(" · ");
             builder.append(currentTimeString);

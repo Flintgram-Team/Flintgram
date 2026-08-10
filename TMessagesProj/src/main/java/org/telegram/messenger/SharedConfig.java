@@ -340,10 +340,10 @@ public class SharedConfig {
     public static boolean ghostHideRecordVoice;
     public static boolean ghostHideUploadPhoto;
     public static boolean ghostHideUploadFile;
-    public static boolean mintGramFoldersBottom;
-    public static int mintGramFolderTitleMode;
+    public static boolean flintGramFoldersBottom;
+    public static int flintGramFolderTitleMode;
     public static int deletedMessageStyle;
-    public static int mintGramMapProvider;
+    public static int flintGramMapProvider;
     private static HashSet<String> deletedMessages = new HashSet<>();
 
     private static int chatSwipeAction;
@@ -491,10 +491,10 @@ public class SharedConfig {
                 editor.putBoolean("ghostHideRecordVoice", ghostHideRecordVoice);
                 editor.putBoolean("ghostHideUploadPhoto", ghostHideUploadPhoto);
                 editor.putBoolean("ghostHideUploadFile", ghostHideUploadFile);
-                editor.putBoolean("mintGramFoldersBottom", mintGramFoldersBottom);
-                editor.putInt("mintGramFolderTitleMode", mintGramFolderTitleMode);
+                editor.putBoolean("flintGramFoldersBottom", flintGramFoldersBottom);
+                editor.putInt("flintGramFolderTitleMode", flintGramFolderTitleMode);
                 editor.putInt("deletedMessageStyle", deletedMessageStyle);
-                editor.putInt("mintGramMapProvider", mintGramMapProvider);
+                editor.putInt("flintGramMapProvider", flintGramMapProvider);
                 editor.putStringSet("plumDeletedMessages", new HashSet<>(deletedMessages));
                 editor.apply();
             } catch (Exception e) {
@@ -591,20 +591,20 @@ public class SharedConfig {
         ghostHideUploadFile = value;
     }
 
-    public static void setMintGramFoldersBottom(boolean value) {
-        setMainConfigBoolean("mintGramFoldersBottom", value);
-        mintGramFoldersBottom = value;
+    public static void setFlintGramFoldersBottom(boolean value) {
+        setMainConfigBoolean("flintGramFoldersBottom", value);
+        flintGramFoldersBottom = value;
     }
 
-    public static void setMintGramFolderTitleMode(int value) {
-        if (mintGramFolderTitleMode == value) {
+    public static void setFlintGramFolderTitleMode(int value) {
+        if (flintGramFolderTitleMode == value) {
             return;
         }
-        mintGramFolderTitleMode = value;
+        flintGramFolderTitleMode = value;
         try {
             ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE)
                     .edit()
-                    .putInt("mintGramFolderTitleMode", mintGramFolderTitleMode)
+                    .putInt("flintGramFolderTitleMode", flintGramFolderTitleMode)
                     .apply();
         } catch (Exception e) {
             FileLog.e(e);
@@ -637,15 +637,15 @@ public class SharedConfig {
         }
     }
 
-    public static void setMintGramMapProvider(int value) {
-        if (mintGramMapProvider == value) {
+    public static void setFlintGramMapProvider(int value) {
+        if (flintGramMapProvider == value) {
             return;
         }
-        mintGramMapProvider = value;
+        flintGramMapProvider = value;
         try {
             ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE)
                     .edit()
-                    .putInt("mintGramMapProvider", mintGramMapProvider)
+                    .putInt("flintGramMapProvider", flintGramMapProvider)
                     .apply();
         } catch (Exception e) {
             FileLog.e(e);
@@ -813,10 +813,10 @@ public class SharedConfig {
             ghostHideRecordVoice = preferences.getBoolean("ghostHideRecordVoice", false);
             ghostHideUploadPhoto = preferences.getBoolean("ghostHideUploadPhoto", false);
             ghostHideUploadFile = preferences.getBoolean("ghostHideUploadFile", false);
-            mintGramFoldersBottom = preferences.getBoolean("mintGramFoldersBottom", false);
-            mintGramFolderTitleMode = preferences.getInt("mintGramFolderTitleMode", 0);
+            flintGramFoldersBottom = preferences.getBoolean("flintGramFoldersBottom", false);
+            flintGramFolderTitleMode = preferences.getInt("flintGramFolderTitleMode", 0);
             deletedMessageStyle = preferences.getInt("deletedMessageStyle", 0);
-            mintGramMapProvider = preferences.getInt("mintGramMapProvider", 0);
+            flintGramMapProvider = preferences.getInt("flintGramMapProvider", 0);
             deletedMessages = new HashSet<>(preferences.getStringSet("plumDeletedMessages", new HashSet<>()));
             distanceSystemType = preferences.getInt("distanceSystemType", 0);
             keepMedia = preferences.getInt("keep_media", CacheByChatsController.KEEP_MEDIA_ONE_MONTH);

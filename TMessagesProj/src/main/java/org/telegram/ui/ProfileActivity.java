@@ -363,7 +363,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable[] botVerificationDrawable = new AnimatedEmojiDrawable.SwapAnimatedEmojiDrawable[2];
     private final Drawable[] verifiedCheckDrawable = new Drawable[2];
     private final CrossfadeDrawable[] verifiedCrossfadeDrawable = new CrossfadeDrawable[2];
-    private final Drawable[] mintgramVerifiedDrawable = new Drawable[2];
+    private final Drawable[] flintgramVerifiedDrawable = new Drawable[2];
     private final CrossfadeDrawable[] premiumCrossfadeDrawable = new CrossfadeDrawable[2];
     private ScamDrawable scamDrawable;
     private UndoView undoView;
@@ -10989,15 +10989,15 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         return verifiedCrossfadeDrawable[a];
     }
 
-    private Drawable getMintgramVerifiedDrawable(int a) {
-        if (mintgramVerifiedDrawable[a] == null) {
+    private Drawable getFlintgramVerifiedDrawable(int a) {
+        if (flintgramVerifiedDrawable[a] == null) {
             Drawable background = Theme.profile_verifiedDrawable.getConstantState().newDrawable().mutate();
             Drawable check = Theme.profile_verifiedCheckDrawable.getConstantState().newDrawable().mutate();
             background.setColorFilter(0xFFAEC2F4, PorterDuff.Mode.MULTIPLY);
             check.setColorFilter(0xFF132D5E, PorterDuff.Mode.MULTIPLY);
-            mintgramVerifiedDrawable[a] = new CombinedDrawable(background, check);
+            flintgramVerifiedDrawable[a] = new CombinedDrawable(background, check);
         }
-        return mintgramVerifiedDrawable[a];
+        return flintgramVerifiedDrawable[a];
     }
 
     private Drawable getPremiumCrossfadeDrawable(int a) {
@@ -11361,9 +11361,9 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 boolean rightIconIsPremium = false, rightIconIsStatus = false;
                 nameTextView[a].setRightDrawableOutside(a == 0);
                 if (a == 0 && !copyFromChatActivity) {
-                    if (UserObject.isMintgramOfficial(user)) {
-                        nameTextView[a].setRightDrawable2(getMintgramVerifiedDrawable(a));
-                        nameTextViewRightDrawable2ContentDescription = LocaleController.getString(R.string.MintGramOfficialAccountInfo);
+                    if (UserObject.isFlintgramOfficial(user)) {
+                        nameTextView[a].setRightDrawable2(getFlintgramVerifiedDrawable(a));
+                        nameTextViewRightDrawable2ContentDescription = LocaleController.getString(R.string.FlintGramOfficialAccountInfo);
                     } else if (user.scam || user.fake) {
                         nameTextView[a].setRightDrawable2(getScamDrawable(user.scam ? 0 : 1));
                         nameTextViewRightDrawable2ContentDescription = LocaleController.getString(R.string.ScamMessage);
@@ -11392,8 +11392,8 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         nameTextViewRightDrawableContentDescription = null;
                     }
                 } else if (a == 1) {
-                    if (UserObject.isMintgramOfficial(user)) {
-                        nameTextView[a].setRightDrawable2(getMintgramVerifiedDrawable(a));
+                    if (UserObject.isFlintgramOfficial(user)) {
+                        nameTextView[a].setRightDrawable2(getFlintgramVerifiedDrawable(a));
                     } else if (user.scam || user.fake) {
                         nameTextView[a].setRightDrawable2(getScamDrawable(user.scam ? 0 : 1));
                     } else if (user.verified) {
@@ -11423,14 +11423,14 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                 if (a == 1 && (rightIconIsStatus || rightIconIsPremium)) {
                     nameTextView[a].setRightDrawableOutside(true);
                 }
-                if (UserObject.isMintgramOfficial(user)) {
+                if (UserObject.isFlintgramOfficial(user)) {
                     Drawable premiumOrStatusDrawable = nameTextView[a].getRightDrawable();
-                    nameTextView[a].setRightDrawable(getMintgramVerifiedDrawable(a));
+                    nameTextView[a].setRightDrawable(getFlintgramVerifiedDrawable(a));
                     nameTextView[a].setRightDrawable2(premiumOrStatusDrawable);
                 }
-                nameTextView[a].setRightDrawableOnClick(UserObject.isMintgramOfficial(user) ? v -> {
+                nameTextView[a].setRightDrawableOnClick(UserObject.isFlintgramOfficial(user) ? v -> {
                     BulletinFactory.of(this)
-                            .createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.MintGramOfficialAccountInfo))
+                            .createSimpleBulletin(R.raw.contact_check, LocaleController.getString(R.string.FlintGramOfficialAccountInfo))
                             .setDuration(3000)
                             .show();
                 } : null);
@@ -11439,7 +11439,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     View.OnClickListener premiumClick = v -> {
                         showStatusSelect();
                     };
-                    if (UserObject.isMintgramOfficial(user)) {
+                    if (UserObject.isFlintgramOfficial(user)) {
                         nameTextView[a].setRightDrawable2OnClick(premiumClick);
                     } else {
                         nameTextView[a].setRightDrawableOnClick(premiumClick);
@@ -11458,13 +11458,13 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         PremiumPreviewBottomSheet premiumPreviewBottomSheet = new PremiumPreviewBottomSheet(ProfileActivity.this, currentAccount, user, resourcesProvider);
                         int[] coords = new int[2];
                         textView.getLocationOnScreen(coords);
-                        premiumPreviewBottomSheet.startEnterFromX = UserObject.isMintgramOfficial(user) ? textView.rightDrawable2X : textView.rightDrawableX;
-                        premiumPreviewBottomSheet.startEnterFromY = UserObject.isMintgramOfficial(user) ? textView.rightDrawable2Y : textView.rightDrawableY;
+                        premiumPreviewBottomSheet.startEnterFromX = UserObject.isFlintgramOfficial(user) ? textView.rightDrawable2X : textView.rightDrawableX;
+                        premiumPreviewBottomSheet.startEnterFromY = UserObject.isFlintgramOfficial(user) ? textView.rightDrawable2Y : textView.rightDrawableY;
                         premiumPreviewBottomSheet.startEnterFromScale = textView.getScaleX();
                         premiumPreviewBottomSheet.startEnterFromX1 = textView.getLeft();
                         premiumPreviewBottomSheet.startEnterFromY1 = textView.getTop();
                         premiumPreviewBottomSheet.startEnterFromView = textView;
-                        if ((UserObject.isMintgramOfficial(user) ? textView.getRightDrawable2() : textView.getRightDrawable()) == emojiStatusDrawable[1] && emojiStatusDrawable[1] != null && emojiStatusDrawable[1].getDrawable() instanceof AnimatedEmojiDrawable) {
+                        if ((UserObject.isFlintgramOfficial(user) ? textView.getRightDrawable2() : textView.getRightDrawable()) == emojiStatusDrawable[1] && emojiStatusDrawable[1] != null && emojiStatusDrawable[1].getDrawable() instanceof AnimatedEmojiDrawable) {
                             premiumPreviewBottomSheet.startEnterFromScale *= 0.98f;
                             TLRPC.Document document = ((AnimatedEmojiDrawable) emojiStatusDrawable[1].getDrawable()).getDocument();
                             if (document != null) {
@@ -11502,7 +11502,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         }
                         showDialog(premiumPreviewBottomSheet);
                     };
-                    if (UserObject.isMintgramOfficial(user)) {
+                    if (UserObject.isFlintgramOfficial(user)) {
                         nameTextView[a].setRightDrawable2OnClick(premiumClick);
                     } else {
                         nameTextView[a].setRightDrawableOnClick(premiumClick);

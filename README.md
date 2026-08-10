@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/mintgram-logo.png" width="180" alt="Mintgram logo">
+  <img src="docs/flintgram-logo.png" width="180" alt="Flintgram logo">
 </p>
 
-<h1 align="center">Mintgram</h1>
+<h1 align="center">Flintgram</h1>
 
 <p align="center">
   <a href="LICENSE">Licensed under the GNU General Public License v2.0</a>
@@ -14,11 +14,11 @@
 </p>
 
 <p align="center">
-  <a href="https://t.me/mintgram_tg">
-    <img src="https://img.shields.io/badge/Channel-Mintgram-3E927A?style=for-the-badge" alt="Mintgram channel">
+  <a href="https://t.me/flintgram_tg">
+    <img src="https://img.shields.io/badge/Channel-Flintgram-3E927A?style=for-the-badge" alt="Flintgram channel">
   </a>
-  <a href="https://t.me/mintgram_chat">
-    <img src="https://img.shields.io/badge/Chat-Mintgram-3E927A?style=for-the-badge" alt="Mintgram chat">
+  <a href="https://t.me/flintgram_chat">
+    <img src="https://img.shields.io/badge/Chat-Flintgram-3E927A?style=for-the-badge" alt="Flintgram chat">
   </a>
   <a href="../../releases">
     <img src="https://img.shields.io/badge/Download-Releases-3E927A?style=for-the-badge" alt="Download Releases">
@@ -27,13 +27,13 @@
 
 ## About
 
-Mintgram is an unofficial fork of Telegram for Android with a custom visual style and privacy-focused client features.
+Flintgram is an unofficial fork of Telegram for Android with a custom visual style and privacy-focused client features.
 
 ## Features
 
-- Mintgram branding
-- Mintgram Basic theme
-- Mintgram Extended theme
+- Flintgram branding
+- Flintgram Basic theme
+- Flintgram Extended theme
 - Hide Read Status
 - Keep Deleted Messages
 - Free Voice Transcription toggle
@@ -70,8 +70,8 @@ Keep `.env`, `local.properties`, APK files, AAB files, and keystores out of git.
 
 ## License
 
-Mintgram is distributed under the GNU General Public License v2.0. See [LICENSE](LICENSE).
+Flintgram is distributed under the GNU General Public License v2.0. See [LICENSE](LICENSE).
 
 ## Fork Notice
 
-Mintgram is an unofficial fork of Telegram for Android based on the official Telegram Android source code.
+Flintgram is an unofficial fork of Telegram for Android based on the official Telegram Android source code.

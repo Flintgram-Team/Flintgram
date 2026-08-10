@@ -6351,7 +6351,7 @@ public class ChatActivityEnterView extends FrameLayout implements
         audioVideoSendButton.setColorFilter(new PorterDuffColorFilter(
                 audioVideoButtonContainerForbidden
                         ? getThemedColor(Theme.key_glass_defaultIcon)
-                        : Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE,
+                        : Theme.isFlintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE,
                 PorterDuff.Mode.SRC_IN));
         audioVideoSendButton.invalidate();
         updateFieldHint(false);
@@ -10120,7 +10120,7 @@ public class ChatActivityEnterView extends FrameLayout implements
         audioVideoSendButton.setColorFilter(new PorterDuffColorFilter(
                 audioVideoButtonContainerForbidden
                         ? getThemedColor(Theme.key_glass_defaultIcon)
-                        : Theme.isMintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE,
+                        : Theme.isFlintGramBlueThemeActive() ? 0xFF132D5E : Color.WHITE,
                 PorterDuff.Mode.SRC_IN));
         emojiButton.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_glass_defaultIcon), PorterDuff.Mode.SRC_IN));
         emojiButton.setBackground(Theme.createSelectorDrawable(getThemedColor(Theme.key_listSelector)));

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="AppName">Mintgram</string>
-    <string name="AppNameBeta">Mintgram</string>
+    <string name="AppName">Flintgram</string>
+    <string name="AppNameBeta">Flintgram</string>
     <string name="LanguageName">Deutsch</string>
     <string name="English">Englisch</string>
     <string name="LanguageNameInEnglish">German</string>
@@ -39,9 +39,9 @@
     <string name="SentFragmentCode">Erhalte den Code für %1$s im Bereich \'Anonymous Numbers\' bei Fragment.</string>
     <string name="SentSmsCodeTitle">Code eingeben</string>
     <string name="OpenFragment">Fragment öffnen</string>
-    <string name="SentCallCode">Wir rufen dich jetzt unter **%1$s** an.\n\nBitte den Anruf nicht annehmen, Mintgram kümmert sich um alles.</string>
+    <string name="SentCallCode">Wir rufen dich jetzt unter **%1$s** an.\n\nBitte den Anruf nicht annehmen, Flintgram kümmert sich um alles.</string>
     <string name="SentCallOnly">**%1$s** wird angerufen, \num dir einen Code anzusagen.</string>
-    <string name="CallText">Mintgram ruft dich in %1$d:%2$02d an</string>
+    <string name="CallText">Flintgram ruft dich in %1$d:%2$02d an</string>
     <string name="SmsText">Senden dir eine SMS in %1$d:%2$02d</string>
     <string name="Calling">Wir rufen dich an…</string>
     <string name="SendingSms">SMS wird gesendet...</string>
@@ -60,7 +60,7 @@
     <string name="CancelLinkExpired">Link ist ungültig oder abgelaufen.</string>
     <string name="CancelLinkSuccessTitle">Erfolgreich!</string>
     <string name="CancelLinkSuccess">Löschvorgang für dein Konto %1$s wurde abgebrochen. Du kannst das Fenster nun schließen.</string>
-    <string name="OtherLoginCode">Dein Anmeldecode lautet **%1$s**. Gebe ihn in der Mintgram-App ein, bei der du dich anmelden möchtest.\n\nDen Code niemals weitergeben.</string>
+    <string name="OtherLoginCode">Dein Anmeldecode lautet **%1$s**. Gebe ihn in der Flintgram-App ein, bei der du dich anmelden möchtest.\n\nDen Code niemals weitergeben.</string>
     <string name="SmsAvailableIn">Du kannst eine SMS anfordern in: %1$d:%2$02d</string>
     <string name="ResendSmsAvailableIn">In %1$d:%2$02d kannst du eine neue SMS anfordern.</string>
     <string name="RequestSmsButton">Code per SMS anfordern</string>
@@ -91,7 +91,7 @@
     <string name="WidgetShortcuts">Verknüpfungen</string>
     <string name="WidgetLoggedOff">Konto wurde abgemeldet.</string>
 
-    <string name="NotificationMessageGiftCode">%1$s hat dir einen Geschenkcode für %2$s von Mintgram Premium geschickt</string>
+    <string name="NotificationMessageGiftCode">%1$s hat dir einen Geschenkcode für %2$s von Flintgram Premium geschickt</string>
     <string name="NotificationMessageGiveaway">%1$s hat dir eine Verlosung von %2$sx %3$sm Premium-Abonnements geschickt</string>
     <string name="NotificationMessageChannelGiveaway">%1$s hat eine Verlosung von %2$sx %3$sm Premium-Abonnements veröffentlicht</string>
     <string name="NotificationMessageChatGiveaway">%1$s hat eine Verlosung von %3$sx %4$sm Premium-Abonnements an die Gruppe %2$s geschickt</string>
@@ -173,15 +173,15 @@
     <string name="NotificationGroupKickMember">%1$s hat %3$s aus der Gruppe %2$s entfernt</string>
     <string name="NotificationGroupKickYou">%1$s hat dich aus der Gruppe %2$s entfernt</string>
     <string name="NotificationGroupLeftMember">%1$s hat die Gruppe %2$s verlassen</string>
-    <string name="NotificationContactJoined">%1$s benutzt jetzt Mintgram!</string>
-    <string name="NotificationUnrecognizedDevice">%1$s,\nwir haben eine Anmeldung von einem neuen Gerät am %2$s festgestellt.\n\nGerät: %3$s\nStandort: %4$s\n\nWenn du das nicht selbst gewesen bist, melde die entsprechende Sitzung in den Mintgram Einstellungen unter Geräte unverzüglich ab.\n\nWenn du der Meinung bist, dass sich jemand gegen deinen Willen bei deinem Konto angemeldet hat, kannst du in den Einstellungen unter Privatsphäre und Sicherheit die zweistufige Bestätigung aktivieren.\n\nDein Mintgram Team</string>
+    <string name="NotificationContactJoined">%1$s benutzt jetzt Flintgram!</string>
+    <string name="NotificationUnrecognizedDevice">%1$s,\nwir haben eine Anmeldung von einem neuen Gerät am %2$s festgestellt.\n\nGerät: %3$s\nStandort: %4$s\n\nWenn du das nicht selbst gewesen bist, melde die entsprechende Sitzung in den Flintgram Einstellungen unter Geräte unverzüglich ab.\n\nWenn du der Meinung bist, dass sich jemand gegen deinen Willen bei deinem Konto angemeldet hat, kannst du in den Einstellungen unter Privatsphäre und Sicherheit die zweistufige Bestätigung aktivieren.\n\nDein Flintgram Team</string>
     <string name="NotificationContactNewPhoto">%1$s hat das Profilbild geändert</string>
     <string name="NotificationInvitedToGroupByLink">%1$s ist per Einladungslink der Gruppe %2$s beigetreten</string>
     <string name="NotificationGroupFew">%1$s hat %3$s an die Gruppe %2$s gesendet</string>
     <string name="NotificationGroupAlbum">%1$s hat ein Album an die Gruppe %2$s gesendet</string>
     <string name="NotificationGroupForwardedFew">%1$s hat %3$s an die Gruppe %2$s weitergeleitet</string>
-    <string name="NotificationHiddenName">Mintgram</string>
-    <string name="NotificationHiddenChatName">Mintgram</string>
+    <string name="NotificationHiddenName">Flintgram</string>
+    <string name="NotificationHiddenChatName">Flintgram</string>
     <string name="NotificationHiddenChatUserName">Nutzer</string>
     <string name="NotificationHiddenMessage">Neue Nachricht</string>
     <string name="Reply">Antworten</string>
@@ -245,7 +245,7 @@
     <string name="NotificationActionPinnedGeoLiveUser">%1$s hat einen Live-Standort angeheftet</string>
     <string name="NotificationActionPinnedGifUser">%1$s hat ein GIF angeheftet</string>
     <string name="NotificationActionPinnedMusicUser">%1$s hat eine Audiodatei angeheftet</string>
-    <string name="SecretChatName">Mintgram</string>
+    <string name="SecretChatName">Flintgram</string>
 
     <string name="ResetNotificationsText">Einstellungen wurden zurückgesetzt</string>
     <string name="ResetNotificationsAlertTitle">Benachrichtigungen zurücksetzen</string>
@@ -282,7 +282,7 @@
     <string name="NotificationsAndSounds">Mitteilungen und Töne</string>
     <string name="CustomNotifications">Eigene Benachrichtigungen</string>
     <string name="ProfilePopupNotification">Popup Mitteilungen</string>
-    <string name="ProfilePopupNotificationInfo">Neue Nachrichten von diesem Kontakt erscheinen auf deinem Bildschirm, wenn du Mintgram nicht benutzt.</string>
+    <string name="ProfilePopupNotificationInfo">Neue Nachrichten von diesem Kontakt erscheinen auf deinem Bildschirm, wenn du Flintgram nicht benutzt.</string>
     <string name="NotificationsLed">LED</string>
     <string name="NotificationsLedColor">Farbe</string>
     <string name="ColorBlue">Blau</string>
@@ -364,7 +364,7 @@
     <string name="MessagesSettings">Nachrichten</string>
     <string name="SendByEnter">Mit Enter senden</string>
     <string name="Events">Ereignisse</string>
-    <string name="ContactJoined">Kontakt ist Mintgram beigetreten</string>
+    <string name="ContactJoined">Kontakt ist Flintgram beigetreten</string>
     <string name="PinnedMessages">Angeheftete Nachrichten</string>
     <string name="TranslateMessages">Nachrichten übersetzen</string>
     <string name="ShowTranslateButton">Übersetzen-Knopf zeigen</string>
@@ -382,12 +382,12 @@
     <string name="LanguageUnknownTitle">Unzureichende Daten</string>
     <string name="LanguageUnsupportedError">Sprache nicht gefunden.</string>
     <string name="LanguageSame">Du benutzt bereits das Sprachpaket (**%1$s**). In den Einstellungen kannst du die Sprache jederzeit wieder ändern.</string>
-    <string name="LanguageUnknownCustomAlert">Leider enthält das benutzerdefinierte Sprachpaket (**%1$s**) keine Daten für Mintgram Android.</string>
-    <string name="AskAQuestionInfo">Bedenke bitte, dass der Mintgram Support von Freiwilligen betreut wird. Alle versuchen so schnell wie möglich zu antworten, dies kann jedoch manchmal ein bisschen dauern.\n\nBitte schau auch in den <![CDATA[<a href=\"https://telegram.org/faq/de#allgemeine-fragen\">Mintgram FAQ</a>]]> nach. Dort findest du Antworten auf die meisten Fragen und wichtige Tipps zur <![CDATA[<a href=\"https://telegram.org/faq/de#problembehandlung\">Problembehandlung</a>]]>.</string>
+    <string name="LanguageUnknownCustomAlert">Leider enthält das benutzerdefinierte Sprachpaket (**%1$s**) keine Daten für Flintgram Android.</string>
+    <string name="AskAQuestionInfo">Bedenke bitte, dass der Flintgram Support von Freiwilligen betreut wird. Alle versuchen so schnell wie möglich zu antworten, dies kann jedoch manchmal ein bisschen dauern.\n\nBitte schau auch in den <![CDATA[<a href=\"https://telegram.org/faq/de#allgemeine-fragen\">Flintgram FAQ</a>]]> nach. Dort findest du Antworten auf die meisten Fragen und wichtige Tipps zur <![CDATA[<a href=\"https://telegram.org/faq/de#problembehandlung\">Problembehandlung</a>]]>.</string>
     <string name="AskButton">Eine Frage stellen</string>
-    <string name="TelegramFAQ">Mintgram FAQ</string>
-    <string name="TelegramFaq">Mintgram FAQ</string>
-    <string name="TelegramFeatures">Mintgram Funktionen</string>
+    <string name="TelegramFAQ">Flintgram FAQ</string>
+    <string name="TelegramFaq">Flintgram FAQ</string>
+    <string name="TelegramFeatures">Flintgram Funktionen</string>
     <string name="TelegramFeaturesUrl">https://t.me/TelegramTipsDE</string>
     <string name="AddAccount">Konto hinzufügen</string>
     <string name="SelectAccount">Konto auswählen</string>
@@ -404,7 +404,7 @@
     <string name="NotificationsService">Keep-Alive-Dienst</string>
     <string name="NotificationsServiceInfo">Sofern die App beendet wurde, diese automatisch neu starten, um Benachrichtigungen zu gewährleisten.</string>
     <string name="NotificationsServiceConnection">Hintergrundverbindung</string>
-    <string name="NotificationsServiceConnectionInfo">Nutzt eine batterieschonende Hintergrundverbindung zu Mintgram, um Benachrichtigungen zu gewährleisten.</string>
+    <string name="NotificationsServiceConnectionInfo">Nutzt eine batterieschonende Hintergrundverbindung zu Flintgram, um Benachrichtigungen zu gewährleisten.</string>
     <string name="SortBy">sortiert nach</string>
     <string name="ImportContacts">Kontakte importieren</string>
     <string name="SortFirstName">Vorname</string>
@@ -496,14 +496,14 @@
     <string name="NotificationsPriorityUrgent">Dringend</string>
     <string name="RepeatNotificationsNever">Niemals</string>
     <string name="RepeatNotifications">Erneut benachrichtigen</string>
-    <string name="PhoneNumberHelp">Du kannst deine Telefonnummer hier ändern. Dein Konto und alle Daten in der Mintgram-Cloud, also Nachrichten, Medien, Kontakte, etc. werden auf das neue Konto übertragen.</string>
+    <string name="PhoneNumberHelp">Du kannst deine Telefonnummer hier ändern. Dein Konto und alle Daten in der Flintgram-Cloud, also Nachrichten, Medien, Kontakte, etc. werden auf das neue Konto übertragen.</string>
     <string name="PhoneNumberAlert">Nutzer werden deine neue Nummer sehen, wenn sie diese in ihrem Adressbuch gespeichert haben oder deine Einstellungen es erlauben. Unter Einstellungen &gt; Privatsphäre und Sicherheit &gt; Telefonnummer kannst du es jederzeit anpassen.</string>
     <string name="PhoneNumberChange2">Nummer ändern</string>
     <string name="PhoneNumberChangeTitle">Nummer ändern</string>
     <string name="PhoneNumberKeepButton">%1$s behalten</string>
     <string name="ChangePhoneNewNumber">Neue Nummer</string>
     <string name="ChangePhoneHelp">Der Bestätigungscode kommt per Anruf oder SMS an deine neue Nummer.</string>
-    <string name="ChangePhoneNumberOccupied">Die Telefonnummer %1$s ist bereits ein Mintgram Konto. Bitte lösche es, bevor du mit der Übertragung auf das neue Konto startest.</string>
+    <string name="ChangePhoneNumberOccupied">Die Telefonnummer %1$s ist bereits ein Flintgram Konto. Bitte lösche es, bevor du mit der Übertragung auf das neue Konto startest.</string>
     <string name="NotificationsOther">Sonstiges</string>
     <string name="VibrationDisabled">Deaktiviert</string>
     <string name="PopupEnabled">Aktiviert</string>
@@ -528,13 +528,13 @@
     <string name="SmartNotificationsInfo">%1$d / %2$s</string>
     <string name="SmartNotificationsDisabled">Deaktiviert</string>
     <string name="SecretWebPage">Linkvorschau</string>
-    <string name="SecretWebPageInfo">Die Linkvorschau wird auf den Servern von Mintgram generiert. Wir speichern keine Daten über die von dir gesendeten Links.</string>
+    <string name="SecretWebPageInfo">Die Linkvorschau wird auf den Servern von Flintgram generiert. Wir speichern keine Daten über die von dir gesendeten Links.</string>
     <string name="SecretChat">Geheime Chats</string>
     <string name="DirectShare">Direktes Teilen</string>
     <string name="DirectShareInfo">Letzte Chats im Teilen-Menü anzeigen</string>
     <string name="Emoji">Emoji</string>
     <string name="LargeEmoji">Große Emoji</string>
-    <string name="TelegramVersion">Mintgram für Android %1$s</string>
+    <string name="TelegramVersion">Flintgram für Android %1$s</string>
     <string name="ChangeLanguageLater">Du kannst deine Sprache später in den Einstellungen ändern.</string>
     <string name="ChooseYourLanguage">Wähle deine Sprache</string>
     <string name="ChooseYourLanguageOther">Weitere</string>
@@ -573,7 +573,7 @@
     <string name="UseProxySponsorInfo">Dieser Kanal wird von deinem Proxyserver angezeigt. Deaktiviere den Proxy unter Einstellungen &gt; Daten und Speicher, um den Kanal zu entfernen.</string>
     <string name="UseProxyInfo">SOCKS5 Proxy-Einstellungen</string>
     <string name="UseProxyTelegramInfo">MTProto Proxy-Einstellungen.</string>
-    <string name="UseProxyTelegramInfo2">Dieser Proxy könnte einen gesponserten Kanal in deiner Chatliste anzeigen. Das wird jedoch nicht deinen Mintgram-Datenverkehr enthüllen.</string>
+    <string name="UseProxyTelegramInfo2">Dieser Proxy könnte einen gesponserten Kanal in deiner Chatliste anzeigen. Das wird jedoch nicht deinen Flintgram-Datenverkehr enthüllen.</string>
     <string name="UseProxyForCalls">Proxy für Anrufe benutzen</string>
     <string name="UseProxyForCallsInfo">Proxyserver können die Qualität von Anrufen beinflussen.</string>
     <string name="ConnectingToProxyEnable">Aktivieren</string>
@@ -589,7 +589,7 @@
     <string name="AutodownloadSizeLimitUpTo">bis zu %1$s</string>
     <string name="Streaming">Streaming</string>
     <string name="EnableStreaming">Videos und Audios streamen</string>
-    <string name="EnableAllStreamingInfo">Mintgram wird versuchen, Musik und Videos sofort zu streamen, ohne dass du erst auf den vollständigen Download warten musst.</string>
+    <string name="EnableAllStreamingInfo">Flintgram wird versuchen, Musik und Videos sofort zu streamen, ohne dass du erst auf den vollständigen Download warten musst.</string>
     <string name="TapToChangePhone">Antippen, um Nummer zu ändern</string>
     <string name="ShowNotificationsFor">Zeige Benachrichtigungen von</string>
     <string name="AllAccounts">Allen Konten</string>
@@ -638,13 +638,13 @@
     <string name="AuthAnotherClientOk">Authentifizierung erfolgreich</string>
     <string name="AuthAnotherClientDownloadClientUrl">https://desktop.telegram.org/</string>
     <string name="AuthAnotherWebClientUrl">https://web.telegram.org/</string>
-    <string name="AuthAnotherClientInfo1">Installiere Mintgram Desktop auf deinem Computer von *desktop.telegram.org*.</string>
+    <string name="AuthAnotherClientInfo1">Installiere Flintgram Desktop auf deinem Computer von *desktop.telegram.org*.</string>
     <string name="AuthAnotherClientInfo2">Starte das Programm auf dem Computer, um deinen QR-Code zu erhalten.</string>
     <string name="AuthAnotherClientInfo3">Scanne den QR-Code mit deinem Handy, um dich mit deinem Konto zu verbinden.</string>
-    <string name="AuthAnotherClientUrl">Mit diesem Code kann man sich bei deinem Mintgram Konto anmelden.\n\nUm die Anmeldung zu bestätigen, in die Einstellungen von Mintgram wechseln &gt; Geräte &gt; QR-Code scannen und den Code mit der Kamera scannen.</string>
-    <string name="QRCodePermissionNoCameraWithHint">**Mintgram** benötigt Zugriff auf deine **Kamera**, damit du QR-Codes scannen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="AuthAnotherClientUrl">Mit diesem Code kann man sich bei deinem Flintgram Konto anmelden.\n\nUm die Anmeldung zu bestätigen, in die Einstellungen von Flintgram wechseln &gt; Geräte &gt; QR-Code scannen und den Code mit der Kamera scannen.</string>
+    <string name="QRCodePermissionNoCameraWithHint">**Flintgram** benötigt Zugriff auf deine **Kamera**, damit du QR-Codes scannen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
     <string name="SetProfilePhoto">Profilbild festlegen</string>
-    <string name="AppUpdate">Mintgram aktualisieren</string>
+    <string name="AppUpdate">Flintgram aktualisieren</string>
     <string name="AppUpdateVersionAndSize">Version %1$s • %2$s</string>
     <string name="AppUpdateDownloading">%1$d%% wird geladen...</string>
     <string name="AppUpdateNow">Jetzt aktualisieren</string>
@@ -680,7 +680,7 @@
     <string name="ChannelTitleChanged">Kanalname geändert.</string>
     <string name="ChannelDescriptionChanged">Kanalbeschreibung aktualisiert.</string>
     <string name="CheckPhoneNumber">Ist %1$s noch deine Nummer?</string>
-    <string name="CheckPhoneNumberInfo">Halte deine Nummer stets auf dem aktuellsten Stand, damit du dich immer bei Mintgram anmelden kannst. **Mehr dazu hier**</string>
+    <string name="CheckPhoneNumberInfo">Halte deine Nummer stets auf dem aktuellsten Stand, damit du dich immer bei Flintgram anmelden kannst. **Mehr dazu hier**</string>
     <string name="CheckPhoneNumberLearnMoreUrl">https://telegram.org/faq/de#f-ich-habe-eine-neue-nummer-was-soll-ich-tun</string>
     <string name="CheckPhoneNumberYes">Ja</string>
     <string name="CheckPhoneNumberNo">Nein</string>
@@ -972,7 +972,7 @@
     <string name="YourEmailInfo">Falls du dein Passwort vergisst, benötigen wir deine richtige E-Mail Adresse.</string>
     <string name="YourEmailSkip">Überspringen</string>
     <string name="YourEmailSkipWarning">Warnung</string>
-    <string name="YourEmailSkipWarningText">Das ist keine gute Idee.\n\nWenn du dein Passwort vergisst, verlierst du den Zugang zu deinem Mintgram-Konto. Für immer, ohne Ausnahme.</string>
+    <string name="YourEmailSkipWarningText">Das ist keine gute Idee.\n\nWenn du dein Passwort vergisst, verlierst du den Zugang zu deinem Flintgram-Konto. Für immer, ohne Ausnahme.</string>
     <string name="YourEmailAlmostThere">Fast geschafft!</string>
     <string name="YourEmailAlmostThereText">Bitte überprüfe deine Mails (auch den Spam-Ordner) um die zweistufige Bestätigung abzuschließen.</string>
     <string name="YourPasswordSuccess">Geschafft!</string>
@@ -992,7 +992,7 @@
     <string name="CancelPasswordResetNo">NEIN</string>
     <string name="CancelReset">Zurücksetzung abbrechen</string>
     <string name="CancelEmailQuestionTitle">Einrichtung abbrechen</string>
-    <string name="TurnPasswordOffPassport">Alle Daten in deinem Mintgram Passport gehen verloren!</string>
+    <string name="TurnPasswordOffPassport">Alle Daten in deinem Flintgram Passport gehen verloren!</string>
     <string name="PasswordHint">Passwort-Erinnerung</string>
     <string name="PasswordHintDescription">Du kannst einen Passworthinweis hinterlegen.</string>
     <string name="PasswordHintPlaceholder">Hinweis</string>
@@ -1009,7 +1009,7 @@
     <string name="PasswordAsHintError">Der Hinweis darf nicht das Passwort sein.</string>
     <string name="PasswordEmailInvalid">Ungültige E-Mail-Adresse. Bitte prüfe, ob du sie richtig eingetippt hast und versuche es erneut.</string>
     <string name="RestorePasswordNoEmailTitle">Tut uns leid</string>
-    <string name="RestorePasswordNoEmailText">Da du für diesen Fall keine E-Mail-Adresse hinterlegt hast, kannst du nur noch hoffen, dass dir dein Passwort wieder einfällt oder du musst dein Mintgram-Konto zurückzusetzen.</string>
+    <string name="RestorePasswordNoEmailText">Da du für diesen Fall keine E-Mail-Adresse hinterlegt hast, kannst du nur noch hoffen, dass dir dein Passwort wieder einfällt oder du musst dein Flintgram-Konto zurückzusetzen.</string>
     <string name="RestorePasswordNoEmailText2">Da du bei der Einrichtung deines Passwortes keine E-Mail-Adresse für die Wiederherstellung angegeben hattest, kannst du nur hoffen, dass dir dein Passwort wieder einfällt oder du wartest 7 Tage, bis dein Passwort zurückgesetzt wird.</string>
     <string name="RestorePasswordResetPasswordText">Wirklich das Passwort der zweistufigen Bestätigung zurücksetzen?</string>
     <string name="RestorePasswordResetPasswordOk">Dein Passwort für die zweistufige Bestätigung wurde zurückgesetzt.</string>
@@ -1022,7 +1022,7 @@
     <string name="RestoreEmailSentInfo">Überprüfe deine Mails und gib den 6-stelligen Code aus unserer E-Mail ein, um dein Cloud-Passwort zu deaktivieren.</string>
     <string name="RestoreEmailTrouble">Keinen Zugang zu %1$s?</string>
     <string name="RestoreEmailTroubleNoEmail">Kein Zugang zu deiner E-Mail-Adresse?</string>
-    <string name="RestoreEmailTroubleText">Wenn du nicht in deine E-Mails kommst, kannst du nur hoffen, dass dir dein Passwort wieder einfällt oder du musst dein Mintgram-Konto zurücksetzen.</string>
+    <string name="RestoreEmailTroubleText">Wenn du nicht in deine E-Mails kommst, kannst du nur hoffen, dass dir dein Passwort wieder einfällt oder du musst dein Flintgram-Konto zurücksetzen.</string>
     <string name="RestoreEmailTroubleText2">Falls du keinen Zugriff auf deine E-Mail-Adresse hast, kannst du nur hoffen, dass dir dein Passwort wieder einfällt oder du wartest 7 Tage, bis dein Passwort zurückgesetzt wird.</string>
     <string name="RestoreEmailNoAccess">Keinen Zugang zu %1$s?</string>
     <string name="ResetPasswordWait">Du hast kürzlich eine Zurücksetzung deines Passwortes angefordert, die abgebrochen wurde. Bitte warte %1$s, bevor du eine neue Anfrage stellst.</string>
@@ -1041,9 +1041,9 @@
     <string name="VerificationCode">Verifizierungscode</string>
     <string name="EnterCode">Code eingeben</string>
     <string name="ResendCodeInfo">Der Bestätigungscode wurde an deine E-Mail gesendet.</string>
-    <string name="EnabledPasswordText">Du hast die zweistufige Bestätigung aktiviert.\nWenn du dich bei Mintgram anmeldest, brauchst du dein Passwort.</string>
+    <string name="EnabledPasswordText">Du hast die zweistufige Bestätigung aktiviert.\nWenn du dich bei Flintgram anmeldest, brauchst du dein Passwort.</string>
     <string name="AddEmailTitle">E-Mail für Anmeldung</string>
-    <string name="AddEmailSubtitle">Du erhältst jetzt Mintgram Anmeldecodes per E-Mail und nicht mehr per SMS. Bitte gib deine E-Mail-Adresse ein.</string>
+    <string name="AddEmailSubtitle">Du erhältst jetzt Flintgram Anmeldecodes per E-Mail und nicht mehr per SMS. Bitte gib deine E-Mail-Adresse ein.</string>
     <string name="EnterNewEmail">Deine neue E-Mail</string>
     <string name="VerificationCodeSubtitle">Bitte prüfe deine E-Mails bei %1$s (Spam-Ordner nicht vergessen) und den Code eingeben.</string>
     <string name="CheckYourEmail">Prüfe deine E-Mails</string>
@@ -1130,7 +1130,7 @@
     <string name="ActionBotDocumentRentalAgreement">Mietvertrag</string>
     <string name="ActionBotDocumentPhone">Telefonnummer</string>
     <string name="ActionBotDocumentEmail">E-Mail-Adresse</string>
-    <string name="UnsupportedMedia2">Diese Nachricht wird von deiner Mintgram-Version nicht unterstützt. Bitte aktualisiere die App.</string>
+    <string name="UnsupportedMedia2">Diese Nachricht wird von deiner Flintgram-Version nicht unterstützt. Bitte aktualisiere die App.</string>
     <string name="YourVersionIsLatest">Deine Version ist aktuell.</string>
     <string name="AttachPhoto">Bild</string>
     <string name="AttachVideo">Video</string>
@@ -1164,10 +1164,10 @@
     <string name="DeleteAll">Alles löschen</string>
     <string name="StopLoadingTitle">Laden stoppen?</string>
     <string name="StopLoading">Ladevorgang wirklich abbrechen?</string>
-    <string name="UpdateTelegram">Aktualisiere Mintgram</string>
-    <string name="UpdateAppAlert">Deine Mintgram-App ist leider veraltet und kann diese Anfrage nicht verarbeiten. Bitte aktualisiere Mintgram.</string>
+    <string name="UpdateTelegram">Aktualisiere Flintgram</string>
+    <string name="UpdateAppAlert">Deine Flintgram-App ist leider veraltet und kann diese Anfrage nicht verarbeiten. Bitte aktualisiere Flintgram.</string>
     <string name="InvalidPhoneNumber">Ungültige Telefonnummer. Bitte prüfe, ob du sie richtig eingetippt hast und versuche es erneut.</string>
-    <string name="PleaseLoginPassport">Bitte melde dich mit deinem Mintgram-Konto an, um Mintgram Passport nutzen zu können.</string>
+    <string name="PleaseLoginPassport">Bitte melde dich mit deinem Flintgram-Konto an, um Flintgram Passport nutzen zu können.</string>
     <string name="BannedPhoneNumber">Diese Nummer wurde gesperrt.</string>
     <string name="CodeExpired">Code ist abgelaufen, bitte melde dich erneut an</string>
     <string name="WrongCodeTitle">Falscher Code</string>
@@ -1189,7 +1189,7 @@
     <string name="NoPlayerInstalled">Du hast keinen Videoplayer. Bitte installiere einen um fortzufahren.</string>
     <string name="NoMailInstalled">Bitte sende eine E-Mail an reports@stel.com mit einer Beschreibung des Problems.</string>
     <string name="NoHandleAppInstalled">Du hast keine Applikationen, die den Dateityp \'%1$s\' öffnen könnten. Bitte installiere eine entsprechende Anwendung um fortzufahren.</string>
-    <string name="InviteUser">Dieser Nutzer hat noch kein Mintgram. Möchtest du ihn einladen?</string>
+    <string name="InviteUser">Dieser Nutzer hat noch kein Flintgram. Möchtest du ihn einladen?</string>
     <string name="AreYouSure">Bist du sicher?</string>
     <string name="AddToTheGroupAlertTitle">Bot hinzufügen</string>
     <string name="AddToTheGroupAlertText">Möchtest du **%1$s** der Gruppe **%2$s** hinzufügen?</string>
@@ -1205,7 +1205,7 @@
     <string name="SendMessagesToText">Möchtest du diese Nachricht **%1$s** senden?</string>
     <string name="SendGameToText">Möchtest du dieses Spiel mit **%1$s** teilen?</string>
     <string name="SendContactToText">Möchtest du diesen Kontakt **%1$s** senden?</string>
-    <string name="AreYouSureLogout">Wirklich abmelden?\n\nAbmelden löscht deine Geheimen Chats.\n\nDu kannst Mintgram von all deinen Geräten gleichzeitig nutzen.</string>
+    <string name="AreYouSureLogout">Wirklich abmelden?\n\nAbmelden löscht deine Geheimen Chats.\n\nDu kannst Flintgram von all deinen Geräten gleichzeitig nutzen.</string>
     <string name="DeleteFewChatsTitle">%1$s löschen</string>
     <string name="ClearFewChatsTitle">%1$s leeren</string>
     <string name="ClearCacheFewChatsTitle">Cache für %1$s leeren</string>
@@ -1269,16 +1269,16 @@
     <string name="SendGameToGroupText">Möchtest du dieses Spiel mit **%1$s** teilen?</string>
     <string name="SendContactToGroupText">"Möchtest du diesen Kontakt **%1$s** senden? "</string>
     <string name="NoUsernameFound">Benutzername nicht gefunden.</string>
-    <string name="NoPhoneFound">Es gibt kein Konto bei Mintgram unter dieser Nummer.</string>
+    <string name="NoPhoneFound">Es gibt kein Konto bei Flintgram unter dieser Nummer.</string>
     <string name="NoFolderFound">Kein Chat-Ordner gefunden.</string>
     <string name="BotCantJoinGroups">Keine Gruppen mit diesem Bot möglich</string>
-    <string name="SecretLinkPreviewAlert">Möchtest du die erweiterte Linkvorschau in Geheimen Chats aktivieren? Die Vorschau wird auf den Mintgram Servern generiert.</string>
+    <string name="SecretLinkPreviewAlert">Möchtest du die erweiterte Linkvorschau in Geheimen Chats aktivieren? Die Vorschau wird auf den Flintgram Servern generiert.</string>
     <string name="SecretChatContextBotAlert">Inline Bots werden von Drittentwicklern erstellt. Symbole, die du nach dem Botnamen eingibst, werden an den jeweiligen Entwickler geschickt, damit der Bot funktioniert.</string>
     <string name="EditMessageError">Du kannst diese Nachricht nicht bearbeiten.</string>
-    <string name="AllowReadCall">Bitte erlaube Mintgram den Zugriff auf Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
-    <string name="AllowReadCallAndLog">Bitte erlaube Mintgram, Anrufe zu empfangen und die Anrufliste einzusehen , so dass wir den Code automatisch für dich eingeben können.</string>
-    <string name="AllowReadCallLog">Bitte erlaube Mintgram auf die Anrufliste zuzugreifen, so dass wir den Code für dich automatisch eingeben können.</string>
-    <string name="AllowFillNumber">Bitte erlaube Mintgram, Anrufe zu empfangen, damit wir deine Telefonnummer automatisch bestätigen können.</string>
+    <string name="AllowReadCall">Bitte erlaube Flintgram den Zugriff auf Anrufe, so dass wir den Code automatisch in der App eingeben können.</string>
+    <string name="AllowReadCallAndLog">Bitte erlaube Flintgram, Anrufe zu empfangen und die Anrufliste einzusehen , so dass wir den Code automatisch für dich eingeben können.</string>
+    <string name="AllowReadCallLog">Bitte erlaube Flintgram auf die Anrufliste zuzugreifen, so dass wir den Code für dich automatisch eingeben können.</string>
+    <string name="AllowFillNumber">Bitte erlaube Flintgram, Anrufe zu empfangen, damit wir deine Telefonnummer automatisch bestätigen können.</string>
     <string name="UserRestricted">Du kannst diese Aktion nicht durchführen.</string>
     <string name="YouBlockedUser">Du kannst diesen Nutzer oder Bot Gruppen leider nicht hinzufügen, da du ihn blockiert hast. Gebe ihn wieder frei, um fortzufahren.</string>
     <string name="AddAdminErrorNotAMember">Du kannst diesen Nutzer nicht als Admin festlegen, da er kein Mitglied dieser Gruppe ist oder du keine Erlaubnis hast, ihn einzuladen.</string>
@@ -1306,36 +1306,36 @@
     <string name="ErrorSendRestrictedPrivacyVoiceMessages">Der Nutzer hat den Empfang von Sprachnachrichten bei sich in den Einstellungen ausgeschaltet.</string>
     <string name="ErrorSendRestrictedPrivacyVideoMessages">"Leider kannst du aufgrund seiner Einstellungen diesem Nutzer keine Videonachrichten schicken. "</string>
     <string name="UnableForward">Weiterleitung nicht möglich</string>
-    <string name="TosDecline">Tut uns sehr leid, aber in diesem Fall kannst du dich nicht bei Mintgram registrieren.\n\nIm Gegensatz zu anderen, nutzen wir deine Daten nicht für die Ausrichtung von Werbung und verkaufen sie nicht an andere. Mintgram speichert nur die Informationen, die es benötigt, um als funktionsreicher Cloud-Dienst aufzutreten. Im Bereich \'Privatsphäre &amp; Sicherheit\' kannst du festlegen, wie wir deine Daten verwenden.\n\nWenn du allgemein nicht mit unseren bescheidenen Anforderungen einverstanden bist, wird es uns nicht möglich sein, dir diesen Dienst anzubieten.</string>
+    <string name="TosDecline">Tut uns sehr leid, aber in diesem Fall kannst du dich nicht bei Flintgram registrieren.\n\nIm Gegensatz zu anderen, nutzen wir deine Daten nicht für die Ausrichtung von Werbung und verkaufen sie nicht an andere. Flintgram speichert nur die Informationen, die es benötigt, um als funktionsreicher Cloud-Dienst aufzutreten. Im Bereich \'Privatsphäre &amp; Sicherheit\' kannst du festlegen, wie wir deine Daten verwenden.\n\nWenn du allgemein nicht mit unseren bescheidenen Anforderungen einverstanden bist, wird es uns nicht möglich sein, dir diesen Dienst anzubieten.</string>
     <string name="TosAgeTitle">Altersverifikation</string>
     <string name="PrivacyPolicyAndTerms">Datenschutzerklärung und Nutzungsbedingungen</string>
     <string name="TosAgeText">Tippe auf Zustimmen, um zu bestätigen, dass du mindestens %1$s oder älter bist.</string>
-    <string name="TosUpdateDecline">Leider gibt es keine anderen Alternativen. Im Gegensatz zu anderen Apps verwendet Mintgram die Nutzerdaten nicht für Werbezwecke oder andere kommerzielle Zwecke. Mintgram speichert nur die Informationen, die es braucht, um als funktionsreicher Clouddienst zu funktionieren. Du kannst in den Privatsphäre- und Sicherheitseinstellungen einstellen, wie deine Daten verwendet werden.\n\nWenn du mit diesen bescheidenen Anforderungen von Mintgram nicht einverstanden bist, ist es uns nicht möglich, dir den Dienst zur Verfügung zu stellen.</string>
-    <string name="TosDeclineDeleteAccount">Warnung! Das wird dein Konto mit all deinen Daten aus der Mintgram-Cloud unwiderruflich löschen.\n\nWichtig: Du kannst jetzt abbrechen und deine Daten vor der Löschung noch exportieren. (Öffne dazu die aktuellste Version von Mintgram Desktop &gt; Einstellungen &gt; Erweitert &gt; Daten exportieren.)</string>
+    <string name="TosUpdateDecline">Leider gibt es keine anderen Alternativen. Im Gegensatz zu anderen Apps verwendet Flintgram die Nutzerdaten nicht für Werbezwecke oder andere kommerzielle Zwecke. Flintgram speichert nur die Informationen, die es braucht, um als funktionsreicher Clouddienst zu funktionieren. Du kannst in den Privatsphäre- und Sicherheitseinstellungen einstellen, wie deine Daten verwendet werden.\n\nWenn du mit diesen bescheidenen Anforderungen von Flintgram nicht einverstanden bist, ist es uns nicht möglich, dir den Dienst zur Verfügung zu stellen.</string>
+    <string name="TosDeclineDeleteAccount">Warnung! Das wird dein Konto mit all deinen Daten aus der Flintgram-Cloud unwiderruflich löschen.\n\nWichtig: Du kannst jetzt abbrechen und deine Daten vor der Löschung noch exportieren. (Öffne dazu die aktuellste Version von Flintgram Desktop &gt; Einstellungen &gt; Erweitert &gt; Daten exportieren.)</string>
 
-    <string name="PermissionStorageWithHint">**Mintgram** benötigt Zugriff auf deinen **Speicher**, damit du Bilder, Videos, Musik und weitere Medien senden und speichern kannst. Tippe unten auf Einstellungen -&gt; Berechtigungen und schalte den Zugriff ein.</string>
-    <string name="PermissionNoAudioWithHint">**Mintgram** benötigt Zugriff auf dein **Mikrofon**, damit du Sprachnachrichten senden kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoAudioVideoWithHint">**Mintgram** benötigt Zugriff auf dein **Mikrofon**, damit du Sprachnachrichten senden kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoCameraWithHint">**Mintgram** benötigt Zugriff auf deine **Kamera**, damit du Bilder und Videos aufnehmen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoCameraMicVideo">**Mintgram** benötigt Zugriff auf deine **Kamera** und dein **Mikrofon**, damit du Videonachrichten aufnehmen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff für beides.</string>
-    <string name="PermissionNoLocation">"Mintgram benötigt Zugriff auf deinen Standort, damit du ihn mit Freunden teilen kannst. "</string>
-    <string name="PermissionNoLocationStory">Mintgram braucht Zugriff auf deinen Standort, damit du das Wetter-Widget deiner Story hinzufügen kannst.</string>
-    <string name="PermissionNoLocationFriends">**Mintgram** benötigt Zugriff auf deinen **Standort**, damit du ihn mit Freunden teilen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoLocationNavigation">**Mintgram** benötigt Zugriff auf deinen **Standort**, damit du Anweisungen erhalten kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoContactsSharing">**Mintgram** benötigt Zugriff auf deine **Kontakte**, damit du sie mit deinen Freunden teilen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoStorageAvatar">**Mintgram** benötigt Zugriff auf deinen **Speicher**, damit du ein Profilbild hochladen kannst. Tippe auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
-    <string name="PermissionNoAudioStorageStory">**Mintgram** benötigt Zugriff auf Musikdateien, damit du diese mit deiner Story hochladen kannst. Tippe auf Einstellungen &gt; Berechtigungen und aktiviere **Musik und Audio**.</string>
-    <string name="PermissionDrawAboveOtherApps">Mintgram braucht Zugriff auf die Funktion \'Über andere Apps einblenden\'. Nur so können Videos im Bild in Bild Modus wiedergegeben werden.</string>
-    <string name="PermissionDrawAboveOtherAppsGroupCall">Der Überlagerungsmodus erlaubt dir die Verwendung von Push-To-Talk und die Anzeige, wer gerade spricht, selbst wenn du dich ausserhalb von Mintgram befindest.</string>
+    <string name="PermissionStorageWithHint">**Flintgram** benötigt Zugriff auf deinen **Speicher**, damit du Bilder, Videos, Musik und weitere Medien senden und speichern kannst. Tippe unten auf Einstellungen -&gt; Berechtigungen und schalte den Zugriff ein.</string>
+    <string name="PermissionNoAudioWithHint">**Flintgram** benötigt Zugriff auf dein **Mikrofon**, damit du Sprachnachrichten senden kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoAudioVideoWithHint">**Flintgram** benötigt Zugriff auf dein **Mikrofon**, damit du Sprachnachrichten senden kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoCameraWithHint">**Flintgram** benötigt Zugriff auf deine **Kamera**, damit du Bilder und Videos aufnehmen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoCameraMicVideo">**Flintgram** benötigt Zugriff auf deine **Kamera** und dein **Mikrofon**, damit du Videonachrichten aufnehmen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff für beides.</string>
+    <string name="PermissionNoLocation">"Flintgram benötigt Zugriff auf deinen Standort, damit du ihn mit Freunden teilen kannst. "</string>
+    <string name="PermissionNoLocationStory">Flintgram braucht Zugriff auf deinen Standort, damit du das Wetter-Widget deiner Story hinzufügen kannst.</string>
+    <string name="PermissionNoLocationFriends">**Flintgram** benötigt Zugriff auf deinen **Standort**, damit du ihn mit Freunden teilen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoLocationNavigation">**Flintgram** benötigt Zugriff auf deinen **Standort**, damit du Anweisungen erhalten kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoContactsSharing">**Flintgram** benötigt Zugriff auf deine **Kontakte**, damit du sie mit deinen Freunden teilen kannst. Tippe unten auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoStorageAvatar">**Flintgram** benötigt Zugriff auf deinen **Speicher**, damit du ein Profilbild hochladen kannst. Tippe auf Einstellungen &gt; Berechtigungen und aktiviere den Zugriff.</string>
+    <string name="PermissionNoAudioStorageStory">**Flintgram** benötigt Zugriff auf Musikdateien, damit du diese mit deiner Story hochladen kannst. Tippe auf Einstellungen &gt; Berechtigungen und aktiviere **Musik und Audio**.</string>
+    <string name="PermissionDrawAboveOtherApps">Flintgram braucht Zugriff auf die Funktion \'Über andere Apps einblenden\'. Nur so können Videos im Bild in Bild Modus wiedergegeben werden.</string>
+    <string name="PermissionDrawAboveOtherAppsGroupCall">Der Überlagerungsmodus erlaubt dir die Verwendung von Push-To-Talk und die Anzeige, wer gerade spricht, selbst wenn du dich ausserhalb von Flintgram befindest.</string>
     <string name="PermissionOpenSettings">Einstellungen</string>
-    <string name="PermissionXiaomiLockscreen">Bitte erlaube Mintgram auf dem Sperrbildschirm, damit Anrufe signalisiert werden können.</string>
-    <string name="PermissionBackgroundLocation">Um deinen Live-Standort in diesem Chat zu teilen, muss Mintgram die ganze Zeit Zugang zu deinem Standort haben, auch während die App im Hintergrund läuft.\n\nWir greifen nur für die von dir gewählte Dauer auf deinen Standort zu und du kannst jederzeit aufhören, ihn zu teilen. Wir werden deinen Standort für keinen anderen Zweck nutzen, als ihn in diesem Chat zu teilen.</string>
+    <string name="PermissionXiaomiLockscreen">Bitte erlaube Flintgram auf dem Sperrbildschirm, damit Anrufe signalisiert werden können.</string>
+    <string name="PermissionBackgroundLocation">Um deinen Live-Standort in diesem Chat zu teilen, muss Flintgram die ganze Zeit Zugang zu deinem Standort haben, auch während die App im Hintergrund läuft.\n\nWir greifen nur für die von dir gewählte Dauer auf deinen Standort zu und du kannst jederzeit aufhören, ihn zu teilen. Wir werden deinen Standort für keinen anderen Zweck nutzen, als ihn in diesem Chat zu teilen.</string>
     <string name="PermissionDrawAboveOtherAppsTitle">Bild-in-Bild</string>
     <string name="PermissionDrawAboveOtherAppsGroupCallTitle">Videochat-Überlagerung</string>
 
-    <string name="ContactShortcutMessage">Nachricht in Mintgram %1$s</string>
-    <string name="ContactShortcutVoiceCall">Sprachanruf in Mintgram %1$s</string>
-    <string name="ContactShortcutVideoCall">Videoanruf in Mintgram %1$s</string>
+    <string name="ContactShortcutMessage">Nachricht in Flintgram %1$s</string>
+    <string name="ContactShortcutVoiceCall">Sprachanruf in Flintgram %1$s</string>
+    <string name="ContactShortcutVideoCall">Videoanruf in Flintgram %1$s</string>
 
     <string name="formatterBoostExpired">dd. MMMM yyyy</string>
     <string name="formatterGiveawayCard">dd. MMM yyyy</string>

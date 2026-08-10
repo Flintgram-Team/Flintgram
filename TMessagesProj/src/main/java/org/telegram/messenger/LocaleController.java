@@ -1455,7 +1455,7 @@ public class LocaleController {
         if (shouldKeepTelegramBrand(key)) {
             return value;
         }
-        return value.replace("Telegram", "Mintgram");
+        return value.replace("Telegram", "Flintgram");
     }
 
     private static String replaceBrandName(String value) {
