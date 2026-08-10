@@ -49,6 +49,10 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -778,6 +782,47 @@ public class ChatActivity extends BaseFragment implements
     public MessageObject editingMessageObject;
     private boolean paused = true;
     private boolean pausedOnLastMessage;
+    private SensorManager flintGramSensorManager;
+    private Sensor flintGramAccelerometer;
+    private boolean flintGramFlipSensorRegistered;
+    private boolean flintGramFaceDownArmed;
+    private long flintGramFaceDownSince;
+    private long flintGramLastPrivacyToggle;
+    private boolean flintGramPrivacyBlurred;
+    private FlintGramPrivacyOverlay flintGramPrivacyOverlay;
+
+    private final SensorEventListener flintGramFlipSensorListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (!SharedConfig.flintGramFlipToBlur || paused || event.sensor.getType() != Sensor.TYPE_ACCELEROMETER) {
+                return;
+            }
+            long now = SystemClock.elapsedRealtime();
+            float z = event.values[2];
+            if (z < -7.0f) {
+                if (flintGramFaceDownSince == 0) {
+                    flintGramFaceDownSince = now;
+                } else if (now - flintGramFaceDownSince >= 100) {
+                    flintGramFaceDownArmed = true;
+                }
+            } else if (z > 5.0f) {
+                if (flintGramFaceDownArmed && now - flintGramLastPrivacyToggle >= 1000) {
+                    flintGramLastPrivacyToggle = now;
+                    flintGramFaceDownArmed = false;
+                    flintGramFaceDownSince = 0;
+                    setFlintGramPrivacyBlurred(!flintGramPrivacyBlurred, true);
+                } else if (!flintGramFaceDownArmed) {
+                    flintGramFaceDownSince = 0;
+                }
+            } else if (!flintGramFaceDownArmed && z > -3.0f) {
+                flintGramFaceDownSince = 0;
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    };
     private boolean wasPaused;
     boolean firstOpen = true;
     private int replyImageSize;
@@ -3316,6 +3361,9 @@ public class ChatActivity extends BaseFragment implements
     @Override
     public void onFragmentDestroy() {
         super.onFragmentDestroy();
+        unregisterFlintGramFlipSensor();
+        flintGramPrivacyBlurred = false;
+        removeFlintGramPrivacyOverlay(false);
         if (messageMetricsView != null) {
             messageMetricsView.finish();
         }
@@ -29251,9 +29299,168 @@ public class ChatActivity extends BaseFragment implements
 
     Bulletin.Delegate bulletinDelegate;
 
+    private void registerFlintGramFlipSensor() {
+        if (!SharedConfig.flintGramFlipToBlur || flintGramFlipSensorRegistered || getParentActivity() == null) {
+            return;
+        }
+        if (flintGramSensorManager == null) {
+            flintGramSensorManager = (SensorManager) getParentActivity().getSystemService(Context.SENSOR_SERVICE);
+            if (flintGramSensorManager != null) {
+                flintGramAccelerometer = flintGramSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            }
+        }
+        if (flintGramSensorManager != null && flintGramAccelerometer != null) {
+            flintGramFlipSensorRegistered = flintGramSensorManager.registerListener(
+                    flintGramFlipSensorListener,
+                    flintGramAccelerometer,
+                    SensorManager.SENSOR_DELAY_NORMAL
+            );
+        }
+    }
+
+    private void unregisterFlintGramFlipSensor() {
+        if (flintGramSensorManager != null && flintGramFlipSensorRegistered) {
+            flintGramSensorManager.unregisterListener(flintGramFlipSensorListener);
+        }
+        flintGramFlipSensorRegistered = false;
+        flintGramFaceDownArmed = false;
+        flintGramFaceDownSince = 0;
+    }
+
+    private void setFlintGramPrivacyBlurred(boolean blurred, boolean animated) {
+        if (flintGramPrivacyBlurred == blurred) {
+            return;
+        }
+        flintGramPrivacyBlurred = blurred;
+        if (!blurred) {
+            removeFlintGramPrivacyOverlay(animated);
+            return;
+        }
+        Activity activity = getParentActivity();
+        if (activity == null) {
+            flintGramPrivacyBlurred = false;
+            return;
+        }
+        removeFlintGramPrivacyOverlay(false);
+        flintGramPrivacyBlurred = true;
+        ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
+        FlintGramPrivacyOverlay overlay = new FlintGramPrivacyOverlay(activity);
+        flintGramPrivacyOverlay = overlay;
+        if (chatListView != null) {
+            for (int i = 0; i < chatListView.getChildCount(); i++) {
+                overlay.addPixelatedRegion(chatListView.getChildAt(i), decorView);
+            }
+        }
+        overlay.addPixelatedRegion(avatarContainer, decorView);
+        if (pinnedMessageView != null && pinnedMessageView.getVisibility() == View.VISIBLE) {
+            overlay.addPixelatedRegion(pinnedMessageView, decorView);
+        }
+        overlay.setClickable(true);
+        overlay.setFocusable(true);
+        overlay.setOnTouchListener((view, event) -> true);
+        decorView.addView(overlay, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        overlay.bringToFront();
+        if (animated) {
+            overlay.setAlpha(0f);
+            overlay.animate().alpha(1f).setDuration(120).start();
+        }
+        overlay.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP, HapticFeedbackConstants.FLAG_IGNORE_GLOBAL_SETTING);
+    }
+
+    private void removeFlintGramPrivacyOverlay(boolean animated) {
+        FlintGramPrivacyOverlay overlay = flintGramPrivacyOverlay;
+        if (overlay == null) {
+            return;
+        }
+        overlay.animate().cancel();
+        Runnable remove = () -> {
+            AndroidUtilities.removeFromParent(overlay);
+            if (flintGramPrivacyOverlay == overlay) {
+                flintGramPrivacyOverlay = null;
+                overlay.recycle();
+            }
+        };
+        if (animated) {
+            overlay.animate().alpha(0f).setDuration(120).withEndAction(remove).start();
+        } else {
+            remove.run();
+        }
+    }
+
+    private static class FlintGramPrivacyOverlay extends View {
+        private static class PixelatedRegion {
+            final Bitmap bitmap;
+            final Rect destination;
+
+            PixelatedRegion(Bitmap bitmap, Rect destination) {
+                this.bitmap = bitmap;
+                this.destination = destination;
+            }
+        }
+
+        private final ArrayList<PixelatedRegion> regions = new ArrayList<>();
+        private final Paint pixelPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        FlintGramPrivacyOverlay(Context context) {
+            super(context);
+            pixelPaint.setFilterBitmap(false);
+            setWillNotDraw(false);
+        }
+
+        void addPixelatedRegion(View source, View root) {
+            if (source == null || root == null || source.getVisibility() != View.VISIBLE || source.getWidth() <= 0 || source.getHeight() <= 0) {
+                return;
+            }
+            int blockSize = Math.max(1, AndroidUtilities.dp(12));
+            int pixelWidth = Math.max(1, source.getWidth() / blockSize);
+            int pixelHeight = Math.max(1, source.getHeight() / blockSize);
+            Bitmap bitmap = null;
+            try {
+                bitmap = Bitmap.createBitmap(pixelWidth, pixelHeight, Bitmap.Config.ARGB_8888);
+                Canvas canvas = new Canvas(bitmap);
+                canvas.scale(pixelWidth / (float) source.getWidth(), pixelHeight / (float) source.getHeight());
+                source.draw(canvas);
+                int[] sourceLocation = new int[2];
+                int[] rootLocation = new int[2];
+                source.getLocationOnScreen(sourceLocation);
+                root.getLocationOnScreen(rootLocation);
+                int left = sourceLocation[0] - rootLocation[0];
+                int top = sourceLocation[1] - rootLocation[1];
+                regions.add(new PixelatedRegion(bitmap, new Rect(left, top, left + source.getWidth(), top + source.getHeight())));
+            } catch (Throwable e) {
+                if (bitmap != null && !bitmap.isRecycled()) {
+                    bitmap.recycle();
+                }
+                FileLog.e(e);
+            }
+        }
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            for (int i = 0; i < regions.size(); i++) {
+                PixelatedRegion region = regions.get(i);
+                if (!region.bitmap.isRecycled()) {
+                    canvas.drawBitmap(region.bitmap, null, region.destination, pixelPaint);
+                }
+            }
+        }
+
+        void recycle() {
+            for (int i = 0; i < regions.size(); i++) {
+                Bitmap bitmap = regions.get(i).bitmap;
+                if (!bitmap.isRecycled()) {
+                    bitmap.recycle();
+                }
+            }
+            regions.clear();
+        }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
+        registerFlintGramFlipSensor();
         checkShowBlur(false);
         activityResumeTime = System.currentTimeMillis();
         if (openImport && getSendMessagesHelper().getImportingHistory(dialog_id) != null) {
@@ -29452,6 +29659,9 @@ public class ChatActivity extends BaseFragment implements
     @Override
     public void onPause() {
         super.onPause();
+        unregisterFlintGramFlipSensor();
+        flintGramPrivacyBlurred = false;
+        removeFlintGramPrivacyOverlay(false);
         scrolling = false;
         if (scrimPopupWindow != null) {
             scrimPopupWindow.setPauseNotifications(false);

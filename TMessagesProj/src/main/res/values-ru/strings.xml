@@ -341,6 +341,7 @@
     <string name="FlintGramHideReadReceipts">Скрыть прочитано</string>
     <string name="FlintGramHideReadReceiptsInfo">Когда включено, Flintgram не сообщает серверу, что ты прочитал сообщения при открытии чатов на этом устройстве. Если прочитать эти же сообщения в другом клиенте, они всё равно могут стать прочитанными.</string>
     <string name="FlintGramKeepDeletedMessages">Сохранять удалённые</string>
+    <string name="FlintGramFlipToBlur">Скрывать данные пикселями при перевороте</string>
     <string name="FlintGramFreeVoiceTranscription">Расшифровка голосовых сейчас недоступна</string>
     <string name="FlintGramTranscriptionTemporarilyUnavailable">Расшифровка голосовых сейчас временно недоступна.</string>
     <string name="FlintGramTranscriptionDownloadFirst">Сначала скачайте голосовое сообщение, потом попробуйте ещё раз.</string>

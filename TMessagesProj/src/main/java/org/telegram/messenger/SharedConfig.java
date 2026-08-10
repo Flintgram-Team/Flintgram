@@ -332,6 +332,7 @@ public class SharedConfig {
     public static boolean archiveHidden;
     public static boolean hideReadReceipts;
     public static boolean keepDeletedMessages;
+    public static boolean flintGramFlipToBlur;
     public static boolean plumFreeVoiceTranscription;
     public static boolean ghostHideOnline;
     public static boolean ghostHideTyping;
@@ -484,6 +485,7 @@ public class SharedConfig {
                 editor.putBoolean("record_via_sco", recordViaSco);
                 editor.putBoolean("hideReadReceipts", hideReadReceipts);
                 editor.putBoolean("keepDeletedMessages", keepDeletedMessages);
+                editor.putBoolean("flintGramFlipToBlur", flintGramFlipToBlur);
                 editor.putBoolean("plumFreeVoiceTranscription", plumFreeVoiceTranscription);
                 editor.putBoolean("ghostHideOnline", ghostHideOnline);
                 editor.putBoolean("ghostHideTyping", ghostHideTyping);
@@ -537,6 +539,21 @@ public class SharedConfig {
             ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE)
                     .edit()
                     .putBoolean("keepDeletedMessages", keepDeletedMessages)
+                    .apply();
+        } catch (Exception e) {
+            FileLog.e(e);
+        }
+    }
+
+    public static void setFlintGramFlipToBlur(boolean value) {
+        if (flintGramFlipToBlur == value) {
+            return;
+        }
+        flintGramFlipToBlur = value;
+        try {
+            ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("flintGramFlipToBlur", flintGramFlipToBlur)
                     .apply();
         } catch (Exception e) {
             FileLog.e(e);
@@ -822,6 +839,7 @@ public class SharedConfig {
             archiveHidden = preferences.getBoolean("archiveHidden", false);
             hideReadReceipts = preferences.getBoolean("hideReadReceipts", false);
             keepDeletedMessages = preferences.getBoolean("keepDeletedMessages", false);
+            flintGramFlipToBlur = preferences.getBoolean("flintGramFlipToBlur", false);
             plumFreeVoiceTranscription = preferences.getBoolean("plumFreeVoiceTranscription", false);
             ghostHideOnline = preferences.getBoolean("ghostHideOnline", false);
             ghostHideTyping = preferences.getBoolean("ghostHideTyping", false);

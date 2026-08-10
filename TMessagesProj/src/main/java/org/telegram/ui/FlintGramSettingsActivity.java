@@ -951,6 +951,7 @@ public class FlintGramSettingsActivity extends BaseFragment {
         return "Flintgram 12.0.3\n"
                 + "hideReadStatus=" + SharedConfig.hideReadReceipts + "\n"
                 + "keepDeletedMessages=" + SharedConfig.keepDeletedMessages + "\n"
+                + "flipToBlur=" + SharedConfig.flintGramFlipToBlur + "\n"
                 + "ghostHideOnline=" + SharedConfig.ghostHideOnline + "\n"
                 + "ghostHideTyping=" + SharedConfig.ghostHideTyping + "\n"
                 + "ghostHideRecordVideo=" + SharedConfig.ghostHideRecordVideo + "\n"
@@ -979,6 +980,7 @@ public class FlintGramSettingsActivity extends BaseFragment {
     private static void resetSettings(Context context) {
         SharedConfig.setHideReadReceipts(false);
         SharedConfig.setKeepDeletedMessages(false);
+        SharedConfig.setFlintGramFlipToBlur(false);
         SharedConfig.setPlumFreeVoiceTranscription(false);
         SharedConfig.setGhostHideOnline(false);
         SharedConfig.setGhostHideTyping(false);
@@ -1321,6 +1323,7 @@ public class FlintGramSettingsActivity extends BaseFragment {
     private static class PrivacyBlockCell extends FrameLayout {
         private final TextCheckCell hideReadCell;
         private final TextCheckCell keepDeletedCell;
+        private final TextCheckCell flipToBlurCell;
 
         public PrivacyBlockCell(Context context) {
             super(context);
@@ -1334,9 +1337,11 @@ public class FlintGramSettingsActivity extends BaseFragment {
 
             hideReadCell = new TextCheckCell(context, 21);
             keepDeletedCell = new TextCheckCell(context, 21);
+            flipToBlurCell = new TextCheckCell(context, 21);
 
             block.addView(hideReadCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
             block.addView(keepDeletedCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
+            block.addView(flipToBlurCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
 
             hideReadCell.setOnClickListener(v -> {
                 SharedConfig.setHideReadReceipts(!SharedConfig.hideReadReceipts);
@@ -1348,6 +1353,10 @@ public class FlintGramSettingsActivity extends BaseFragment {
                 }
                 bind();
                 showDeletedColorDialog(getContext());
+            });
+            flipToBlurCell.setOnClickListener(v -> {
+                SharedConfig.setFlintGramFlipToBlur(!SharedConfig.flintGramFlipToBlur);
+                bind();
             });
         }
 
@@ -1410,7 +1419,8 @@ public class FlintGramSettingsActivity extends BaseFragment {
 
         public void bind() {
             hideReadCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramHideReadReceipts), SharedConfig.hideReadReceipts, true);
-            keepDeletedCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramKeepDeletedMessages), SharedConfig.keepDeletedMessages, false);
+            keepDeletedCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramKeepDeletedMessages), SharedConfig.keepDeletedMessages, true);
+            flipToBlurCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramFlipToBlur), SharedConfig.flintGramFlipToBlur, false);
         }
     }
 
