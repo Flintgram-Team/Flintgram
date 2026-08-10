@@ -344,6 +344,7 @@ public class SharedConfig {
     public static int flintGramFolderTitleMode;
     public static int deletedMessageStyle;
     public static int flintGramMapProvider;
+    public static boolean flintGramUseYandexBrowser;
     private static HashSet<String> deletedMessages = new HashSet<>();
 
     private static int chatSwipeAction;
@@ -495,6 +496,7 @@ public class SharedConfig {
                 editor.putInt("flintGramFolderTitleMode", flintGramFolderTitleMode);
                 editor.putInt("deletedMessageStyle", deletedMessageStyle);
                 editor.putInt("flintGramMapProvider", flintGramMapProvider);
+                editor.putBoolean("flintGramUseYandexBrowser", flintGramUseYandexBrowser);
                 editor.putStringSet("plumDeletedMessages", new HashSet<>(deletedMessages));
                 editor.apply();
             } catch (Exception e) {
@@ -646,6 +648,21 @@ public class SharedConfig {
             ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE)
                     .edit()
                     .putInt("flintGramMapProvider", flintGramMapProvider)
+                    .apply();
+        } catch (Exception e) {
+            FileLog.e(e);
+        }
+    }
+
+    public static void setFlintGramUseYandexBrowser(boolean value) {
+        if (flintGramUseYandexBrowser == value) {
+            return;
+        }
+        flintGramUseYandexBrowser = value;
+        try {
+            ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("flintGramUseYandexBrowser", flintGramUseYandexBrowser)
                     .apply();
         } catch (Exception e) {
             FileLog.e(e);
@@ -817,6 +834,7 @@ public class SharedConfig {
             flintGramFolderTitleMode = preferences.getInt("flintGramFolderTitleMode", 0);
             deletedMessageStyle = preferences.getInt("deletedMessageStyle", 0);
             flintGramMapProvider = preferences.getInt("flintGramMapProvider", 0);
+            flintGramUseYandexBrowser = preferences.getBoolean("flintGramUseYandexBrowser", false);
             deletedMessages = new HashSet<>(preferences.getStringSet("plumDeletedMessages", new HashSet<>()));
             distanceSystemType = preferences.getInt("distanceSystemType", 0);
             keepMedia = preferences.getInt("keep_media", CacheByChatsController.KEEP_MEDIA_ONE_MONTH);

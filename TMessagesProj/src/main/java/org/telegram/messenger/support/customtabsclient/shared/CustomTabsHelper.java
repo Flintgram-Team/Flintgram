@@ -26,6 +26,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import org.telegram.messenger.ApplicationLoader;
+import org.telegram.messenger.SharedConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,14 @@ public class CustomTabsHelper {
      * @return The package name recommended to use for connecting to custom tabs related components.
      */
     public static String getPackageNameToUse(Context context) {
+        if (SharedConfig.flintGramUseYandexBrowser) {
+            Intent yandexServiceIntent = new Intent(ACTION_CUSTOM_TABS_CONNECTION);
+            yandexServiceIntent.setPackage("com.yandex.browser");
+            if (context.getPackageManager().resolveService(yandexServiceIntent, 0) != null) {
+                return "com.yandex.browser";
+            }
+            return null;
+        }
         if (sPackageNameToUse != null) return sPackageNameToUse;
 
         PackageManager pm = context.getPackageManager();
@@ -120,6 +129,10 @@ public class CustomTabsHelper {
 
         }
         return sPackageNameToUse;
+    }
+
+    public static void resetPackageNameToUse() {
+        sPackageNameToUse = null;
     }
 
     /**

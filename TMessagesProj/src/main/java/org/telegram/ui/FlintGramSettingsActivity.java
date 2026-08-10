@@ -1,8 +1,12 @@
 package org.telegram.ui;
 
 import android.content.Context;
+import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -10,6 +14,9 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -52,9 +59,13 @@ import org.telegram.ui.Components.ListView.AdapterWithDiffUtils;
 import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.ArrayList;
+import java.io.File;
 import java.util.Objects;
 
 public class FlintGramSettingsActivity extends BaseFragment {
+
+    private static final String YANDEX_BROWSER_PACKAGE = "com.yandex.browser";
+    private static final String YANDEX_BROWSER_APK_URL = "https://trashbox.ru/files20/2554167_1a8916/com.yandex.browser_1927119778_rs.apk";
 
     private RecyclerListView listView;
     private ListAdapter adapter;
@@ -77,6 +88,7 @@ public class FlintGramSettingsActivity extends BaseFragment {
     private static final int VIEW_TYPE_BIG_HEADER = 13;
     private static final int VIEW_TYPE_SUPPORT_INFO = 14;
     private static final int VIEW_TYPE_CUSTOMIZATION_BLOCK = 15;
+    private static final int VIEW_TYPE_BROWSER_BLOCK = 16;
 
     public FlintGramSettingsActivity() {
     }
@@ -142,6 +154,9 @@ public class FlintGramSettingsActivity extends BaseFragment {
             items.add(new ItemInner(VIEW_TYPE_HEADER, 13, LocaleController.getString(R.string.FlintGramMaps)));
             items.add(new ItemInner(VIEW_TYPE_MAPS_BLOCK, 14, null));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 15, createYandexAgreementText()));
+            items.add(new ItemInner(VIEW_TYPE_HEADER, 32, LocaleController.getString(R.string.FlintGramBrowser)));
+            items.add(new ItemInner(VIEW_TYPE_BROWSER_BLOCK, 33, null));
+            items.add(new ItemInner(VIEW_TYPE_SHADOW, 34, createYandexBrowserAgreementText()));
             items.add(new ItemInner(VIEW_TYPE_SHADOW, 16, LocaleController.getString(R.string.FlintGramFeaturesInfo)));
         } else if (selectedSection == 1) {
             items.add(new ItemInner(VIEW_TYPE_HEADER, 22, LocaleController.getString(R.string.FlintGramCustomizationSection)));
@@ -173,6 +188,108 @@ public class FlintGramSettingsActivity extends BaseFragment {
             spannable.setSpan(new URLSpan("https://yandex.ru/legal/maps_api_offer/"), start, start + link.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         return spannable;
+    }
+
+    private CharSequence createYandexBrowserAgreementText() {
+        String text = LocaleController.getString(R.string.FlintGramYandexBrowserAgreement);
+        String link = LocaleController.getString(R.string.FlintGramYandexBrowserAgreementLink);
+        SpannableString spannable = new SpannableString(text);
+        int start = text.indexOf(link);
+        if (start >= 0) {
+            spannable.setSpan(new URLSpan("https://yandex.ru/legal/browser_agreement/ru/"), start, start + link.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return spannable;
+    }
+
+    private static boolean isYandexBrowserInstalled(Context context) {
+        try {
+            ApplicationInfo info = context.getPackageManager().getApplicationInfo(YANDEX_BROWSER_PACKAGE, 0);
+            return info.enabled;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    private static void refreshBrowserProvider(Context context) {
+        Activity activity = AndroidUtilities.findActivity(context);
+        if (activity != null) {
+            Browser.refreshCustomTabsService(activity);
+        }
+    }
+
+    private static void startYandexBrowserDownload(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+            Toast.makeText(context, LocaleController.getString(R.string.FlintGramYandexBrowserUnsupported), Toast.LENGTH_LONG).show();
+            return;
+        }
+        boolean arm64Supported = false;
+        for (String abi : Build.SUPPORTED_ABIS) {
+            if ("arm64-v8a".equals(abi)) {
+                arm64Supported = true;
+                break;
+            }
+        }
+        if (!arm64Supported) {
+            Toast.makeText(context, LocaleController.getString(R.string.FlintGramYandexBrowserUnsupported), Toast.LENGTH_LONG).show();
+            return;
+        }
+        try {
+            DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+            if (downloadManager == null) {
+                throw new IllegalStateException("DownloadManager is unavailable");
+            }
+            File downloadFile = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "YandexBrowser-26.6.6.58.apk");
+            if (downloadFile.exists()) {
+                downloadFile.delete();
+            }
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(YANDEX_BROWSER_APK_URL));
+            request.setTitle(LocaleController.getString(R.string.FlintGramYandexBrowserDownloadTitle));
+            request.setDescription(LocaleController.getString(R.string.FlintGramYandexBrowserDownloadDescription));
+            request.setMimeType("application/vnd.android.package-archive");
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+            request.setAllowedOverMetered(true);
+            request.setAllowedOverRoaming(false);
+            request.setDestinationInExternalFilesDir(context, Environment.DIRECTORY_DOWNLOADS, downloadFile.getName());
+            long downloadId = downloadManager.enqueue(request);
+            context.getSharedPreferences("mainconfig", Context.MODE_PRIVATE).edit()
+                    .putLong("flintGramYandexBrowserDownloadId", downloadId)
+                    .apply();
+            Toast.makeText(context, LocaleController.getString(R.string.FlintGramYandexBrowserDownloadStarted), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            org.telegram.messenger.FileLog.e(e);
+            Toast.makeText(context, LocaleController.getString(R.string.FlintGramYandexBrowserDownloadFailed), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private static void showYandexBrowserInstallDialog(Context context) {
+        LinearLayout content = new LinearLayout(context);
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.setGravity(Gravity.CENTER_HORIZONTAL);
+        content.setPadding(AndroidUtilities.dp(24), AndroidUtilities.dp(8), AndroidUtilities.dp(24), 0);
+
+        ImageView logo = new ImageView(context);
+        logo.setImageResource(R.drawable.yandex_browser_logo);
+        logo.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        GradientDrawable logoMask = new GradientDrawable();
+        logoMask.setColor(0x00000000);
+        logoMask.setCornerRadius(AndroidUtilities.dp(22));
+        logo.setBackground(logoMask);
+        logo.setClipToOutline(true);
+        content.addView(logo, LayoutHelper.createLinear(88, 88, Gravity.CENTER_HORIZONTAL, 0, 0, 0, 14));
+
+        TextView description = new TextView(context);
+        description.setText(LocaleController.getString(R.string.FlintGramYandexBrowserInstallDescription));
+        description.setTextColor(Theme.getColor(Theme.key_dialogTextBlack));
+        description.setTextSize(16);
+        description.setGravity(Gravity.CENTER);
+        content.addView(description, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(LocaleController.getString(R.string.FlintGramYandexBrowserInstallTitle));
+        builder.setView(content);
+        builder.setPositiveButton(LocaleController.getString(R.string.FlintGramYandexBrowserDownload), (dialog, which) -> startYandexBrowserDownload(context));
+        builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
+        builder.show();
     }
 
     private CharSequence createSupportInfoText() {
@@ -230,6 +347,8 @@ public class FlintGramSettingsActivity extends BaseFragment {
                 view = new FeaturesBlockCell(getContext());
             } else if (viewType == VIEW_TYPE_MAPS_BLOCK) {
                 view = new MapsBlockCell(getContext());
+            } else if (viewType == VIEW_TYPE_BROWSER_BLOCK) {
+                view = new BrowserBlockCell(getContext());
             } else if (viewType == VIEW_TYPE_EMPTY_BLOCK) {
                 view = new EmptyBlockCell(getContext());
             } else if (viewType == VIEW_TYPE_LINKS_BLOCK) {
@@ -281,6 +400,8 @@ public class FlintGramSettingsActivity extends BaseFragment {
                 ((FeaturesBlockCell) holder.itemView).bind();
             } else if (holder.getItemViewType() == VIEW_TYPE_MAPS_BLOCK) {
                 ((MapsBlockCell) holder.itemView).bind();
+            } else if (holder.getItemViewType() == VIEW_TYPE_BROWSER_BLOCK) {
+                ((BrowserBlockCell) holder.itemView).bind();
             } else if (holder.getItemViewType() == VIEW_TYPE_EMPTY_BLOCK) {
                 ((EmptyBlockCell) holder.itemView).bind(item.text);
             } else if (holder.getItemViewType() == VIEW_TYPE_LINKS_BLOCK) {
@@ -839,6 +960,7 @@ public class FlintGramSettingsActivity extends BaseFragment {
                 + "ghostHideUploadFile=" + SharedConfig.ghostHideUploadFile + "\n"
                 + "deletedMessageStyle=" + SharedConfig.deletedMessageStyle + "\n"
                 + "mapProvider=" + SharedConfig.flintGramMapProvider + "\n"
+                + "useYandexBrowser=" + SharedConfig.flintGramUseYandexBrowser + "\n"
                 + "foldersBottom=" + SharedConfig.flintGramFoldersBottom + "\n"
                 + "archiveHidden=" + SharedConfig.archiveHidden + "\n"
                 + "folderTitleMode=" + SharedConfig.flintGramFolderTitleMode + "\n"
@@ -867,6 +989,7 @@ public class FlintGramSettingsActivity extends BaseFragment {
         SharedConfig.setGhostHideUploadFile(false);
         SharedConfig.setDeletedMessageStyle(0);
         SharedConfig.setFlintGramMapProvider(0);
+        SharedConfig.setFlintGramUseYandexBrowser(false);
         SharedConfig.setFlintGramFoldersBottom(false);
         if (SharedConfig.archiveHidden) {
             SharedConfig.toggleArchiveHidden();
@@ -1577,6 +1700,41 @@ public class FlintGramSettingsActivity extends BaseFragment {
 
         public void bind() {
             yandexMapsCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramUseYandexMaps), SharedConfig.flintGramMapProvider == 2, false);
+        }
+    }
+
+    private static class BrowserBlockCell extends FrameLayout {
+        private final TextCheckCell yandexBrowserCell;
+
+        public BrowserBlockCell(Context context) {
+            super(context);
+            setPadding(AndroidUtilities.dp(12), AndroidUtilities.dp(2), AndroidUtilities.dp(12), AndroidUtilities.dp(4));
+
+            LinearLayout block = new LinearLayout(context);
+            block.setOrientation(LinearLayout.VERTICAL);
+            block.setClipToOutline(true);
+            block.setBackground(Theme.createRoundRectDrawable(AndroidUtilities.dp(25), Theme.getColor(Theme.key_windowBackgroundWhite)));
+            addView(block, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
+            yandexBrowserCell = new TextCheckCell(context, 21);
+            block.addView(yandexBrowserCell, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, 50));
+
+            yandexBrowserCell.setOnClickListener(v -> {
+                if (SharedConfig.flintGramUseYandexBrowser) {
+                    SharedConfig.setFlintGramUseYandexBrowser(false);
+                    refreshBrowserProvider(context);
+                } else if (isYandexBrowserInstalled(context)) {
+                    SharedConfig.setFlintGramUseYandexBrowser(true);
+                    refreshBrowserProvider(context);
+                } else {
+                    showYandexBrowserInstallDialog(context);
+                }
+                bind();
+            });
+        }
+
+        public void bind() {
+            yandexBrowserCell.setTextAndCheck(LocaleController.getString(R.string.FlintGramUseYandexBrowser), SharedConfig.flintGramUseYandexBrowser, false);
         }
     }
 

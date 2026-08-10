@@ -32,6 +32,7 @@ import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.ShareBroadcastReceiver;
+import org.telegram.messenger.SharedConfig;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.support.customtabs.CustomTabsCallback;
 import org.telegram.messenger.support.customtabs.CustomTabsClient;
@@ -145,6 +146,16 @@ public class Browser {
         }
         customTabsClient = null;
         customTabsSession = null;
+    }
+
+    public static void refreshCustomTabsService(Activity activity) {
+        if (activity == null) {
+            return;
+        }
+        unbindCustomTabsService(activity);
+        customTabsPackageToBind = null;
+        CustomTabsHelper.resetPackageNameToUse();
+        bindCustomTabsService(activity);
     }
 
     private static class NavigationCallback extends CustomTabsCallback {
@@ -399,6 +410,9 @@ public class Browser {
                     builder.setActionButton(BitmapFactory.decodeResource(context.getResources(), R.drawable.msg_filled_shareout), LocaleController.getString(R.string.ShareFile), PendingIntent.getBroadcast(ApplicationLoader.applicationContext, 0, share, PendingIntent.FLAG_MUTABLE ), true);
 
                     CustomTabsIntent intent = builder.build();
+                    if (SharedConfig.flintGramUseYandexBrowser) {
+                        intent.intent.setPackage("com.yandex.browser");
+                    }
                     intent.setUseNewTask();
                     intent.launchUrl(context, uri);
                     return;
@@ -522,6 +536,18 @@ public class Browser {
             intent.putExtra(android.provider.Browser.EXTRA_APPLICATION_ID, context.getPackageName());
             context.startActivity(intent);
             return true;
+        } catch (ActivityNotFoundException e) {
+            if ("com.yandex.browser".equals(browser)) {
+                try {
+                    Intent installIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.yandex.browser"));
+                    installIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(installIntent);
+                    return true;
+                } catch (Exception installException) {
+                    FileLog.e(installException);
+                }
+            }
+            FileLog.e(e, false);
         } catch (Exception e) {
             FileLog.e(e);
         }
@@ -786,6 +812,9 @@ public class Browser {
             case "tor":
             case "tor-browser":
                 return "org.torproject.torbrowser";
+            case "yandex":
+            case "yandex-browser":
+                return "com.yandex.browser";
         }
         return null;
     }
